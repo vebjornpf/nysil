@@ -1,0 +1,10 @@
+
+
+<!-- This include makes sure that all the Subjects displayes when you
+     are pressing "Mine Fag"-->
+
+{% block subjects %}
+{% for subject in subjects_list %}
+    <li><a href="#"> {{ subject.subject_code }}</a></li>
+{% endfor %}
+{% endblock %}

@@ -4,6 +4,7 @@
 <head>
 	<title>NYSIL</title>
 	<meta charset="utf-8">
+    {% load staticcfiles %}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -24,7 +25,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type = "text/css"/>
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
 </head>
 <!-- Layout til bakgrunnen til nettsiden -->
@@ -37,7 +37,7 @@
                 <br>
                 <center>
                     <a href="#">
-                         <img src="Logo.jpg" class="responsive-img" style='max-height: 60px;' alt="Responsive image">
+                         <img src="{% static 'home/img/Logo.jpg'" class="responsive-img" style='max-height: 60px;' alt="Responsive image">
                     </a>
                 </center>
             </div>
@@ -69,9 +69,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mine Fag
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Fag 1</a></li>
-                                <li><a href="#">Fag 2</a></li>
-                                <li><a href="#">Fag 3</a></li>
+                                {% block subjects %}
+                                {% include 'main/includes/subjects_to_dropdown.html' %}
+                                {% endblock %}
                             </ul>
                         </li>
 
