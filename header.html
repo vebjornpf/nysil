@@ -24,9 +24,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type = "text/css"/>
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="header.css" type = "text/css"/>
+
 </head>
+
 <!-- Layout til bakgrunnen til nettsiden -->
 <body class="body" style="background-color: #E5E4E2;">
     <div class="container-fluid" style="min-height:95%">
@@ -37,12 +39,12 @@
                 <br>
                 <center>
                     <a href="#">
-                         <img src="Logo.jpg" class="responsive-img" style='max-height: 60px;' alt="Responsive image">
+                         <img src="Logo.jpg" class="responsive-img" style='max-height: 40px;' alt="Responsive image">
                     </a>
                 </center>
             </div>
+            </div>
         </div>
-    </div>
 
         <!-- Navbar på toppen -->
         <br>
@@ -57,7 +59,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
 				    </button>
-                    <a href="#" class="navbar-brand">Hjem</a>
+                    <a href="#" class="navbar-brand">
+                        <span class="glyphicon glyphicon-home"> </span>
+                    </a>
                 </div>
 
                 <!-- Navbar items, samarbeider med collapse over gjennom id (data-target) -->
@@ -77,13 +81,12 @@
 
                         <li><a href="#">Min Profil</a></li>
                         <li><a href="#">Oversikt og Poeng</a></li>
-                        <li><a href="#">Innstillinger</a></li>
                     </ul>
 
                     <!-- Knapp for innloggin, tar deg til innloggings app url -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Kontakt & Hjelp</a></li>
-					    <li><a href="#">Logg Inn</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
+                        <li><a href="#">Logg Inn</a></li>
 				    </ul>
                 </div>
 
@@ -92,8 +95,21 @@
 
             </div>
         </nav>
+
     </div>
 
+    <!-- Footer med linker til ulike sider, og også en kontakt & hjelp side -->
+    <footer id="footer">
+        <div class="container-fluid" style='margin-left:15px'>
+            <p>
+                <a href="https://www.facebook.com">Facebook</a> |
+                <a href="https://www.twitter.com">Twitter</a> |
+                <a href="https://www.instabart.no">Instabart</a> |
+                <a href="#">Kontakt oss</a> |
+                <a href="#">Hjelp</a>
+            </p>
+        </div>
+    </footer>
 
 
 
