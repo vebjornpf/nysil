@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Subject(models.Model):
-    subject_code = models.CharField(max_length=20)
+    subject_code = models.CharField(max_length=20, primary_key=True)
     subject_name = models.CharField(max_length=30)
     professor_firstname = models.CharField(max_length=30)
     professor_lastname = models.CharField(max_length=30)
