@@ -6,6 +6,7 @@ from django.views import generic
 from .models import Subject
 
 
+# view for the header, which gonna be the same on everywhere on the web page
 def index(req):
     subjects = Subject.objects.all()
     print(subjects)
