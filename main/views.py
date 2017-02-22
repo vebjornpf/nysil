@@ -6,8 +6,8 @@ from django.views import generic
 from .models import Subject
 
 
-# view for the header, which gonna be the same on everywhere on the web page
+# view for the header, which gonna be the same everywhere in the web page
 def index(req):
     subjects = Subject.objects.all()
-    print(subjects)
-    return render(req, 'main/header.html',{'subjects_list': subjects})
+    return render(req, 'main/header.html',{'subject_list': subjects})
+
