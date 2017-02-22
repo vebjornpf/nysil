@@ -17,3 +17,4 @@ class ThemeAdmin(admin.ModelAdmin):
 
 admin.site.register(Subject, SubjectAdmin)
 admin.site.register(Theme, ThemeAdmin)
+admin.site.register(Exercise_Page)

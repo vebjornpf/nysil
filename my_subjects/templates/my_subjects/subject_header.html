@@ -1,0 +1,16 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+<div id="sidebar_wrapper">
+    <ul class="sidebar-nav">
+        <li><a href="#"> Test 1</a></li>
+        {% for theme in subject.theme_set.all %}
+         <li><a href="#"> {{ theme }}</a></li>
+
+        {% endfor %}
+    </ul>
+
+
+</div>
+
+{% endblock %}
