@@ -15,6 +15,9 @@ class ThemeAdmin(admin.ModelAdmin):
     list_display = ['get_number_and_name','subject']
     ordering = ['subject', 'chapter_number']
 
+class Exercise_PageAdmin(admin.ModelAdmin):
+    list_display = ['headline']
+
 admin.site.register(Subject, SubjectAdmin)
 admin.site.register(Theme, ThemeAdmin)
-admin.site.register(Exercise_Page)
+admin.site.register(Exercise_Page, Exercise_PageAdmin)
