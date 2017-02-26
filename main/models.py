@@ -35,13 +35,12 @@ class Theme(models.Model):
     get_number_and_name.short_description = 'Chapter'
 
 class Exercise_Page(models.Model):
-    youtube_url = models.URLField()
+    youtube_id = models.CharField(max_length=40)
     headline = models.CharField(max_length=30)
-    explanation = models.CharField(max_length=30) # a short explanation for the exercise
+    explanation = models.TextField(max_length=150) # a short explanation for the exercise
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE) # to controll which theme the exercise_page belongs to
 
-
-#lass Exercise(models.Model):
+#class Exercise(models.Model):
 
 
 
