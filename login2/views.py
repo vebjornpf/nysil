@@ -1,26 +1,12 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
-from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.views import generic
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
+from django.views import generic
 from django.views.generic import View
 from django.http import HttpResponse
 from .forms import UserForm
 
-from .models import Subject
-
-
-# view for the header, which gonna be the same on everywhere on the web page
-def index(req):
-    subjects = Subject.objects.all()
-    print(subjects)
-    return render(req, 'main/header.html',{'subjects_list': subjects})
-
-
-def index2(request):
+def index(request):
     return render(request, "login.html", {})
 
 def logout_user(request):
@@ -40,12 +26,12 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'header.html', {})
+                return render(request, 'login2/index.html', {})
             else:
-                return render(request, 'main/login.html', {'error_message': 'Your account has been disabled'})
+                return render(request, 'login2/login.html', {'error_message': 'Your account has been disabled'})
         else:
-            return render(request, 'main/login.html', {'error_message': 'Invalid login'})
-    return render(request, 'header.html')
+            return render(request, 'login2/login.html', {'error_message': 'Invalid login'})
+    return render(request, 'login2/login.html')
 
 
 def register(request):
@@ -60,11 +46,9 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'main/index.html', {})
+                return render(request, 'login2/index.html', {})
     context = {
         "form": form,
     }
     return render(request, 'login2/register.html', context)
-
-
 
