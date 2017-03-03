@@ -21,7 +21,7 @@ class Subject(models.Model):
     get_full_name.short_description = 'Professor' # headline of professor-column in the admin-table
 
 
-class Theme(models.Model):
+class Chapter(models.Model):
     chapter_number = models.IntegerField(default=0)
     chapter_name = models.CharField(max_length=30)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE) # to controll which subject the theme belongs to
@@ -40,17 +40,9 @@ class Exercise_Page(models.Model):
 
     # explanation describes what topics the exercises covers, so its easy to se for the students
     explanation = models.TextField(max_length=150)
-    theme = models.ForeignKey(Theme, on_delete=models.CASCADE) # to controll which theme the exercise_page belongs to
+    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE) # to controll which theme the exercise_page belongs to
 
-    # Easy, medium and hard exercises
-    easy = models.OneToOneField(Exercise, on_delete = models.CASCADE)
-    medium = models.OneToOneField(Exercise, on_delete = models.CASCADE)
-    hard = models.OneToOneField(Exercise, on_delete = models.CASCADE)
 
-class Exercise(models.Model):
-    question = models.TextField()
-    answer = models.CharField(max_length=30) # maybe change to integer-field (?)
-    points = models.IntegerField(default=0) # make test som easy_points < medium_points < hard_points
 
 
 

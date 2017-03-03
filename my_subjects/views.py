@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-from main.models import Subject, Theme, Exercise_Page
+from main.models import Subject, Chapter, Exercise_Page
 
 # this view is the "header" for the subject-pages
 # its the same as main/header.html but has a sidebare too
@@ -12,18 +12,18 @@ def subject_view(req, subject_pk):
     return render(req, 'my_subjects/subject_header.html',{'subject_list': subjects,'subject':subject})
 
 
-def all_exercises_view(req,theme_pk, subject_pk):
-    theme = Theme.objects.get(pk=theme_pk)
-    subject = Subject.objects.get(pk=theme.subject.pk)
+def all_exercises_view(req,chapter_pk, subject_pk):
+    chapter = Chapter.objects.get(pk=chapter_pk)
+    subject = Subject.objects.get(pk=chapter.subject.pk)
     subjects = Subject.objects.all()
-    return render(req, 'my_subjects/chapter_page.html', {'subject_list': subjects,'theme':theme,
+    return render(req, 'my_subjects/chapter_page.html', {'subject_list': subjects,'chapter':chapter,
                                                          'subject':subject})
 
 
-def exercise_view(req,theme_pk, subject_pk, exercise_pk):
+def exercise_view(req,chapter_pk, subject_pk, exercise_pk):
     exercise = get_object_or_404(Exercise_Page, pk=exercise_pk)
-    theme = exercise.theme
-    subject = theme.subject
+    chapter = exercise.chapter
+    subject = chapter.subject
     subjects = Subject.objects.all()
-    return render(req, 'my_subjects/exercise_page.html', {'subject_list': subjects,'exercise' :exercise,'theme':theme,
+    return render(req, 'my_subjects/exercise_page.html', {'subject_list': subjects,'exercise' :exercise,'chapter':chapter,
                                                          'subject':subject})
