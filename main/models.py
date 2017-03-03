@@ -37,10 +37,21 @@ class Theme(models.Model):
 class Exercise_Page(models.Model):
     youtube_id = models.CharField(max_length=40)
     headline = models.CharField(max_length=30)
-    explanation = models.TextField(max_length=150) # a short explanation for the exercise
+
+    # explanation describes what topics the exercises covers, so its easy to se for the students
+    explanation = models.TextField(max_length=150)
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE) # to controll which theme the exercise_page belongs to
 
-#class Exercise(models.Model):
+    # Easy, medium and hard exercises
+    easy = models.OneToOneField(Exercise, on_delete = models.CASCADE)
+    medium = models.OneToOneField(Exercise, on_delete = models.CASCADE)
+    hard = models.OneToOneField(Exercise, on_delete = models.CASCADE)
+
+class Exercise(models.Model):
+    question = models.TextField()
+    answer = models.CharField(max_length=30) # maybe change to integer-field (?)
+    points = models.IntegerField(default=0) # make test som easy_points < medium_points < hard_points
+
 
 
 

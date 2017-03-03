@@ -5,6 +5,9 @@ from main.models import Subject
 
 app_name='my_subjects'
 
+# subject_pk: the primary key for the subject ex "TDT4140"
+# theme_pk: the primary key for the theme ex "1"
+# exercise_pk: the primary key for the exercise_page
 
 urlpatterns = [
     # example .../my_subjects/TDT4140
