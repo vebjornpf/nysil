@@ -1,0 +1,9 @@
+{% extends 'my_subjects/subject_header.html' %}
+
+{% block extension %}
+    {% for exercise_page in theme.exercise_page_set.all %}
+        <li><a href="{% url 'my_subjects:exercise_view' exercise_pk=exercise_page.pk theme_pk=theme.pk subject_pk=subject.pk %}"> {{ exercise_page.headline }} </a></li>
+
+    {% endfor%}
+
+{% endblock %}
