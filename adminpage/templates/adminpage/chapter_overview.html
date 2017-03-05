@@ -1,0 +1,7 @@
+{% extends 'adminpage/subject_overview.html' %}
+
+{% block extension %}
+    {% for chapter in subject.chapter_set.all %}
+        <li><a href="#"> {{ chapter }} </a></li>
+    {% endfor%}
+{% endblock%}

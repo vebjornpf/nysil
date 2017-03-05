@@ -1,0 +1,33 @@
+{% extends 'adminpage/admin_header.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar navbar-inverse">
+              <li ><a href="#"><h3>Fagoversikt</h3><span class="sr-only">(current)</span></a></li>
+              <li><a href="{% url 'adminpage:new_subject' %}"><span class="glyphicon glyphicon-plus">Nytt fag</span></a></li>
+              <!-- a way to get all the chapter in the chosen subject -->
+                {% for subject in subjects %}
+                    <li><a href="{% url 'adminpage:chapter_overview' subject_pk=subject.pk %}"> {{ subject }}</a></li>
+                {% endfor %}
+          </ul>
+        </div>
+
+    {% block extension %}
+    {% endblock %}
+    </div>
+
+    <!-- Menu toggle script, for å vise sidebar -->
+    <script>
+		$("#menu-toggle").click( function (e){
+			e.preventDefault();
+			$("#wrapper").toggleClass("menuDisplayed");
+		});
+	</script>
+
+     {% block test %}
+     {% endblock %}
+
+</div>
+{% endblock%}

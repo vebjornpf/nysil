@@ -73,11 +73,13 @@
                     <ul class="nav navbar-nav">
                         <!--Ender slik at det ikke er dropdown og tar oss in på side med oversikt over fag-->
                         <!-- Dropdown meny for mine fag i navbaren -->
-                        <li><a href="#">Mine fag</a></li>
+                        <li><a href="{% url 'adminpage:subject_overview' %}">Mine fag</a></li>
                         <li><a href="#">Tilbakemeldinger</a></li>
                         <li><a href="#">Statistikker</a></li>
 
                     </ul>
+
+
 
                     <!-- Knapp for innloggin, tar deg til innloggings app url -->
                     <ul class="nav navbar-nav navbar-right">
@@ -89,6 +91,10 @@
                             <li><a href="#">Logg Inn</a></li>
 				        </li>
                     </ul>
+                    <form method='GET' action='' class="navbar-form navbar-right">
+                        <input type="text" name="/my_subjects/q" class="form-control" placeholder="Search for subjects..." value="{{request.GET.q}}">
+                    </form>
+
                 </div>
             </div>
         </nav>
