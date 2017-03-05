@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def admin_index(req):
+    return render(req,'adminpage/admin_header.html')
