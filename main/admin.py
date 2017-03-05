@@ -1,17 +1,19 @@
 from django.contrib import admin
 
-from.models import Subject, Theme, Exercise_Page
+from.models import Subject, Chapter, Exercise_Page
 
 
 
 
 class SubjectAdmin(admin.ModelAdmin):
     # doing this to make the Subject-table more transparent for the admins
-    search_fields = ['subject_code']
+    search_fields = ['subject_code','subject_name']
     list_display = ('subject_code', 'subject_name', 'get_full_name')
 
 
-class ThemeAdmin(admin.ModelAdmin):
+
+class ChapterAdmin(admin.ModelAdmin):
+    raw_id_fields = (('subject'),)
     list_display = ['get_number_and_name','subject']
     ordering = ['subject', 'chapter_number']
 
@@ -19,5 +21,6 @@ class Exercise_PageAdmin(admin.ModelAdmin):
     list_display = ['headline']
 
 admin.site.register(Subject, SubjectAdmin)
-admin.site.register(Theme, ThemeAdmin)
+admin.site.register(Chapter, ChapterAdmin)
 admin.site.register(Exercise_Page, Exercise_PageAdmin)
+

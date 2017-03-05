@@ -5,6 +5,7 @@
           <!-- Videoen på midten av siden, legg til siste del av youtube url der # er -->
         <div class="col-sm-6">
             <div class="embed-responsive embed-responsive-16by9">
+
                  <!-- Plays youtube on the webpage and uses the youtube-id. allowsfuulscreen allows youtube to play in fullscreen -->
                 <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/{{exercise.youtube_id}}" allowfullscreen="allowfullscreen"></iframe>
             </div>
@@ -14,7 +15,7 @@
         <div class="col-md-4">
 
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LettOppgave">Se lett oppgave</button>
-
+            <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
             <div class="modal fade" id="LettOppgave">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -23,31 +24,28 @@
                             <button type="button" class="close" data-dismiss="modal">&times</button>
                             <h4 class="modal-title">Lett Oppgave</h4>
                         </div>
-
                             <div class="modal-body">
-                            <form role="form">
                                 <div class="form group">
-                                    <p>Et eller annet spørsmål her; Hvorfor NYSIL?</p>
+                                    <p>{{ exercise.easy_question }}?</p>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Ditt svar">
+                                {{ form.as_p }}
                                 </div>
-                            </form>
-                        </div>
-
                             <div class="modal-footer">
-                            <button class="btn btn-primary btn-block">Sjekk Svar</button>
-                        </div>
+                            <button class="btn btn-primary btn-block" name="easy" type="submit">Sjekk Svar</button>
+                            </div>
 
                         </div>
                     </div>
                 </div>
+            </form>
         </div>
+
+
         <div class="col-md-4">
             <br>
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MiddelsOppgave">Se middels oppgave</button>
-
+            <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
             <div class="modal fade" id="MiddelsOppgave">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -58,31 +56,31 @@
                         </div>
 
                             <div class="modal-body">
-                            <form role="form">
                                 <div class="form group">
-                                    <p>Et eller annet spørsmål her; Hvorfor NYSIL?</p>
+                                    <p> {{ exercise.medium_question }}</p>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Ditt svar">
-                                </div>
-                            </form>
-                        </div>
+                                {{ form.as_p }}
+                            </div>
 
                             <div class="modal-footer">
-                            <button class="btn btn-primary btn-block">Sjekk Svar</button>
+                            <button class="btn btn-primary btn-block" name="medium">Sjekk Svar</button>
                         </div>
 
                         </div>
                     </div>
 
                 </div>
-
+             </form>
         </div>
+
+
+
+
         <div class="col-md-4">
             <br>
 
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#VanskeligOppgave">Se vanskelig oppgave</button>
-
+            <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
             <div class="modal fade" id="VanskeligOppgave">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -93,22 +91,18 @@
                         </div>
 
                             <div class="modal-body">
-                            <form role="form">
                                 <div class="form group">
-                                    <p>Et eller annet spørsmål her; Hvorfor NYSIL?</p>
+                                    <p>{{ exercise.hard_question }}</p>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Ditt svar">
-                                </div>
-                            </form>
-                        </div>
-
+                                {{ form.as_p }}
+                            </div>
                             <div class="modal-footer">
-                            <button class="btn btn-primary btn-block">Sjekk Svar</button>
+                            <button class="btn btn-primary btn-block" name="hard">Sjekk Svar</button>
                         </div>
 
                         </div>
                     </div>
                 </div>
+            </form>
         </div>
 {% endblock %}
