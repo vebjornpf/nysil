@@ -6,3 +6,5 @@ class SubjectForm(forms.ModelForm):
         model = Subject
         fields = ['subject_code','subject_name','professor_firstname','professor_lastname','professor_email']
 
+
+

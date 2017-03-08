@@ -3,9 +3,9 @@
 {% block extension %}
     <h1>Nytt fag</h1>
     <form method='POST' actoin="">{% csrf_token %}
-        {{form.as_p}}
+        <table>{{form.as_table}}</table>
 
-        <input type="submit" value="CreatePost"/>
+        <input type="submit" value="Create Post"/>
     </form>
 
 {% endblock%}

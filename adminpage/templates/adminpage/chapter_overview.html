@@ -1,7 +1,44 @@
 {% extends 'adminpage/subject_overview.html' %}
 
 {% block extension %}
-    {% for chapter in subject.chapter_set.all %}
-        <li><a href="#"> {{ chapter }} </a></li>
-    {% endfor%}
+<div class="col-md-10">
+    <div style ="width:900px">
+        <div style="float: left; width: 500px">
+            <h3> Kapitteloversikt for {{ subject }} </h3>
+        </div>
+        <div style="float: right; width: 50px">
+            <!-- Button that will send you to add_chapter-template -->
+            <div id="add_chapter">
+                 <a class="btn btn-large btn-success" href="#">Legg til kapittel</a>
+            </div>
+        </div>
+
+    </div>
+    <table class="table table-striped">
+        <!-- headlines to the columns in the table -->
+        <thead>
+            <tr>
+                <th>Kapittel</th>
+                <th>Navn</th>
+                <th>ENDRE</th>
+                <th>SLETT</th>
+            </tr>
+        </thead>
+
+        <!-- all the table-content -->
+        <tbody>
+            {% for chapter in subject.chapter_set.all %}
+                <tr>
+                    <th scope="row">{{ chapter.chapter_number }}</th>
+                    <td><a href="">{{ chapter.chapter_name }}</a></td>
+                    <td><div><a class="btn btn-xs btn-info" href="#">ENDRE</a></div></td> <!-- TODO: add chapter-change functionality -->
+                    <td><div><a class="btn btn-xs btn-danger" href="#">SLETT</a></div></td> <!-- TODO: add chapter-delete functionality -->
+                </tr>
+            {% endfor%}
+
+        </tbody>
+
+    </table>
+
+</div>
 {% endblock%}

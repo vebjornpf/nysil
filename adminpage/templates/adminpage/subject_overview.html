@@ -5,8 +5,9 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar navbar-inverse">
-              <li ><a href="#"><h3>Fagoversikt</h3><span class="sr-only">(current)</span></a></li>
-              <li><a href="{% url 'adminpage:new_subject' %}"><span class="glyphicon glyphicon-plus">Nytt fag</span></a></li>
+              <!-- This li takes us back to the subject_overvieq -->
+              <li ><a href="{% url 'adminpage:subject_overview' %}"><h3>Fagoversikt</h3><span class="sr-only">(current)</span></a></li>
+              <li><a href="{% url 'adminpage:new_subject' %}"><span class="glyphicon glyphicon-plus"></span>  Nytt fag</a></li> <!-- TODO: make the buttion more visible and special-->
               <!-- a way to get all the chapter in the chosen subject -->
                 {% for subject in subjects %}
                     <li><a href="{% url 'adminpage:chapter_overview' subject_pk=subject.pk %}"> {{ subject }}</a></li>

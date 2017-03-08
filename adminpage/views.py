@@ -18,7 +18,8 @@ def chapter_overview(req,subject_pk):
 
 def new_subject(req):
     form = SubjectForm()
-    context = {'form':form}
+    subjects = Subject.objects.all()
+    context = {'form':form, 'subjects': subjects}
     return render(req, 'adminpage/new_subject.html', context)
 
 
