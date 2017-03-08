@@ -29,7 +29,6 @@ def new_chapter(request, subject_pk):
     subject = Subject.objects.get(pk=subject_pk)
     subjects = Subject.objects.all()
     form = ChapterForm(request.POST or None)
-    print(type(form))
     context = {'form': form, 'subjects': subjects, 'subject': subject}
 
     # if the from is valid the created modelform will be saved in the database and the amdin
