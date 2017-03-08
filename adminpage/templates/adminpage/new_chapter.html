@@ -1,0 +1,10 @@
+{% extends 'adminpage/chapter_overview.html' %}
+
+{% block add_chapter %}
+    <form method="POST" action=""> {% csrf_token %}
+        <div style="float: right; width: 550px">
+            {{ form.as_table }}
+        </div>
+        <input class="btn btn-large btn-success" type="submit" value="Legg til kapittel"/>
+    </form>
+{% endblock %}

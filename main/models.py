@@ -23,6 +23,12 @@ class Subject(models.Model):
 
 
 class Chapter(models.Model):
+
+    # order the chapter-list by chapter_number
+    class Meta:
+        ordering = ['chapter_number']
+
+
     chapter_number = models.IntegerField(default=0)
     chapter_name = models.CharField(max_length=30)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE) # to controll which subject the theme belongs to
