@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from .forms import UserForm
 
 def index(request):
-    return render(request, "login.html", {})
+    return render(request, "main/login.html", {})
 
 def logout_user(request):
     logout(request)
@@ -30,7 +30,7 @@ def login_user(request):
             else:
                 return render(request, 'login2/login.html', {'error_message': 'Your account has been disabled'})
         else:
-            return render(request, 'login2/login.html', {'error_message': 'Invalid login'})
+            return render(request, 'login2/login.html', {'error_message': 'Invaliddd login'})
     return render(request, 'login2/login.html')
 
 

@@ -9,7 +9,6 @@ from django.shortcuts import redirect
 from django.views.generic import View
 from django.http import HttpResponse
 from .forms import UserForm
-
 from .models import Subject
 
 
@@ -21,7 +20,7 @@ def index(req):
 
 
 def index2(request):
-    return render(request, "login.html", {})
+    return render(request, "main/login.html", {})
 
 def logout_user(request):
     logout(request)
@@ -29,7 +28,7 @@ def logout_user(request):
     context = {
         "form": form,
     }
-    return render(request, 'login2/login.html', context)
+    return render(request, 'main/login.html', context)
 
 
 def login_user(request):
@@ -40,7 +39,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'header.html', {})
+                return render(request, 'main/header.html', {})
             else:
                 return render(request, 'main/login.html', {'error_message': 'Your account has been disabled'})
         else:
@@ -60,11 +59,11 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'main/index.html', {})
+                return render(request, 'main/header.html', {})
     context = {
         "form": form,
     }
-    return render(request, 'login2/register.html', context)
+    return render(request, 'main/register.html', context)
 
 
 
