@@ -59,7 +59,7 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'main/register.html', {})
+                return render(request, 'main/header.html', {})
     context = {
         "form": form,
     }
