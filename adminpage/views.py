@@ -8,6 +8,11 @@ from django.urls import reverse
 def admin_index(req):
     return render(req,'adminpage/admin_header.html')
 
+def tilbakemeldinger(req):
+    subjects = Subject.objects.all()
+    context = {'subjects':subjects}
+    return render(req,'adminpage/tilbakemeldinger.html',context)
+
 def subject_overview(req):
     subjects = Subject.objects.all()
     context = {'subjects':subjects}
