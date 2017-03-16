@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from main.models import Subject, Chapter
-from .forms import SubjectForm, ChapterForm
+from main.models import Subject, Chapter, Exercise_Page
+from .forms import SubjectForm, ChapterForm, ExerciseForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -75,6 +75,30 @@ def exercise_overview(request, subject_pk, chapter_pk):
 
     context = {'subjects': subjects, 'subject': subject, 'chapter': chapter}
     return render(request, 'adminpage/exercise_overview.html', context)
+
+
+def new_exercise(request, subject_pk, chapter_pk):
+    subjects = Subject.objects.all()
+    subject = Subject.objects.get(pk=subject_pk)
+    chapter = Chapter.objects.get(pk=chapter_pk)
+    form = ExerciseForm(request.POST or None)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.chapter = chapter
+        instance.save()
+        return HttpResponseRedirect(reverse('adminpage:exercise_overview',args=(subject_pk,chapter_pk)))
+
+    context = {'subjects': subjects, 'subject': subject, 'chapter': chapter, 'form': form}
+
+    return render(request, 'adminpage/new_exercise.html', context)
+
+
+def delete_exercise(request, subject_pk, chapter_pk, exercise_pk):
+    Exercise_Page.objects.get(pk=exercise_pk).delete()
+    return HttpResponseRedirect(reverse('adminpage:exercise_overview',args=(subject_pk, chapter_pk,)))
+
+
 
 
 

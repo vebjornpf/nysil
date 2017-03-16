@@ -1,5 +1,5 @@
 from django import forms
-from main.models import Subject, Chapter
+from main.models import Subject, Chapter, Exercise_Page
 
 class SubjectForm(forms.ModelForm):
     class Meta:
@@ -14,7 +14,11 @@ class ChapterForm(forms.ModelForm):
         fields = ['chapter_number','chapter_name']
 
 
+class ExerciseForm(forms.ModelForm):
 
+    class Meta:
+        model = Exercise_Page
+        exclude = ['chapter']
 
 
 
