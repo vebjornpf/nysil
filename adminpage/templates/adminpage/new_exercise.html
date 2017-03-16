@@ -1,0 +1,98 @@
+{% extends 'adminpage/subject_overview.html' %}
+
+{% block extension %}
+    <div class="col-md-10">
+        <form method='POST'> {% csrf_token %}
+                <div style="width:900">
+                    <div style="float: left; width: 700px">
+                        <h4>{{ subject }} <span class="glyphicon glyphicon-arrow-right"></span> {{ chapter }} <span class="glyphicon glyphicon-arrow-right"></span> Ny Oppgave </h4>
+                    </div>
+                    <div style="float: right; width:150px">
+                        <input class="btn btn-large btn-success" type="submit" value="Legg til kapittel"/>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <br>
+                    <label for="{{ form.youtube_id.id_for_label }}">Youtube ID:</label>
+                    <div class="fieldWrapper">
+                        {{ form.youtube_id }}
+                    </div>
+                    <br><br><br>
+                    <h5>Lett Oppgave: </h5>
+
+
+                    <label for="{{ form.easy_question.id_for_label }}">Spørsmål:</label>
+                    <div class="fieldWrapper">
+                        {{ form.easy_question }}
+                    </div>
+
+                    <label for="{{ form.easy_answer.id_for_label }}">Svar:</label>
+                    <div class="fieldWrapper">
+                        {{ form.easy_answer }}
+                    </div>
+
+                    <label for="{{ form.easy_points.id_for_label }}">Poeng:</label>
+                    <div class="fieldWrapper">
+                        {{ form.easy_points }}
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <br>
+                    <label for="{{ form.headline.id_for_label }}">Overskrift:</label>
+                    <div class="fieldWrapper">
+                        {{ form.headline }}
+                    </div>
+                    <br><br><br>
+                    <h5>Middels Oppgave: </h5>
+
+
+                    <label for="{{ form.medium_question.id_for_label }}">Spørsmål:</label>
+                    <div class="fieldWrapper">
+                        {{ form.medium_question }}
+                    </div>
+
+                    <label for="{{ form.medium_answer.id_for_label }}">Svar:</label>
+                    <div class="fieldWrapper">
+                        {{ form.medium_answer }}
+                    </div>
+
+                    <label for="{{ form.medium_points.id_for_label }}">Poeng:</label>
+                    <div class="fieldWrapper">
+                        {{ form.medium_points }}
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <br>
+                    <label  for="{{ form.explanation.id_for_label }}">Forklaring:</label>
+                    <div class="fieldWrapper">
+                        {{ form.explanation }}
+                    </div>
+                    <h5>Vanskelig Oppgave: </h5>
+
+                    <label for="{{ form.hard_question.id_for_label }}">Spørsmål:</label>
+                    <div class="fieldWrapper">
+                        {{ form.hard_question }}
+                    </div>
+
+                    <label for="{{ form.hard_answer.id_for_label }}">Svar:</label>
+                    <div class="fieldWrapper">
+                        {{ form.hard_answer }}
+                    </div>
+
+                    <label for="{{ form.hard_points.id_for_label }}">Poeng:</label>
+                    <div class="fieldWrapper">
+                        {{ form.hard_points }}
+                    </div>
+
+                </div>
+
+        </form>
+    </div>
+
+
+{% endblock %}

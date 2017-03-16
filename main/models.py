@@ -1,7 +1,30 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-# These models are the core database that control the relationships between subject, themes
-# exercises, exercise pages and hints
+
+
+# ----------------------------------------------------------
+
+# UserProfile is a model with a OneToOneField to User. This let us add fields to the nysil-user, which is importamt
+# because users need to have foreign-keys to their subjects
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    test = models.IntegerField(default=5)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.userprofile.save()
+
+# ----------------------------------------------------------
+
 
 
 class Subject(models.Model):
@@ -23,9 +46,18 @@ class Subject(models.Model):
 
 
 class Chapter(models.Model):
-    chapter_number = models.IntegerField(default=0)
+
+    # order the chapter-list by chapter_number
+    class Meta:
+        unique_together = ('subject', 'chapter_number',) # TODO: handle the exception this may cause
+        ordering = ['chapter_number']
+
+
+
+    chapter_number = models.PositiveIntegerField(default = 0)
     chapter_name = models.CharField(max_length=30)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE) # to controll which subject the theme belongs to
+
 
     # nice when printing a Chapter-object
     def __str__(self):

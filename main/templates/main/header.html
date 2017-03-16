@@ -92,7 +92,8 @@
                     <!-- Knapp for innloggin, tar deg til innloggings app url -->
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Kontakt & Hjelp</a></li>
-					    <li><a href="#">Logg Inn</a></li>
+                        <li><a href="{% url 'adminpage:admin_index' %}">Admin</a></li>
+					    <li><a href="{% url 'main:login_user' %}">Logg Inn</a></li>
 				    </ul>
                 </div>
             </div>

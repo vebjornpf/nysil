@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 from main.models import Subject, Chapter, Exercise_Page
@@ -6,6 +7,8 @@ from .forms import EasyAnswer, MediumAnswer, HardAnswer
 
 # this view is the "header" for the subject-pages
 # its the same as main/header.html but has a sidebare too
+
+@login_required
 def subject_view(req, subject_pk):
     subject = get_object_or_404(Subject, pk=subject_pk) # the subject that was chosen
     # need a reference to subjects so they show up in the "Mine Fag"-dropdown menu

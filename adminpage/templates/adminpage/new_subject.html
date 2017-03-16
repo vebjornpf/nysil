@@ -1,0 +1,12 @@
+{% extends 'adminpage/subject_overview.html' %}
+
+{% block extension %}
+    <h1>Nytt fag</h1>
+    <div class="col-md-5">
+        <form method='POST' actoin="">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Create Post"/>
+        </form>
+    </div>
+
+{% endblock%}
