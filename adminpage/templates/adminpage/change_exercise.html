@@ -1,0 +1,11 @@
+{% extends 'adminpage/new_exercise.html' %}
+
+
+{% block headline %}
+    <h4>{{ subject }} <span class="glyphicon glyphicon-arrow-right"></span> {{ chapter }} <span class="glyphicon glyphicon-arrow-right"></span> Endre: {{ exercise.headline }} </h4>
+{% endblock %}
+
+
+{% block button %}
+    <input class="btn btn-large btn-success" type="submit" value="Endre kapittel"/>
+{% endblock %}

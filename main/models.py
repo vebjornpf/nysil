@@ -1,7 +1,30 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-# These models are the core database that control the relationships between subject, themes
-# exercises, exercise pages and hints
+
+
+# ----------------------------------------------------------
+
+# UserProfile is a model with a OneToOneField to User. This let us add fields to the nysil-user, which is importamt
+# because users need to have foreign-keys to their subjects
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    test = models.IntegerField(default=5)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.userprofile.save()
+
+# ----------------------------------------------------------
+
 
 
 class Subject(models.Model):
