@@ -3,6 +3,8 @@ from main.models import Subject, Chapter, Exercise_Page
 from .forms import SubjectForm, ChapterForm, ExerciseForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.shortcuts import get_object_or_404
+
 
 
 def admin_index(req):
@@ -50,7 +52,6 @@ def new_chapter(request, subject_pk):
     subjects = Subject.objects.all()
     form = ChapterForm(request.POST or None)
     context = {'form': form, 'subjects': subjects, 'subject': subject}
-
     # if the from is valid the created modelform will be saved in the database and the amdin
     # will be redirected to the chapter_overview
     if form.is_valid():
@@ -66,6 +67,23 @@ def new_chapter(request, subject_pk):
 def delete_chapter(request, subject_pk, chapter_pk):
     Chapter.objects.get(pk=chapter_pk).delete() # deletes the chapter we have clicked to delete
     return HttpResponseRedirect(reverse('adminpage:chapter_overview',args=(subject_pk,)))
+
+
+# view to change fields in chapter if admin for instance has typed wrong
+def change_chapter(request, subject_pk, chapter_pk):
+    subject = Subject.objects.get(pk=subject_pk)
+    subjects = Subject.objects.all()
+    chapter = get_object_or_404(Chapter, pk=chapter_pk)
+    form = ChapterForm(request.POST or None, instance=chapter)
+    context = {'subject': subject, 'subjects': subjects, 'form': form, 'chapter': chapter}
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return HttpResponseRedirect(reverse('adminpage:chapter_overview', args=(subject_pk,)))
+
+    return render(request, 'adminpage/change_chapter.html', context)
+
+
 
 
 def exercise_overview(request, subject_pk, chapter_pk):
@@ -92,6 +110,24 @@ def new_exercise(request, subject_pk, chapter_pk):
     context = {'subjects': subjects, 'subject': subject, 'chapter': chapter, 'form': form}
 
     return render(request, 'adminpage/new_exercise.html', context)
+
+def change_exercise(request, subject_pk, chapter_pk, exercise_pk):
+    subjects = Subject.objects.all()
+    subject = Subject.objects.get(pk=subject_pk)
+    chapter = Chapter.objects.get(pk=chapter_pk)
+    exercise = get_object_or_404(Exercise_Page, pk=exercise_pk)
+    form = ExerciseForm(request.POST or None, instance=exercise)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.chapter = chapter
+        instance.save()
+        return HttpResponseRedirect(reverse('adminpage:exercise_overview',args=(subject_pk,chapter_pk)))
+
+    context = {'subjects': subjects, 'subject': subject, 'chapter': chapter, 'form': form, 'exercise': exercise}
+
+    return render(request, 'adminpage/change_exercise.html', context)
+
 
 
 def delete_exercise(request, subject_pk, chapter_pk, exercise_pk):
