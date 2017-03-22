@@ -8,27 +8,19 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.views.generic import View
 from django.http import HttpResponse
-<<<<<<< HEAD
 from .forms import UserForm, ProfessorForm
-=======
-from .forms import UserForm
->>>>>>> master
 from .models import Subject
 
 
 # view for the header, which gonna be the same everywhere in the web page
 def index(req):
     subjects = Subject.objects.all()
-<<<<<<< HEAD
     print(subjects)
     return render(req, 'main/header.html',{'subjects_list': subjects})
 
 
 def index2(request):
     return render(request, "main/login.html", {})
-=======
-    return render(req, 'main/header.html',{'subject_list': subjects})
->>>>>>> master
 
 def logout_user(request):
     logout(request)
@@ -47,11 +39,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-<<<<<<< HEAD
-                return render(request, 'main/login.html', {})
-=======
                 return HttpResponseRedirect(reverse('main:index'))
->>>>>>> master
             else:
                 return render(request, 'main/login.html', {'error_message': 'Your account has been disabled'})
         else:
@@ -59,11 +47,7 @@ def login_user(request):
     return render(request, 'main/login.html')
 
 
-<<<<<<< HEAD
 def userregister(request):
-=======
-def register(request):
->>>>>>> master
     form = UserForm(request.POST or None)
     if form.is_valid():
         user = form.save(commit=False)
@@ -79,7 +63,6 @@ def register(request):
     context = {
         "form": form,
     }
-<<<<<<< HEAD
     return render(request, 'main/userregister.html', context)
 
 def professorregister(request):
@@ -103,9 +86,3 @@ def professorregister(request):
         "form": form,
     }
     return render(request, 'main/professorregister.html', context)
-
-
-
-=======
-    return render(request, 'main/register.html', context)
->>>>>>> master

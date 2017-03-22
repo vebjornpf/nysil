@@ -88,20 +88,22 @@
 
                     <!-- Knapp for innloggin, tar deg til innloggings app url -->
                     <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-                        <li><a href="http://127.0.0.1:8000/main/login/">Kontakt & Hjelp</a></li>
-					    <li><a href="{% url 'main:login_user'%}">Logg Inn</a></li>
-				    </ul>
-=======
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Progress</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-cog"></span></a>
+                            <ul class="dropdown-menu">
+                                <!-- adds all the subjects to "My Subjects"-dropown -->
+                                <li><a href="{% url 'adminpage:admin_index' %}">Admin</a></li>
+                                <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
+                            </ul>
+                        </li>
                         <li><a href="{% url 'main:login_user' %}">Logg Inn</a></li>
                     </ul>
                     <form method='GET' action='' class="navbar-form navbar-right">
                         <input type="text" name="q" class="form-control" placeholder="Search for subjects..." value="{{request.GET.q}}">
                     </form>
->>>>>>> master
                 </div>
             </div>
         </nav>
