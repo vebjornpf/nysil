@@ -37,3 +37,17 @@
 }
 
 
+#id_subject_overview_menu:hover{
+    background-color:white;
+}
+
+#id_menu_dots{
+    visibility:hidden;
+}
+#id_subject_overview_menu:hover #id_menu_dots{
+    visibility:visible;
+}
+
+#id_menu_field.dropdown-toggle.onclick{
+    active:false;
+}

@@ -3,9 +3,22 @@
 {% block extension %}
     <h1>Nytt fag</h1>
     <div class="col-md-5">
-        <form method='POST' actoin="">{% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Create Post"/>
+        <form method='POST' actoin="/contact/" id="new_subject_forms">{% csrf_token %}
+            <table >
+            {% for fields in form %}
+            <tbody>
+            <tr>
+                <td>
+                <label style="display:inline-block;vertical-align:middle">{{ fields.label_tag }}</label>
+                </td>
+                <td>
+                    {{ fields }}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+            <input type="submit" value="Create Subject"/>
         </form>
     </div>
 
