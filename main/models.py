@@ -1,11 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Permission, User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-
-# ----------------------------------------------------------
 
 # UserProfile is a model with a OneToOneField to User. This let us add fields to the nysil-user, which is importamt
 # because users need to have foreign-keys to their subjects
@@ -23,7 +21,6 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
 
-# ----------------------------------------------------------
 
 
 
