@@ -8,7 +8,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.views.generic import View
 from django.http import HttpResponse
-from .forms import UserForm
+from .forms import UserForm, ProfessorForm
 from .models import Subject
 
 
@@ -47,7 +47,7 @@ def login_user(request):
     return render(request, 'main/login.html')
 
 
-def register(request):
+def userregister(request):
     form = UserForm(request.POST or None)
     if form.is_valid():
         user = form.save(commit=False)
@@ -63,7 +63,28 @@ def register(request):
     context = {
         "form": form,
     }
-    return render(request, 'main/register.html', context)
+    return render(request, 'main/userregister.html', context)
+
+def professorregister(request):
+    form = ProfessorForm(request.POST or None)
+    if form.is_valid():
+        user = form.save(commit=False)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        key = request.POST['key']
+        if key != 'abc12345':
+            return render(request, 'main/professorregister.html',{'form':form})
+        user.set_password(password)
+        user.save()
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return render(request, 'main/header.html', {})
+    context = {
+        "form": form,
+    }
+    return render(request, 'main/professorregister.html', context)
 
 
 

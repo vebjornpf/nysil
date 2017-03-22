@@ -6,4 +6,11 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'is_staff']
+        fields = ['first_name','last_name','username', 'email', 'password']
+
+class ProfessorForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','username', 'email', 'password', 'is_staff']
