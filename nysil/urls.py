@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^my_subjects/', include('my_subjects.urls')),
     url(r'^adminpage/', include('adminpage.urls')),
 
+
 ]
