@@ -78,7 +78,7 @@
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <!-- adds all the subjects to "My Subjects"-dropown -->
-                                {% for subject in subject_list %}
+                                {% for subject in user.userprofile.subjects.all %}
                                     <li><a href="{% url 'my_subjects:subject_view' subject.pk %}"> {{ subject.subject_code }}</a></li>
                                 {% endfor %}
                             </ul>
@@ -88,13 +88,17 @@
 
                     <!-- Knapp for innloggin, tar deg til innloggings app url -->
                     <ul class="nav navbar-nav navbar-right">
+                        <!-- logout filed -->
+                        <li><a href="{% url 'main:logout_user' %}"> Logg ut </a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Progress</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
-                        <li><a href="{% url 'main:login_user' %}">Logg Inn</a></li>
+                        <li><a href="{% url 'main:login_user' %}">{{user}}</a></li>
                     </ul>
-                    <form method='GET' action='' class="navbar-form navbar-right">
-                        <input type="text" name="q" class="form-control" placeholder="Search for subjects..." value="{{request.GET.q}}">
+                    <!-- Searchfield for adding subjects to "My-subjects" -->
+
+                    <form method='POST' action='' class="navbar-form navbar-right"> {% csrf_token %}
+                        <input type="text" name="q" class="form-control" placeholder="Search for subjects..." value="">
                     </form>
                 </div>
             </div>

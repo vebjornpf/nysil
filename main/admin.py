@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from.models import Subject, Chapter, Exercise_Page
+from.models import Subject, Chapter, Exercise_Page, UserProfile
 
 
 
@@ -20,7 +20,10 @@ class ChapterAdmin(admin.ModelAdmin):
 class Exercise_PageAdmin(admin.ModelAdmin):
     list_display = ['headline']
 
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ['user']
+
 admin.site.register(Subject, SubjectAdmin)
 admin.site.register(Chapter, ChapterAdmin)
 admin.site.register(Exercise_Page, Exercise_PageAdmin)
-
+admin.site.register(UserProfile, UserProfileAdmin)

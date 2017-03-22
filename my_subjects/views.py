@@ -10,14 +10,17 @@ from .forms import EasyAnswer, MediumAnswer, HardAnswer
 
 @login_required
 def subject_view(req, subject_pk):
+    user = req.user
+    print(user.username)
     subject = get_object_or_404(Subject, pk=subject_pk) # the subject that was chosen
     # need a reference to subjects so they show up in the "Mine Fag"-dropdown menu
     subjects = Subject.objects.all()
-    return render(req, 'my_subjects/subject_header.html',{'subject_list': subjects,'subject':subject})
+    return render(req, 'my_subjects/subject_header.html',{'subject_list': subjects,'subject':subject, 'user': user})
 
 
 # this view shows alle det exercise_pages that have been added to a specific chapter
 def all_exercises_view(req,chapter_pk, subject_pk):
+    user = req.user
     chapter = Chapter.objects.get(pk=chapter_pk)
     subject = Subject.objects.get(pk=chapter.subject.pk)
     subjects = Subject.objects.all()
@@ -31,6 +34,7 @@ def all_exercises_view(req,chapter_pk, subject_pk):
     # without cleaned data: ditt_svar = <input id="id_ditt_svar" name="ditt_svar" type="text" value="2" required />
     # with cleande data: ditt_svar = 2
 def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
+    user = request.user
     exercise = get_object_or_404(Exercise_Page, pk=exercise_pk)
     chapter = exercise.chapter
     subject = chapter.subject

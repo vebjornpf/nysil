@@ -14,15 +14,15 @@ from .models import Subject
 
 # view for the header, which gonna be the same everywhere in the web page
 def index(req):
+    user = req.user
+    print(user.username)
     subjects = Subject.objects.all()
     return render(req, 'main/header.html',{'subject_list': subjects})
 
 def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)
-    context = {
-        "form": form,
-    }
+    context = {"form": form}
     return render(request, 'main/login.html', context)
 
 

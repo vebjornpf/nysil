@@ -5,25 +5,6 @@ from django.dispatch import receiver
 
 
 
-# ----------------------------------------------------------
-
-# UserProfile is a model with a OneToOneField to User. This let us add fields to the nysil-user, which is importamt
-# because users need to have foreign-keys to their subjects
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User)
-    test = models.IntegerField(default=5)
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.userprofile.save()
-
-# ----------------------------------------------------------
 
 
 
@@ -95,4 +76,28 @@ class Exercise_Page(models.Model):
     hard_points = models.IntegerField(default=0)
 
 
+
+# ----------------------------------------------------------
+
+# UserProfile is a model with a OneToOneField to User. This let us add fields to the nysil-user, which is importamt
+# because users need to have foreign-keys to their subjects
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    #test = models.IntegerField(default=5)
+    subjects = models.ManyToManyField(Subject)
+
+    def add_subject(self, subject_pk):
+        self.subjects.add(Subject.objects.get(pk=subject_pk))
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.userprofile.save()
+
+# ----------------------------------------------------------
 
