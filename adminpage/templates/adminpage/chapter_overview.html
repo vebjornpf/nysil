@@ -1,0 +1,51 @@
+{% extends 'adminpage/subject_overview.html' %}
+
+{% block extension %}
+
+<div class="col-md-10">
+    <div style ="width:900px">
+        <div style="float: left; width: 500px">
+            <h3> Kapitteloversikt for {{ subject }} </h3>
+        </div>
+
+        <div style="float: right; width: 0px">
+            <!-- wrapped the "add_chapter"-button inside a block because we want to give the button some new
+             functionality after it has been clicked -->
+            {% block chapter %}
+                <!-- Button that will send you to add_chapter-template -->
+                <div id="add_chapter">
+                    <a class="btn btn-large btn-success" href="{% url 'adminpage:new_chapter' subject_pk=subject.pk %}">Nytt kapittel</a>
+                </div>
+            {% endblock %}
+        </div>
+
+    </div>
+    <table class="table table-striped">
+        <!-- headlines to the columns in the table -->
+        <thead>
+            <tr>
+                <th>Kapittel</th>
+                <th>Navn</th>
+                <th>ENDRE</th>
+                <th>SLETT</th>
+            </tr>
+        </thead>
+
+        <!-- all the table-content -->
+        <tbody>
+            {% for chapter in subject.chapter_set.all %}
+                <tr>
+                    <th scope="row">{{ chapter.chapter_number }}</th>
+                    <td><a href="{% url 'adminpage:exercise_overview' chapter_pk=chapter.pk subject_pk=subject.pk %}">{{ chapter.chapter_name }}</a></td>
+                    <td><div><a class="btn btn-xs btn-info" href="{% url 'adminpage:change_chapter' subject_pk=subject.pk chapter_pk=chapter.pk %}">ENDRE</a></div></td> <!-- TODO: add chapter-change functionality -->
+                    <!-- this button shall delete the chapter and take us back to the same url -->
+                    <td><div><a class="btn btn-xs btn-danger" href="{% url 'adminpage:delete_chapter' subject_pk=subject.pk chapter_pk=chapter.pk %}">SLETT</a></div></td> <!-- TODO: add chapter-delete functionality -->
+                </tr>
+            {% endfor%}
+
+        </tbody>
+
+    </table>
+
+</div>
+{% endblock%}

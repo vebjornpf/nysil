@@ -1,0 +1,11 @@
+{% extends 'adminpage/chapter_overview.html' %}
+
+{% block chapter %}
+    <form method="POST" action=""> {% csrf_token %}
+        <div style="float: right; width: 370px" class="chapterBox">
+          {{ form.as_table }}
+
+        </div>
+        <input class="btn btn-large btn-success" type="submit" value="Endre kapittel"/>
+    </form>
+{% endblock %}

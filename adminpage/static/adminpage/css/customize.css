@@ -1,0 +1,53 @@
+#id_chapter_number{
+    width:30px;
+}
+#id_chapter_name{
+    width:100px;
+}
+
+#id_for_subject_overview #dropdown_options{
+
+    visibility:none;
+
+}
+
+#id_for_subject_overview:hover #dropdown_options{
+    visibility:hidden;
+}
+
+#id_explanation {
+    width:300px;
+    height:83px;
+}
+
+#id_label_exp{
+    display:inline-block;
+}
+
+#id_easy_question{
+    height:120px;
+}
+
+#id_medium_question{
+    height:120px;
+}
+
+#id_hard_question{
+    height:120px;
+}
+
+
+#id_subject_overview_menu:hover{
+    background-color:white;
+}
+
+#id_menu_dots{
+    visibility:hidden;
+}
+#id_subject_overview_menu:hover #id_menu_dots{
+    visibility:visible;
+}
+
+#id_menu_field.dropdown-toggle.onclick{
+    active:false;
+}
