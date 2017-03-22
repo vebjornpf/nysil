@@ -13,4 +13,4 @@ class ProfessorForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name','last_name','username', 'email', 'password', 'is_staff']
+        fields = ['first_name','last_name','username', 'email', 'password']

@@ -75,6 +75,7 @@ def professorregister(request):
         if key != 'abc12345':
             return render(request, 'main/professorregister.html',{'form':form})
         user.set_password(password)
+        user.is_staff=True
         user.save()
         user = authenticate(username=username, password=password)
         if user is not None:
