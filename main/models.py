@@ -7,7 +7,6 @@ from django.dispatch import receiver
 
 
 
-
 class Subject(models.Model):
     subject_code = models.CharField(max_length=20, primary_key=True) # primary key
     subject_name = models.CharField(max_length=30)
@@ -32,9 +31,6 @@ class Chapter(models.Model):
     class Meta:
         unique_together = ('subject', 'chapter_number',) # TODO: handle the exception this may cause
         ordering = ['chapter_number']
-
-
-
     chapter_number = models.PositiveIntegerField(default = 0)
     chapter_name = models.CharField(max_length=30)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE) # to controll which subject the theme belongs to
@@ -42,10 +38,10 @@ class Chapter(models.Model):
 
     # nice when printing a Chapter-object
     def __str__(self):
-        return "Kapittel " + str(self.chapter_number) + ": " + str(self.chapter_name)
+        return "Chapter " + str(self.chapter_number) + ": " + str(self.chapter_name)
 
     def get_number_and_name(self):
-        return "Kapittel " + str(self.chapter_number) + ": " + str(self.chapter_name)
+        return "Chapter" + str(self.chapter_number) + ": " + str(self.chapter_name)
     get_number_and_name.short_description = 'Chapter'
 
 
@@ -76,7 +72,6 @@ class Exercise_Page(models.Model):
     hard_points = models.IntegerField(default=0)
 
 
-
 # ----------------------------------------------------------
 
 # UserProfile is a model with a OneToOneField to User. This let us add fields to the nysil-user, which is importamt
@@ -101,3 +96,18 @@ def save_user_profile(sender, instance, **kwargs):
 
 # ----------------------------------------------------------
 
+
+class Comment(models.Model):
+    publisher = models.ForeignKey(User)
+    published_time = models.DateTimeField(auto_now_add=True, blank=True)
+    text = models.TextField()
+    chapter = models.ForeignKey(Chapter)
+    exercise = models.ForeignKey(Exercise_Page)
+
+
+    def get_published_time(self):
+        return str(self.published_time)[:16]
+
+
+class StudentConnectExercise(models.Model):
+    pass

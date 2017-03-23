@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
-
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 from main.models import Subject, Chapter, Exercise_Page
-from .forms import EasyAnswer, MediumAnswer, HardAnswer
+from .forms import EasyAnswer, MediumAnswer, HardAnswer, CommentForm
 
 # this view is the "header" for the subject-pages
 # its the same as main/header.html but has a sidebare too
@@ -39,6 +40,18 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
     chapter = exercise.chapter
     subject = chapter.subject
     subjects = Subject.objects.all()
+    form = EasyAnswer()  # doesnt matter what type of form this is. This is just to enable the form in the questions
+    comment_form = CommentForm(request.POST or None)
+    context = {'comment_form': comment_form, 'form': form, 'subject_list': subjects, 'exercise': exercise,
+               'chapter': chapter,
+               'subject': subject}
+    if comment_form.is_valid():
+        instance = comment_form.save(commit=False)
+        instance.publisher = request.user
+        instance.chapter = Chapter.objects.get(pk=chapter_pk)
+        instance.exercise = Exercise_Page.objects.get(pk=exercise_pk)
+        instance.save()
+        return HttpResponseRedirect(reverse('my_subjects:exercise_view',args=(subject_pk,chapter_pk,exercise_pk,)))
 
 
     if request.method == 'POST':
@@ -62,8 +75,5 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 print(form.cleaned_data['ditt_svar'] == exercise.hard_answer)
                 # do some more logic
 
-    else:
-        form = EasyAnswer() # doesnt matter what type of form this is. This is just to enable the form in the questions
 
-    return render(request, 'my_subjects/exercise_page.html', {'form': form, 'subject_list': subjects,'exercise' :exercise,'chapter':chapter,
-                                                         'subject':subject})
+    return render(request, 'my_subjects/exercise_page.html', context)

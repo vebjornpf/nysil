@@ -135,7 +135,17 @@ def delete_exercise(request, subject_pk, chapter_pk, exercise_pk):
     return HttpResponseRedirect(reverse('adminpage:exercise_overview',args=(subject_pk, chapter_pk,)))
 
 
+def chapters(req,subject_pk):
+    subjects = Subject.objects.all()
+    subject = Subject.objects.get(pk=subject_pk)
+    context = {'subject':subject,'subjects':subjects}
+    return render(req,'adminpage/chapters.html',context)
 
-
+def chapter_feedback(req, subject_pk, chapter_pk):
+    subjects = Subject.objects.all()
+    chapter = Chapter.objects.get(pk=chapter_pk)
+    subject = Subject.objects.get(pk=subject_pk)
+    context = {'chapter': chapter, 'subject': subject, 'subjects': subjects}
+    return render(req, 'adminpage/chapter_feedback.html', context)
 
 

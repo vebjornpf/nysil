@@ -1,6 +1,6 @@
 from django import forms
 
-from main.models import Exercise_Page
+from main.models import Comment
 
 
 # ditt_svar: in english "your_answer". Use norwegian name becuase it will be displayed on the webpage
@@ -16,3 +16,10 @@ class MediumAnswer(forms.Form):
 
 class HardAnswer(forms.Form):
     ditt_svar = forms.CharField()
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['text']
