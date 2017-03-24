@@ -18,7 +18,10 @@ def index(req):
     user = req.user
 
     subjects = Subject.objects.all()
-    return render(req, 'main/header.html',{'subject_list': subjects})
+    if user.is_staff == True:
+        return render(req, 'main/adminok.html',{'subject_list': subjects})
+    else:
+        return render(req, 'main/header.html',{'subject_list': subjects})
 
 def logout_user(request):
     logout(request)
@@ -43,12 +46,13 @@ def login_user(request):
     return render(request, 'main/login.html')
 
 
-def register(request):
+def userregister(request):
     form = UserForm(request.POST or None)
     if form.is_valid():
         user = form.save(commit=False)
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
+        
         user.set_password(password)
         user.save()
         user = authenticate(username=username, password=password)
@@ -59,8 +63,31 @@ def register(request):
     context = {
         "form": form,
     }
+
     return render(request, 'main/register.html', context)
 
+
+def professorregister(request):
+    form = UserForm(request.POST or None)
+    if form.is_valid():
+        user = form.save(commit=False)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        key = request.POST['key']
+        if key != 'abc12345':
+            return render(request, 'main/professorregister.html', {'form':form, 'error_message': 'Invalid activation key'},)
+        user.is_staff = True
+        user.set_password(password)
+        user.save()
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return render(request, 'main/adminok.html', {})
+    context = {
+        "form": form,
+    }
+    return render(request, 'main/professorregister.html', context)
 
 def search(request):
     query = request.GET.get('q')
@@ -73,3 +100,5 @@ def search(request):
         # eg: posts[:50]
         return render(request, 'main/search.html',{'subjects': subjects})
     return render(request, 'main/search.html')
+
+    return render(request, 'main/userregister.html', context)

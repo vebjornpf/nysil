@@ -102,11 +102,20 @@
                                 <span class="glyphicon glyphicon-cog"></span></a>
                             <ul class="dropdown-menu">
                                 <!-- adds all the subjects to "My Subjects"-dropown -->
+
                                 <li><a href="{% url 'adminpage:admin_index' %}">Admin</a></li>
                                 <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
                             </ul>
                         </li>
                         <li><a href="{% url 'main:login_user' %}">{{user}}</a></li>
+
+                                {% block adminok %}
+                                {% endblock %}
+                                <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'main:login_user' %}">Logg Inn</a></li>
+
                     </ul>
                     <!-- Searchfield for adding subjects to "My-subjects" -->
 
