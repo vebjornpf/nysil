@@ -51,3 +51,7 @@
 #id_menu_field.dropdown-toggle.onclick{
     active:false;
 }
+
+#id_menu_field{
+    visibility: hidden;
+}

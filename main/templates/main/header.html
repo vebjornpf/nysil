@@ -85,6 +85,10 @@
                                 {% endfor %}
                             </ul>
                         </li>
+                        <li style="margin-top: 8px">
+                          <input id="search-input"  type="text" class="form-control" placeholder="Search for subject..."/>
+                          <div id="main-results-search"></div>
+                        </li>
 
                     </ul>
 
@@ -106,9 +110,7 @@
                     </ul>
                     <!-- Searchfield for adding subjects to "My-subjects" -->
 
-                    <form method='POST' action='' class="navbar-form navbar-right"> {% csrf_token %}
-                        <input type="text" name="q" class="form-control" placeholder="Search for subjects..." value="">
-                    </form>
+
                 </div>
             </div>
         </nav>
@@ -123,15 +125,38 @@
 
 <!-- Footer med linker til ulike sider, og også en kontakt & hjelp side -->
 <footer id="footer">
-    <div class="navbar navbar-fixed-bottom" style='margin-left:600px'>
-        <p>
-            <a href="https://www.facebook.com">Facebook</a> |
-            <a href="https://www.twitter.com">Twitter</a> |
-            <a href="https://www.instabart.no">Instabart</a> |
-            <a href="#">Kontakt oss</a> |
-            <a href="#">Hjelp</a>
-        </p>
-    </div>
+    <script>
+        // Implement realtime search with `keyup` function.
+        $('#search-input').keyup(function (event) {
+          var query =($('#search-input').val());
+          if (query != '' || query != ' ') {
+            $.ajax({
+               type: 'GET',
+               url: '{% url "main:search" %}',
+               data: {
+                 'csrfmiddlewaretoken': '{{ csrf_token }}',
+                 'q': query
+               },
+               success: function(data) {
+                  $('#main-results-search').html(data);
+               },
+               error: function(data) {
+                  console.log(data);
+               }
+             });
+          }
+        });
+        // Removing the element after search
+        // and when user clicked another/outside of this element below.
+        $(document).click(function(event) {
+          $is_inside = $(event.target).closest('#main-results-search').length;
+          if( event.target.id == 'search-input' || $is_inside ) {
+            return;
+          }else {
+            $('#results-search').remove();
+          }
+        });
+  </script>
 </footer>
 
 </body>

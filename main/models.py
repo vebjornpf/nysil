@@ -14,6 +14,9 @@ class Subject(models.Model):
     professor_lastname = models.CharField(max_length=30)
     professor_email = models.EmailField()
 
+    class Meta:
+        ordering = ['subject_code']
+
     # nice when printing a Subject-object
     def __str__(self):
         return self.subject_code
