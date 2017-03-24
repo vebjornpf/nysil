@@ -9,7 +9,20 @@
                  <!-- Plays youtube on the webpage and uses the youtube-id. allowsfuulscreen allows youtube to play in fullscreen -->
                 <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/{{exercise.youtube_id}}" allowfullscreen="allowfullscreen"></iframe>
             </div>
+            <div style="width:100%">
+                <form method="POST" action=""> {% csrf_token %}
+                    <div style="float: left; width:200px">
+                        <br> <h6>Kommentar til oppgave: </h6>
+                    </div>
+                    <div style="float: right; width:100px%">
+                        <br>
+                        <input class="btn btn-xs btn-primary" type="submit" value="Send kommentar"/>
+                    </div>
+                    {{ comment_form.text }}
+                </form>
+            </div>
         </div>
+
 
         <!-- Oppgave buttons, med popup for hver enkelt -->
         <div class="col-md-4">

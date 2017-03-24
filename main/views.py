@@ -6,15 +6,17 @@ from django.views import generic
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-from django.views.generic import View
 from django.http import HttpResponse
 from .forms import UserForm
 from .models import Subject
+
+from django.db.models import Q
 
 
 # view for the header, which gonna be the same everywhere in the web page
 def index(req):
     user = req.user
+
     subjects = Subject.objects.all()
     if user.is_staff == True:
         return render(req, 'main/adminok.html',{'subject_list': subjects})
@@ -24,9 +26,7 @@ def index(req):
 def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)
-    context = {
-        "form": form,
-    }
+    context = {"form": form}
     return render(request, 'main/login.html', context)
 
 
@@ -63,7 +63,9 @@ def userregister(request):
     context = {
         "form": form,
     }
-    return render(request, 'main/userregister.html', context)
+
+    return render(request, 'main/register.html', context)
+
 
 def professorregister(request):
     form = UserForm(request.POST or None)
@@ -86,3 +88,17 @@ def professorregister(request):
         "form": form,
     }
     return render(request, 'main/professorregister.html', context)
+
+def search(request):
+    query = request.GET.get('q')
+    if query is not None and query != '' and request.is_ajax():
+        subjects = Subject.objects.filter(
+            Q(subject_code__icontains=query)
+        )
+
+        # you also can limit the maximum of `posts` here.
+        # eg: posts[:50]
+        return render(request, 'main/search.html',{'subjects': subjects})
+    return render(request, 'main/search.html')
+
+    return render(request, 'main/userregister.html', context)

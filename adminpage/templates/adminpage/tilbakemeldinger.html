@@ -1,6 +1,45 @@
-{% extends 'adminpage/subject_overview.html' %}
+{% extends 'adminpage/admin_header.html' %}
 
-{% block extension %}
+{% block content %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar navbar-inverse">
+              <!-- This li takes us back to the subject_overvieq -->
+              <li ><a href="{% url 'adminpage:subject_overview' %}"><h3>Fagoversikt</h3><span class="sr-only">(current)</span></a></li>
+              <li><a href="{% url 'adminpage:new_subject' %}"><span class="glyphicon glyphicon-plus"></span>  Nytt fag</a></li> <!-- TODO: make the buttion more visible and special-->
+              <!-- a way to get all the chapter in the chosen subject -->
+                {% for subject in subjects %}
+                <div class="collapse navbar-collapse" id="id_subject_overview_menu">
+                    <ul class="nav navbar-nav navbar-left" style="width:120px">
+                      <li style="float:left">
+                          <a href="{% url 'adminpage:chapters' subject_pk=subject.pk %}" style="color:#337AB7;width:150px">
+                              {{ subject }}
+                          </a>
+                      </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" id="id_nav_drop" style="width:-10px">
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="id_menu_field" >
+                                <span id="id_menu_dots" class="glyphicon glyphicon-option-vertical" style="color:#337AB7"></span>
+                           </a>
+                            <ul class="dropdown-menu" style="background-color:#383838">
+                                <li ><a href="{% url 'adminpage:delete_subject' subject_pk=subject.pk %}" style="color:#337AB7">Delete</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                 </div>
+                {% endfor %}
+
+          </ul>
+        </div>
+
+    {% block extension %}
+    {% endblock %}
+    </div>
 
 
-{% endblock %}
+
+
+</div>
+{% endblock%}

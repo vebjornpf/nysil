@@ -4,7 +4,9 @@
 <head>
 	<title>NYSIL</title>
 	<meta charset="utf-8">
-    {% load staticfiles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/customize.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'my_subjects/css/customize.css' %}" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -78,16 +80,21 @@
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <!-- adds all the subjects to "My Subjects"-dropown -->
-                                {% for subject in subject_list %}
+                                {% for subject in user.userprofile.subjects.all %}
                                     <li><a href="{% url 'my_subjects:subject_view' subject.pk %}"> {{ subject.subject_code }}</a></li>
                                 {% endfor %}
                             </ul>
+                        </li>
+                        <li style="margin-top: 8px">
+                          <input id="search-input"  type="text" class="form-control" placeholder="Search for subject..."/>
+                          <div id="main-results-search"></div>
                         </li>
 
                     </ul>
 
                     <!-- Knapp for innloggin, tar deg til innloggings app url -->
                     <ul class="nav navbar-nav navbar-right">
+                        <!-- logout filed -->
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Progress</a></li>
                         <li class="dropdown">
@@ -95,16 +102,24 @@
                                 <span class="glyphicon glyphicon-cog"></span></a>
                             <ul class="dropdown-menu">
                                 <!-- adds all the subjects to "My Subjects"-dropown -->
+
+                                <li><a href="{% url 'adminpage:admin_index' %}">Admin</a></li>
+                                <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'main:login_user' %}">{{user}}</a></li>
+
                                 {% block adminok %}
                                 {% endblock %}
                                 <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
                             </ul>
                         </li>
                         <li><a href="{% url 'main:login_user' %}">Logg Inn</a></li>
+
                     </ul>
-                    <form method='GET' action='' class="navbar-form navbar-right">
-                        <input type="text" name="q" class="form-control" placeholder="Search for subjects..." value="{{request.GET.q}}">
-                    </form>
+                    <!-- Searchfield for adding subjects to "My-subjects" -->
+
+
                 </div>
             </div>
         </nav>
@@ -119,15 +134,38 @@
 
 <!-- Footer med linker til ulike sider, og også en kontakt & hjelp side -->
 <footer id="footer">
-    <div class="navbar navbar-fixed-bottom" style='margin-left:600px'>
-        <p>
-            <a href="https://www.facebook.com">Facebook</a> |
-            <a href="https://www.twitter.com">Twitter</a> |
-            <a href="https://www.instabart.no">Instabart</a> |
-            <a href="#">Kontakt oss</a> |
-            <a href="#">Hjelp</a>
-        </p>
-    </div>
+    <script>
+        // Implement realtime search with `keyup` function.
+        $('#search-input').keyup(function (event) {
+          var query =($('#search-input').val());
+          if (query != '' || query != ' ') {
+            $.ajax({
+               type: 'GET',
+               url: '{% url "main:search" %}',
+               data: {
+                 'csrfmiddlewaretoken': '{{ csrf_token }}',
+                 'q': query
+               },
+               success: function(data) {
+                  $('#main-results-search').html(data);
+               },
+               error: function(data) {
+                  console.log(data);
+               }
+             });
+          }
+        });
+        // Removing the element after search
+        // and when user clicked another/outside of this element below.
+        $(document).click(function(event) {
+          $is_inside = $(event.target).closest('#main-results-search').length;
+          if( event.target.id == 'search-input' || $is_inside ) {
+            return;
+          }else {
+            $('#results-search').remove();
+          }
+        });
+  </script>
 </footer>
 
 </body>

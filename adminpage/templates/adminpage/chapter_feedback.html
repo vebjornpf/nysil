@@ -1,0 +1,37 @@
+{% extends 'adminpage/tilbakemeldinger.html' %}
+
+{% block extension %}
+<div class ="col-md-10">
+
+        <h5>Feedback for {{ subject }} <span class="glyphicon glyphicon-arrow-right"></span> {{ chapter }}</h5>
+        <table class="table table-striped">
+        <thead>
+            <tr style="background-color:#303030; color:white">
+                <th>Date</th>
+                <th>User</th>
+                <th>Exersice</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for comment in chapter.comment_set.all %}
+            <tr>
+                <th class="col-md-2"> {{ comment.get_published_time }}</th>
+                <th class="col-md-1"> {{ comment.publisher }}</th>
+                <td class="col-md-2"> {{ comment.exercise.headline }}</td>
+                <td> {{ comment.text }}</td>
+
+            </tr>
+
+
+        {% endfor %}
+
+        </tbody>
+
+
+    </table>
+
+
+</div>
+{% endblock %}
