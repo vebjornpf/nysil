@@ -45,6 +45,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
     context = {'comment_form': comment_form, 'form': form, 'subject_list': subjects, 'exercise': exercise,
                'chapter': chapter,
                'subject': subject}
+
     if comment_form.is_valid():
         instance = comment_form.save(commit=False)
         instance.publisher = request.user
@@ -60,20 +61,14 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
             if form.is_valid():
                 print(form.cleaned_data['ditt_svar'] == exercise.easy_answer)
                 # do some logic for checking the easy answer
-
-
         elif 'medium' in request.POST:
             form = MediumAnswer(request.POST or None)
             if form.is_valid():
                 print(form.cleaned_data['ditt_svar'] == exercise.medium_answer)
                 # do some more logic
-
-
         elif 'hard' in request.POST:
             form = HardAnswer(request.POST or None)
             if form.is_valid():
                 print(form.cleaned_data['ditt_svar'] == exercise.hard_answer)
                 # do some more logic
-
-
     return render(request, 'my_subjects/exercise_page.html', context)

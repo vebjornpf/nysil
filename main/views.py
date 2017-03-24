@@ -6,7 +6,6 @@ from django.views import generic
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-from django.views.generic import View
 from django.http import HttpResponse
 from .forms import UserForm
 from .models import Subject
@@ -15,7 +14,7 @@ from .models import Subject
 # view for the header, which gonna be the same everywhere in the web page
 def index(req):
     user = req.user
-    print(user.username)
+
     subjects = Subject.objects.all()
     return render(req, 'main/header.html',{'subject_list': subjects})
 

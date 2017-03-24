@@ -72,6 +72,17 @@ class Exercise_Page(models.Model):
     hard_points = models.IntegerField(default=0)
 
 
+# every time a student follows a subject, there is a relation between the student and all the exercises in the subject
+class StudentConnectExercise(models.Model):
+    user = models.ForeignKey(User)
+    exercise = models.ForeignKey(Exercise_Page)
+
+    # theese variables controls if the student has answered correct on the questions in the exercise, so the student
+    # cant answer correct all the time on the same question and gain infinity points
+    completed_easy = models.BooleanField(default=False)
+    completed_medium = models.BooleanField(default=False)
+    completed_hard = models.BooleanField(default = False)
+
 # ----------------------------------------------------------
 
 # UserProfile is a model with a OneToOneField to User. This let us add fields to the nysil-user, which is importamt
@@ -82,8 +93,20 @@ class UserProfile(models.Model):
     #test = models.IntegerField(default=5)
     subjects = models.ManyToManyField(Subject)
 
+
     def add_subject(self, subject_pk):
+        # create a StudentConnectExercise between the current student and all the exercises in the subject
+        subject = Subject.objects.get(pk=subject_pk)
+        for chapter in subject.chapter_set.all():
+            for exercise in chapter.exercise_page_set.all():
+                connection = StudentConnectExercise(user=self.user, exercise=exercise)
+                # checking for a connection between user and exercise that already exists
+                find_connection = StudentConnectExercise.objects.filter(user=self.user,exercise=exercise).exists()
+                if not find_connection:
+                    connection.save()
+
         self.subjects.add(Subject.objects.get(pk=subject_pk))
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -108,6 +131,3 @@ class Comment(models.Model):
     def get_published_time(self):
         return str(self.published_time)[:16]
 
-
-class StudentConnectExercise(models.Model):
-    pass
