@@ -81,7 +81,7 @@ def professorregister(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'main/header.html', {})
+                return render(request, 'main/adminok.html', {})
     context = {
         "form": form,
     }
