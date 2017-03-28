@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from main.models import Subject, Chapter, Exercise_Page
+from main.models import Subject, Chapter, Exercise_Page, StudentConnectExercise
 from .forms import SubjectForm, ChapterForm, ExerciseForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -105,6 +105,15 @@ def new_exercise(request, subject_pk, chapter_pk):
         instance = form.save(commit=False)
         instance.chapter = chapter
         instance.save()
+
+        # add the new exercise to the users that follows the subject
+        for userprofile in subject.userprofile_set.all():
+            connection = StudentConnectExercise(user=userprofile.user, exercise=instance)
+            find_connection = StudentConnectExercise.objects.filter(user=userprofile.user, exercise=instance).exists()
+            if not find_connection:
+                connection.save()
+
+
         return HttpResponseRedirect(reverse('adminpage:exercise_overview',args=(subject_pk,chapter_pk)))
 
     context = {'subjects': subjects, 'subject': subject, 'chapter': chapter, 'form': form}

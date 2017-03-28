@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 # Create your views here.
-from main.models import Subject, Chapter, Exercise_Page
+from main.models import Subject, Chapter, Exercise_Page, StudentConnectExercise, StudentConnectSubject
 from .forms import EasyAnswer, MediumAnswer, HardAnswer, CommentForm
 
 # this view is the "header" for the subject-pages
@@ -12,7 +12,6 @@ from .forms import EasyAnswer, MediumAnswer, HardAnswer, CommentForm
 @login_required
 def subject_view(req, subject_pk):
     user = req.user
-    print(user.username)
     subject = get_object_or_404(Subject, pk=subject_pk) # the subject that was chosen
     # need a reference to subjects so they show up in the "Mine Fag"-dropdown menu
     subjects = Subject.objects.all()
@@ -25,8 +24,14 @@ def all_exercises_view(req,chapter_pk, subject_pk):
     chapter = Chapter.objects.get(pk=chapter_pk)
     subject = Subject.objects.get(pk=chapter.subject.pk)
     subjects = Subject.objects.all()
+
+    exercises = chapter.exercise_page_set.all()
+    connections = []
+    for exercise in exercises:
+        connections.append(StudentConnectExercise.objects.get(user=user,exercise=exercise))
+        print(StudentConnectExercise.objects.get(user=user,exercise=exercise).exercise.headline)
     return render(req, 'my_subjects/chapter_page.html', {'subject_list': subjects,'chapter':chapter,
-                                                         'subject':subject})
+                                                         'subject':subject, 'connections': connections})
 
 
 
@@ -40,9 +45,11 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
     chapter = exercise.chapter
     subject = chapter.subject
     subjects = Subject.objects.all()
+    connection = StudentConnectExercise.objects.get(user=user,exercise=exercise)
+    subject_connection = StudentConnectSubject.objects.get(user=user, subject=subject)
     form = EasyAnswer()  # doesnt matter what type of form this is. This is just to enable the form in the questions
     comment_form = CommentForm(request.POST or None)
-    context = {'comment_form': comment_form, 'form': form, 'subject_list': subjects, 'exercise': exercise,
+    context = {'connection': connection, 'comment_form': comment_form, 'form': form, 'subject_list': subjects, 'exercise': exercise,
                'chapter': chapter,
                'subject': subject}
 
@@ -56,19 +63,37 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
 
 
     if request.method == 'POST':
+
         if 'easy' in request.POST:
             form = EasyAnswer(request.POST or None)
             if form.is_valid():
-                print(form.cleaned_data['ditt_svar'] == exercise.easy_answer)
-                # do some logic for checking the easy answer
+                answer = form.cleaned_data['ditt_svar']
+                if (answer == exercise.easy_answer):
+                    # do some logic for checking the easy answer
+                    subject_connection.points += exercise.easy_points
+                    subject_connection.save()
+                    connection.completed_easy = True
+                    connection.save()
         elif 'medium' in request.POST:
             form = MediumAnswer(request.POST or None)
             if form.is_valid():
-                print(form.cleaned_data['ditt_svar'] == exercise.medium_answer)
-                # do some more logic
+                answer = form.cleaned_data['ditt_svar']
+                if (answer == exercise.medium_answer):
+                    # do some more logic
+                    subject_connection.points += exercise.medium_points
+                    subject_connection.save()
+                    connection.completed_medium = True
+                    connection.save()
+
         elif 'hard' in request.POST:
             form = HardAnswer(request.POST or None)
             if form.is_valid():
-                print(form.cleaned_data['ditt_svar'] == exercise.hard_answer)
-                # do some more logic
+                answer = form.cleaned_data['ditt_svar']
+
+                if (answer == exercise.hard_answer):
+                    # do some more logic
+                    subject_connection.points += exercise.hard_points
+                    subject_connection.save()
+                    connection.completed_hard = True
+                    connection.save()
     return render(request, 'my_subjects/exercise_page.html', context)

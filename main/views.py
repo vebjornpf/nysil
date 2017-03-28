@@ -8,7 +8,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from .forms import UserForm
-from .models import Subject
+from .models import Subject, StudentConnectSubject
 
 from django.db.models import Q
 
@@ -16,12 +16,12 @@ from django.db.models import Q
 # view for the header, which gonna be the same everywhere in the web page
 def index(req):
     user = req.user
-
+    exercise_connections = StudentConnectSubject.objects.filter(user=user)
     subjects = Subject.objects.all()
     if user.is_staff == True:
-        return render(req, 'main/adminok.html',{'subject_list': subjects})
+        return render(req, 'main/adminok.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
     else:
-        return render(req, 'main/header.html',{'subject_list': subjects})
+        return render(req, 'main/header.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
 
 def logout_user(request):
     logout(request)
@@ -102,3 +102,8 @@ def search(request):
     return render(request, 'main/search.html')
 
     return render(request, 'main/userregister.html', context)
+
+def add_subject(request, subject_pk):
+    user = request.user
+    user.userprofile.add_subject(subject_pk)
+    return HttpResponseRedirect(reverse('main:index'))

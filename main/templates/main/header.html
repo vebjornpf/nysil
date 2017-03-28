@@ -119,6 +119,9 @@
 
     <!-- Block extend-files will use: -->
     {% block content %}
+        {% for connection in exercise_connections %}
+            <h1> {{connection.subject}}     {{connection.points}}</h1>
+        {% endfor %}
     {% endblock%}
 
 
