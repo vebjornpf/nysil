@@ -27,7 +27,9 @@
         <!-- Oppgave buttons, med popup for hver enkelt -->
         <div class="col-md-4">
 
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LettOppgave">Se lett oppgave</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LettOppgave" id="easyTask">Se lett oppgave</button>
+            <!-- shows if you have answered correct to easy_question before -->
+            {{ info_easy }}
             <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
             <div class="modal fade" id="LettOppgave">
                     <div class="modal-dialog">
@@ -58,6 +60,8 @@
             <br>
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MiddelsOppgave">Se middels oppgave</button>
+            <!-- shows if you have answered correct to medium_question before -->
+            {{ info_medium }}
             <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
             <div class="modal fade" id="MiddelsOppgave">
                     <div class="modal-dialog">
@@ -93,6 +97,8 @@
             <br>
 
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#VanskeligOppgave">Se vanskelig oppgave</button>
+            <!-- shows if you have answered correct to hard_question before -->
+            {{ info_hard }}
             <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
             <div class="modal fade" id="VanskeligOppgave">
                     <div class="modal-dialog">
@@ -117,5 +123,8 @@
                     </div>
                 </div>
             </form>
+            {% block extra %}
+            {% endblock %}
+
         </div>
 {% endblock %}

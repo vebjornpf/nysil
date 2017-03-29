@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from.models import Subject, Chapter, Exercise_Page, UserProfile, Comment, StudentConnectExercise
+from.models import Subject, Chapter, Exercise_Page, UserProfile, Comment, StudentConnectExercise, StudentConnectSubject
 
 
 
@@ -29,3 +29,4 @@ admin.site.register(Exercise_Page, Exercise_PageAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Comment)
 admin.site.register(StudentConnectExercise)
+admin.site.register(StudentConnectSubject)

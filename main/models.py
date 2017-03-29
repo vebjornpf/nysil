@@ -110,7 +110,9 @@ class UserProfile(models.Model):
     def add_subject(self, subject_pk):
         subject = Subject.objects.get(pk=subject_pk)
         student_subject_conn = StudentConnectSubject(user=self.user, subject=subject)
-        student_subject_conn.save()
+        find_student_subject_conn = StudentConnectSubject.objects.filter(user=self.user,subject=subject).exists()
+        if not find_student_subject_conn:
+            student_subject_conn.save()
 
         # create a StudentConnectExercise between the current student and all the exercises in the subject
         for chapter in subject.chapter_set.all():
@@ -120,8 +122,11 @@ class UserProfile(models.Model):
                 find_connection = StudentConnectExercise.objects.filter(user=self.user,exercise=exercise).exists()
                 if not find_connection:
                     connection.save()
+        already_follows = self.subjects.filter(pk=subject_pk).exists()
+        print(already_follows)
+        if not already_follows:
 
-        self.subjects.add(Subject.objects.get(pk=subject_pk))
+            self.subjects.add(Subject.objects.get(pk=subject_pk))
 
 
 @receiver(post_save, sender=User)

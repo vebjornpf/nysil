@@ -46,12 +46,24 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
     subject = chapter.subject
     subjects = Subject.objects.all()
     connection = StudentConnectExercise.objects.get(user=user,exercise=exercise)
+
+    info_easy = "(Completed)" if connection.completed_easy==True else "(Not completed)"
+    info_medium = "(Completed)" if connection.completed_medium == True else "(Not completed)"
+    info_hard = "(Completed)" if connection.completed_hard == True else "(Not completed)"
+
     subject_connection = StudentConnectSubject.objects.get(user=user, subject=subject)
     form = EasyAnswer()  # doesnt matter what type of form this is. This is just to enable the form in the questions
     comment_form = CommentForm(request.POST or None)
+
+    info = ""
+    question = ""
+
     context = {'connection': connection, 'comment_form': comment_form, 'form': form, 'subject_list': subjects, 'exercise': exercise,
                'chapter': chapter,
-               'subject': subject}
+               'subject': subject,
+               'info_easy': info_easy,
+               'info_medium': info_medium,
+               'info_hard': info_hard}
 
     if comment_form.is_valid():
         instance = comment_form.save(commit=False)
@@ -67,33 +79,73 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
         if 'easy' in request.POST:
             form = EasyAnswer(request.POST or None)
             if form.is_valid():
+                question = exercise.easy_question
+                context['question'] = question
+                context['form'] = form
                 answer = form.cleaned_data['ditt_svar']
+                context['answer'] = answer
                 if (answer == exercise.easy_answer):
-                    # do some logic for checking the easy answer
-                    subject_connection.points += exercise.easy_points
-                    subject_connection.save()
-                    connection.completed_easy = True
-                    connection.save()
+                    if connection.completed_easy == False:
+                        info += "You answered correct, and " + str(exercise.easy_points) + " were added to your score"
+                        info += " in the subject" + str(subject)
+                        # do some logic for checking the easy answer
+                        subject_connection.points += exercise.easy_points
+                        subject_connection.save()
+                        connection.completed_easy = True
+                        connection.save()
+                    else:
+                        info += "You answered correct! But no points were added because you have answered correct to this task before!"
+                else:
+                    info+= "Wrong answer... try again"
+                context['info'] = info
+                return test(request, context)
         elif 'medium' in request.POST:
             form = MediumAnswer(request.POST or None)
             if form.is_valid():
+                question = exercise.easy_question
+                context['question'] = question
+                context['form'] = form
                 answer = form.cleaned_data['ditt_svar']
+                context['answer'] = answer
                 if (answer == exercise.medium_answer):
-                    # do some more logic
-                    subject_connection.points += exercise.medium_points
-                    subject_connection.save()
-                    connection.completed_medium = True
-                    connection.save()
-
+                    if connection.completed_medium == False:
+                        info += "You answered correct, and " + str(exercise.medium_points) + " were added to your score"
+                        info += " in the subject" + str(subject)
+                        # do some more logic
+                        subject_connection.points += exercise.medium_points
+                        subject_connection.save()
+                        connection.completed_medium = True
+                        connection.save()
+                    else:
+                        info += "You answered correct! But no points were added because you have answered correct to this task before!"
+                else:
+                    info+= "Wrong answer... try again"
+                context['info'] = info
+                return test(request, context)
         elif 'hard' in request.POST:
             form = HardAnswer(request.POST or None)
             if form.is_valid():
+                question = exercise.easy_question
+                context['question'] = question
+                context['form'] = form
                 answer = form.cleaned_data['ditt_svar']
-
+                context['answer'] = answer
                 if (answer == exercise.hard_answer):
-                    # do some more logic
-                    subject_connection.points += exercise.hard_points
-                    subject_connection.save()
-                    connection.completed_hard = True
-                    connection.save()
+                    if connection.completed_hard == False:
+                        info += "You answered correct, and " + str(exercise.medium_points) + " were added to your score"
+                        info += " in the subject" + str(subject)
+                        # do some more logic
+                        subject_connection.points += exercise.hard_points
+                        subject_connection.save()
+                        connection.completed_hard = True
+                        connection.save()
+                    else:
+                        info += "You answered correct! But no points were added because you have answered correct to this task before!"
+                else:
+                    info+= "Wrong answer... try again"
+                context['info'] = info
+                return test(request, context)
     return render(request, 'my_subjects/exercise_page.html', context)
+
+def test(request, context):
+    return render(request, 'my_subjects/answered_task.html', context)
