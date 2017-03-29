@@ -1,0 +1,73 @@
+{% extends 'main/header.html' %}
+
+
+{% block content %}
+<div class="modal-body row">
+  <div class="col-md-4">
+    {% for info in first_column %}
+      <div style="width:100%; background-color:#a4d419; color:white; display:inline-block;">
+          <div class="text-center">
+
+              <h3>{{info.0.subject }}</h3>
+              <hr>
+              <h4><u>Subject Information</u></h4>
+              <h6>Subject Name: {{info.0.subject.subject_name}}</h6>
+              <h6>Contact: {{info.0.subject.professor_email }}</h6>
+              <hr>
+              <h4><u>Personal Information</u></h4>
+              <h6>Points: {{info.0.points}}</h6>
+              <h6>Rank: {{info.1}}</h6>
+              <h6>Tasks completed: {{info.2}} </h6>
+              <hr>
+              <h5><a href="{% url 'progress:highscore' subject_pk=info.0.subject.pk%}"> See highscore list</a></h5>
+          </div>
+      </div>
+      <br><br>
+    {% endfor %}
+  </div>
+  <div class="col-md-4">
+    {% for info in second_column %}
+      <div style="width:100%; background-color:#009fff; color:white; display:inline-block;">
+          <div class="text-center">
+
+              <h3>{{info.0.subject }}</h3>
+              <hr>
+              <h4><u>Subject Information</u></h4>
+              <h6>Subject Name: {{info.0.subject.subject_name}}</h6>
+              <h6>Contact: {{info.0.subject.professor_email }}</h6>
+              <hr>
+              <h4><u>Personal Information</u></h4>
+              <h6>Points: {{info.0.points}}</h6>
+              <h6>Rank: {{info.1}}</h6>
+              <h6>Tasks completed: {{info.2}} </h6>
+              <hr>
+              <h5><a href="{% url 'progress:highscore' subject_pk=info.0.subject.pk%}"> See highscore list</a></h5>
+          </div>
+      </div>
+      <br><br>
+    {% endfor %}
+  </div>
+  <div class="col-md-4">
+    {% for info in third_column %}
+
+      <div style="width:100%; background-color:#303030; color:white; display:inline-block">
+          <div class="text-center">
+
+              <h3>{{info.0.subject }}</h3>
+              <hr>
+              <h4><u>Subject Information</u></h4>
+              <h6>Subject Name: {{info.0.subject.subject_name}}</h6>
+              <h6>Contact: {{info.0.subject.professor_email }}</h6>
+              <hr>
+              <h4><u>Personal Information</u></h4>
+              <h6>Points: {{info.0.points}}</h6>
+              <h6>Rank: {{info.1}}</h6>
+              <h6>Tasks completed: {{info.2}} </h6>
+              <hr>
+              <h5><a href="{% url 'progress:highscore' subject_pk=info.0.subject.pk%}">See highscore list</a></h5>
+          </div>
+      </div>
+      <br><br>
+    {% endfor %}
+</div>
+{% endblock %}

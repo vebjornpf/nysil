@@ -78,8 +78,8 @@ class Exercise_Page(models.Model):
 
 # a connecton between a user and a subject which controlls the points the student have in the subject
 class StudentConnectSubject(models.Model):
-    user = models.ForeignKey(User)
-    subject = models.ForeignKey(Subject)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
 
 
@@ -87,8 +87,8 @@ class StudentConnectSubject(models.Model):
 
 # every time a student follows a subject, there is a relation between the student and all the exercises in the subject
 class StudentConnectExercise(models.Model):
-    user = models.ForeignKey(User)
-    exercise = models.ForeignKey(Exercise_Page)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    exercise = models.ForeignKey(Exercise_Page, on_delete=models.CASCADE)
 
     # theese variables controls if the student has answered correct on the questions in the exercise, so the student
     # cant answer correct all the time on the same question and gain infinity points
