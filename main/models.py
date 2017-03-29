@@ -75,6 +75,16 @@ class Exercise_Page(models.Model):
     hard_points = models.IntegerField(default=0)
 
 
+
+# a connecton between a user and a subject which controlls the points the student have in the subject
+class StudentConnectSubject(models.Model):
+    user = models.ForeignKey(User)
+    subject = models.ForeignKey(Subject)
+    points = models.IntegerField(default=0)
+
+
+
+
 # every time a student follows a subject, there is a relation between the student and all the exercises in the subject
 class StudentConnectExercise(models.Model):
     user = models.ForeignKey(User)
@@ -94,12 +104,15 @@ class StudentConnectExercise(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     #test = models.IntegerField(default=5)
-    subjects = models.ManyToManyField(Subject)
+    subjects = models.ManyToManyField(Subject, blank=True)
 
 
     def add_subject(self, subject_pk):
-        # create a StudentConnectExercise between the current student and all the exercises in the subject
         subject = Subject.objects.get(pk=subject_pk)
+        student_subject_conn = StudentConnectSubject(user=self.user, subject=subject)
+        student_subject_conn.save()
+
+        # create a StudentConnectExercise between the current student and all the exercises in the subject
         for chapter in subject.chapter_set.all():
             for exercise in chapter.exercise_page_set.all():
                 connection = StudentConnectExercise(user=self.user, exercise=exercise)

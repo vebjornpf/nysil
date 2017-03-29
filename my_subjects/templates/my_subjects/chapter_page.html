@@ -1,9 +1,49 @@
 {% extends 'my_subjects/subject_header.html' %}
 <!--hei du-->
+
+
 {% block extension %}
-    {% for exercise_page in chapter.exercise_page_set.all %}
+
+<div class="col-md-10">
+    <div style ="width:900px">
+        <div style="float: left; width: 500px">
+            <h3> Exercises for {{ subject }} {{ chapter }} </h3>
+        </div>
+
+
+    </div>
+    <table class="table table-striped">
+        <!-- headlines to the columns in the table -->
+        <thead>
+            <tr>
+                <th>Headline</th>
+                <th>Explanation</th>
+                <th>Easy</th>
+                <th>Medium</th>
+                <th>Hard</th>
+            </tr>
+        </thead>
+
+        <!-- all the table-content -->
+        <tbody>
+            {% for connection in connections %}
+                <tr>
+                    <th scope="row"><a href="{% url 'my_subjects:exercise_view' chapter_pk=chapter.pk subject_pk=subject.pk exercise_pk=connection.exercise.pk %}">{{ connection.exercise.headline }}</a></th>
+                    <td>{{ connection.exercise.explanation }}</td>
+
+                    <!-- A way to check wich tasks the user has done in the exercises -->
+                    <td><div>{{ connection.completed_easy }}</div></td>
+                    <td><div>{{ connection.completed_medium }}</div></td>
+                    <td><div>{{ connection.completed_hard }}</div></td>
+
+                </tr>
+            {% endfor%}
+
+        </tbody>
+
+    </table>
+
+</div>
+{% endblock%}
+
         <li><a href="{% url 'my_subjects:exercise_view' exercise_pk=exercise_page.pk chapter_pk=chapter.pk subject_pk=subject.pk %}"> {{ exercise_page.headline }} </a></li>
-
-    {% endfor%}
-
-{% endblock %}
