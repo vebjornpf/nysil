@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^my_subjects/', include('my_subjects.urls')),
     url(r'^adminpage/', include('adminpage.urls')),
     url(r'^progress/', include('progress.urls')),
+    url(r'^adminpage/statistics/', include('stats.urls')),
 
 ]

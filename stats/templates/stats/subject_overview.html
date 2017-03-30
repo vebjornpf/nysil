@@ -1,0 +1,18 @@
+{% extends 'stats/statistics_subject.html' %}
+
+
+
+{% block extra%}
+    <div class="col-sm-12">
+        <div class="col-md-8 col-md-offset-2 text-center" style="background-color:#ffb914">
+            <h3> <u>{{subject}}</u></h3>
+            <p>Subject name: {{subject.subject_name}}</p>
+            <p>Professor: {{subject.get_full_name}}</p>
+            <p>Contact: {{subject.professor_email}}</p>
+            <hr>
+            <h5>Number of students: {{num_students}}</h5>
+        </div>
+    </div>
+
+{% endblock %}
+
