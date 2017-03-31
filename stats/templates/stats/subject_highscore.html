@@ -1,0 +1,32 @@
+{% extends 'stats/statistics_subject.html' %}
+
+
+
+{% block extra%}
+    <div class="col-sm-12">
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <table class="table table-bordered" style="border-color: #303030;">
+              <thead>
+                <tr style="background-color:green; color:white">
+                  <th class="text-center" style="border-color: #303030;">Rank</th>
+                  <th class="text-center" style="border-color: #303030;">Username</th>
+                  <th class="text-center" style="border-color: #303030;">Score</th>
+                  <th class="text-center" style="border-color: #303030;">Percent</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                {% for info in highscore_info %}
+                    <tr style="background-color:green; color:white">
+                        <th class="text-center" style="border-color: #303030;">{{info.0}}</th>
+                        <td class="text-center" style="border-color: #303030;">{{info.1.user}}</td>
+                        <td class="text-center" style="border-color: #303030;">{{info.1.points}}</td>
+                        <td class="text-center" style="border-color: #303030;">{{info.2}}</td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

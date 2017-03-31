@@ -7,6 +7,8 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'main/css/customize.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'my_subjects/css/customize.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'progress/css/customize.css' %}" type="text/css">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -96,7 +98,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- logout filed -->
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Progress</a></li>
+                        <li><a href="{% url 'progress:my_progress' %}"><span class="glyphicon glyphicon-list-alt"></span> Progress</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-cog"></span></a>
@@ -115,14 +117,14 @@
                 </div>
             </div>
         </nav>
+        <!-- Block extend-files will use: -->
+        {% block content %}
+            {% for connection in exercise_connections %}
+                <h1> {{connection.subject}}     {{connection.points}}</h1>
+            {% endfor %}
+        {% endblock%}
     </div>
 
-    <!-- Block extend-files will use: -->
-    {% block content %}
-        {% for connection in exercise_connections %}
-            <h1> {{connection.subject}}     {{connection.points}}</h1>
-        {% endfor %}
-    {% endblock%}
 
 
 </div>

@@ -1,0 +1,11 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+    <h1>test</h1>
+    {% for connection in subject_connections %}
+        {{ connection.user }}
+        {{connection.points}}
+    {% endfor %}
+
+{% endblock %}
