@@ -19,9 +19,9 @@ def index(req):
     exercise_connections = StudentConnectSubject.objects.filter(user=user)
     subjects = Subject.objects.all()
     if user.is_staff == True:
-        return render(req, 'main/adminok.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
+        return render(req, 'main/frontpage.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
     else:
-        return render(req, 'main/header.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
+        return render(req, 'main/frontpage.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
 
 def logout_user(request):
     logout(request)
