@@ -2,49 +2,84 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ad64c3-8d75-4d40-99c1-e917cd7a34ac" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/migrations/0007_auto_20170328_1022.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/migrations/0008_auto_20170328_1044.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_subjects/static/my_subjects/js/show_modal.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_subjects/templates/my_subjects/answered_task.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/static/progress/css/customize.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/templates/progress/highscore.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/templates/progress/progress_overview.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/progress/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/templates/stats/statistics_index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/templates/stats/statistics_subject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/templates/stats/subject_highscore.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/templates/stats/subject_overview.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/keybd_closed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/keybd_open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/static/main/img/17506602_10211638122931622_367655094_n.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/static/main/img/17758142_10211638122971623_658340508_n.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/static/main/img/17760612_10211638122891621_845214227_n.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/static/main/img/17793389_10211638123011624_333111174_n.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.coverage" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage_admin_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage_apps_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage_forms_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage_migrations___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage_models_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage_tests_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage_urls_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/adminpage_views_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/coverage_html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/jquery.ba-throttle-debounce.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/jquery.hotkeys.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/jquery.isonscreen.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/jquery.tablesorter.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_admin_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_apps_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_forms_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations_0001_initial_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations_0002_auto_20170322_1324_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations_0003_comment_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations_0004_auto_20170322_1724_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations_0005_comment_published_time_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations_0006_studentconnectexercise_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations_0007_auto_20170328_1022_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations_0008_auto_20170328_1044_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_migrations___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_models_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_tests_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_urls_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/main_views_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/manage_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects_admin_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects_apps_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects_forms_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects_migrations___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects_models_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects_tests_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects_urls_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/my_subjects_views_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/nysil___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/nysil_settings_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/nysil_urls_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/nysil_wsgi_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/progress___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/progress_admin_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/progress_apps_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/progress_migrations___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/progress_models_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/progress_tests_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/progress_urls_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/progress_views_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/stats___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/stats_admin_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/stats_apps_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/stats_migrations___init___py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/stats_models_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/stats_tests_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/stats_urls_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/stats_views_py.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/status.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/htmlcov/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/templates/main/frontpage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/subject_overview.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/subject_overview.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/views.py" afterPath="$PROJECT_DIR$/adminpage/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/admin.py" afterPath="$PROJECT_DIR$/main/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/models.py" afterPath="$PROJECT_DIR$/main/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/templates/main/header.html" afterPath="$PROJECT_DIR$/main/templates/main/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/templates/main/search.html" afterPath="$PROJECT_DIR$/main/templates/main/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/urls.py" afterPath="$PROJECT_DIR$/main/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/views.py" afterPath="$PROJECT_DIR$/main/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_subjects/templates/my_subjects/chapter_page.html" afterPath="$PROJECT_DIR$/my_subjects/templates/my_subjects/chapter_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_subjects/templates/my_subjects/exercise_page.html" afterPath="$PROJECT_DIR$/my_subjects/templates/my_subjects/exercise_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_subjects/views.py" afterPath="$PROJECT_DIR$/my_subjects/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nysil/settings.py" afterPath="$PROJECT_DIR$/nysil/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nysil/urls.py" afterPath="$PROJECT_DIR$/nysil/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/tests.py" afterPath="$PROJECT_DIR$/stats/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/views.py" afterPath="$PROJECT_DIR$/stats/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,108 +93,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="admin_header.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="121" column="33" lean-forward="false" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#center#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#41#76#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#74#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/templates/main/header.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4191">
-              <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/templates/main/search.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="subject_overview.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/subject_overview.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="891">
-              <caret line="27" column="77" lean-forward="false" selection-start-line="27" selection-start-column="77" selection-end-line="27" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tilbakemeldinger.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/tilbakemeldinger.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chapter_overview.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/chapter_overview.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="customize.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminpage/static/adminpage/css/customize.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -188,8 +122,8 @@
         <option value="$PROJECT_DIR$/adminpage/templates/adminpage/exercise_overview.html" />
         <option value="$PROJECT_DIR$/adminpage/static/adminpage/css/customize.css" />
         <option value="$PROJECT_DIR$/adminpage/templates/adminpage/subject_overview.html" />
-        <option value="$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html" />
         <option value="$PROJECT_DIR$/stats/views.py" />
+        <option value="$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html" />
       </list>
     </option>
   </component>
@@ -220,7 +154,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -356,6 +289,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -566,13 +500,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/adminpage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1353">
-          <caret line="45" column="17" lean-forward="false" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
@@ -814,9 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <marker date="1491218770690" expanded="true" signature="5156:5217" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -856,9 +780,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/adminpage/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/progress/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3960">
+          <caret line="120" column="41" lean-forward="false" selection-start-line="120" selection-start-column="41" selection-end-line="120" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#center#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/templates/main/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/templates/main/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/subject_overview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="27" column="77" lean-forward="false" selection-start-line="27" selection-start-column="77" selection-end-line="27" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/tilbakemeldinger.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
+        <state relative-caret-position="439">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
@@ -880,76 +879,6 @@
         <state relative-caret-position="297">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/templates/main/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4191">
-          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/templates/main/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/subject_overview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="27" column="77" lean-forward="false" selection-start-line="27" selection-start-column="77" selection-end-line="27" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminpage/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#41#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/progress/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="121" column="33" lean-forward="false" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#center#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

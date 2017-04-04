@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 #import matplotlib.pyplot as plt, mpld3
 
+=======
+import matplotlib.pyplot as plt, mpld3
+from django.contrib.auth.models import AnonymousUser
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+>>>>>>> af33eb8ae159fc8710b40d7ee245f9c33517ca72
 from django.shortcuts import render
 from main.models import Subject, StudentConnectSubject
 
 def statistics_index(request):
-    context = {'subjects': Subject.objects.all()}
+    user_authenticated(request, request.user)
 
+    context = {'subjects': Subject.objects.all()}
     return render(request, 'stats/statistics_index.html',context)
 
 def statistics_subject(request, subject_pk):
@@ -56,3 +64,9 @@ def get_max_points(subject):
         for exercise in exercises:
             points += exercise.easy_points + exercise.medium_points + exercise.hard_points
     return points
+
+
+# see if a user is logged-in
+def user_authenticated(request,user):
+    if user == AnonymousUser:
+        return HttpResponseRedirect(reverse('main:login_user'))
