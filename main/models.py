@@ -75,10 +75,20 @@ class Exercise_Page(models.Model):
     hard_points = models.IntegerField(default=0)
 
 
+
+# a connecton between a user and a subject which controlls the points the student have in the subject
+class StudentConnectSubject(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    points = models.IntegerField(default=0)
+
+
+
+
 # every time a student follows a subject, there is a relation between the student and all the exercises in the subject
 class StudentConnectExercise(models.Model):
-    user = models.ForeignKey(User)
-    exercise = models.ForeignKey(Exercise_Page)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    exercise = models.ForeignKey(Exercise_Page, on_delete=models.CASCADE)
 
     # theese variables controls if the student has answered correct on the questions in the exercise, so the student
     # cant answer correct all the time on the same question and gain infinity points
@@ -94,12 +104,17 @@ class StudentConnectExercise(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     #test = models.IntegerField(default=5)
-    subjects = models.ManyToManyField(Subject)
+    subjects = models.ManyToManyField(Subject, blank=True)
 
 
     def add_subject(self, subject_pk):
-        # create a StudentConnectExercise between the current student and all the exercises in the subject
         subject = Subject.objects.get(pk=subject_pk)
+        student_subject_conn = StudentConnectSubject(user=self.user, subject=subject)
+        find_student_subject_conn = StudentConnectSubject.objects.filter(user=self.user,subject=subject).exists()
+        if not find_student_subject_conn:
+            student_subject_conn.save()
+
+        # create a StudentConnectExercise between the current student and all the exercises in the subject
         for chapter in subject.chapter_set.all():
             for exercise in chapter.exercise_page_set.all():
                 connection = StudentConnectExercise(user=self.user, exercise=exercise)
@@ -107,8 +122,11 @@ class UserProfile(models.Model):
                 find_connection = StudentConnectExercise.objects.filter(user=self.user,exercise=exercise).exists()
                 if not find_connection:
                     connection.save()
+        already_follows = self.subjects.filter(pk=subject_pk).exists()
+        print(already_follows)
+        if not already_follows:
 
-        self.subjects.add(Subject.objects.get(pk=subject_pk))
+            self.subjects.add(Subject.objects.get(pk=subject_pk))
 
 
 @receiver(post_save, sender=User)

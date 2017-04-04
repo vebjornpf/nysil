@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'stats',
+    'progress',
     'adminpage',
     'main',
     'my_subjects',

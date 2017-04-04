@@ -1,0 +1,43 @@
+{% extends 'my_subjects/exercise_page.html' %}
+
+
+{% block extra %}
+<!-- Modal -->
+<div id="popUp" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Information </h4>
+      </div>
+      <div class="modal-body">
+        <h5> <u>Question</u></h5>
+        <p> {{ question }}</p>
+        <p><h5>Your answer: {{ answer }}</h5></p>
+        <br>
+        <p> {{ info }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- This script shows the modal after you have submitted an answer -->
+<script>
+$('#popUp').modal('show');
+</script>
+
+
+<!-- This script redirects to exercise_view after the modal has been closed -->
+<script>
+$(".modal").on("hidden.bs.modal", function () {
+    window.location = "{% url 'my_subjects:exercise_view' chapter_pk=chapter.pk subject_pk=subject.pk exercise_pk=connection.exercise.pk %}";
+});
+</script>
+{% endblock %}
