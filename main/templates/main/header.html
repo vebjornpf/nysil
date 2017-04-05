@@ -41,24 +41,11 @@
 <body class="body" style="background-color: #E5E4E2;">
 
 <div id="wrapper">
-    <div class="container-fluid" style="min-height:95%">
-        <div class="row">
-            <div class="col-sm-1">
-            <!-- Interaktiv Logo, tar deg til hjemmesiden -->
-            <div class="col-sm-3">
-                <br>
-                <center>
-                    <a href="{% url 'main:index' %}">
-                         <img src="{% static 'main/img/Logo.jpg'%}"  class="responsive-img" style='max-height: 60px;' alt="Responsive image">
-                    </a>
-                </center>
-            </div>
-        </div>
-    </div>
+
 
         <!-- Navbar på toppen -->
         <br>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse navbar-fixed-top" >
             <div class="container-fluid">
 
                 <!-- Mobilvennelig, gjør om navbar til dropdown knapp når skjermen blir for liten
@@ -69,7 +56,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
 				    </button>
-                    <a href="{% url 'main:index' %}" class="navbar-brand"><span class="glyphicon glyphicon-home"></span></a>
+                    <a href="{% url 'main:index' %}" class="navbar-brand"><img src="{% static 'main/img/ny_logo.png'%}" style="width:100px;height:27px;margin-top:-4px;margin-left:-3px"></a>
                 </div>
 
                 <!-- Navbar items, samarbeider med collapse over gjennom id (data-target) -->
@@ -111,23 +98,31 @@
                         </li>
                         <li><a href="{% url 'main:login_user' %}">{{user}}</a></li>
                     </ul>
-                    <!-- Searchfield for adding subjects to "My-subjects" -->
+
+
 
 
                 </div>
+
             </div>
         </nav>
-        <!-- Block extend-files will use: -->
-        {% block content %}
+            {% block content %}
             {% for connection in exercise_connections %}
                 <h1> {{connection.subject}}     {{connection.points}}</h1>
             {% endfor %}
-        {% endblock%}
-    </div>
+            {% endblock%}
+        <!-- Block extend-files will use: -->
 
 
+        <div class="col-md-10 col-md-pull-1" id="sidebar_subjects">
+
+        </div>
 
 </div>
+
+
+
+
 
 <!-- Footer med linker til ulike sider, og også en kontakt & hjelp side -->
 <footer id="footer">

@@ -1,7 +1,12 @@
-import matplotlib.pyplot as plt, mpld3
+#<<<<<<< HEAD
+#import matplotlib.pyplot as plt, mpld3
+
+#=======
+#import matplotlib.pyplot as plt, mpld3
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+#>>>>>>> af33eb8ae159fc8710b40d7ee245f9c33517ca72
 from django.shortcuts import render
 from main.models import Subject, StudentConnectSubject
 
