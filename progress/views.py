@@ -18,7 +18,7 @@ def highscore(request, subject_pk):
     user = request.user
     subject = Subject.objects.get(pk=subject_pk)
     subject_connections = StudentConnectSubject.objects.filter(subject=subject).order_by('-points')
-    context = {'subject_connections': subject_connections}
+    context = {'subject_connections': subject_connections, 'subject': subject}
     return render(request, 'progress/highscore.html', context)
 
 

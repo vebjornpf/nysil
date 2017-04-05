@@ -38,6 +38,13 @@ def subject_highscore(request, subject_pk):
 
     return render(request, "stats/subject_highscore.html", context)
 
+def subject_chapters(request, subject_pk):
+    subject = Subject.objects.get(pk=subject_pk)
+
+    context = {'subjects': Subject.objects.all(), 'subject': subject}
+
+    return render(request,'stats/subject_chapters.html', context)
+
 
 
 # --------------------- HELP - METHODS ---------------------------

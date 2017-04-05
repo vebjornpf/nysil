@@ -132,7 +132,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 context['answer'] = answer
                 if (answer == exercise.hard_answer):
                     if connection.completed_hard == False:
-                        info += "You answered correct, and " + str(exercise.medium_points) + " were added to your score"
+                        info += "You answered correct, and " + str(exercise.hard_points) + " were added to your score"
                         info += " in the subject" + str(subject)
                         # do some more logic
                         subject_connection.points += exercise.hard_points

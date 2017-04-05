@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from main.models import Subject, Chapter, Exercise_Page, StudentConnectExercise
+from main.models import Subject, Chapter, Exercise_Page, StudentConnectExercise, StudentConnectSubject
 from .forms import SubjectForm, ChapterForm, ExerciseForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -65,7 +65,10 @@ def new_chapter(request, subject_pk):
     return render(request, 'adminpage/new_chapter.html', context)
 
 def delete_chapter(request, subject_pk, chapter_pk):
-    Chapter.objects.get(pk=chapter_pk).delete() # deletes the chapter we have clicked to delete
+    deleted_chapter = Chapter.objects.get(pk=chapter_pk)
+    for exercise in deleted_chapter.exercise_page_set.all():
+        delete_exercise_points(exercise,subject_pk)
+    deleted_chapter.delete() # deletes the chapter we have clicked to delete
     return HttpResponseRedirect(reverse('adminpage:chapter_overview',args=(subject_pk,)))
 
 
@@ -106,13 +109,12 @@ def new_exercise(request, subject_pk, chapter_pk):
         instance.chapter = chapter
         instance.save()
 
-        # add the new exercise to the users that follows the subject
-        for userprofile in subject.userprofile_set.all():
-            connection = StudentConnectExercise(user=userprofile.user, exercise=instance)
-            find_connection = StudentConnectExercise.objects.filter(user=userprofile.user, exercise=instance).exists()
+        user_subject_conn = StudentConnectSubject.objects.filter(subject=subject)
+        for conn in user_subject_conn:
+            connection = StudentConnectExercise(user=conn.user, exercise=instance)
+            find_connection = StudentConnectExercise.objects.filter(user=conn.user, exercise=instance).exists()
             if not find_connection:
                 connection.save()
-
 
         return HttpResponseRedirect(reverse('adminpage:exercise_overview',args=(subject_pk,chapter_pk)))
 
@@ -140,7 +142,9 @@ def change_exercise(request, subject_pk, chapter_pk, exercise_pk):
 
 
 def delete_exercise(request, subject_pk, chapter_pk, exercise_pk):
-    Exercise_Page.objects.get(pk=exercise_pk).delete()
+    deleted_exercise = Exercise_Page.objects.get(pk=exercise_pk)
+
+    delete_exercise_points(deleted_exercise, subject_pk)
     return HttpResponseRedirect(reverse('adminpage:exercise_overview',args=(subject_pk, chapter_pk,)))
 
 
@@ -158,3 +162,24 @@ def chapter_feedback(req, subject_pk, chapter_pk):
     return render(req, 'adminpage/chapter_feedback.html', context)
 
 
+
+
+# ------------------- HELP-METHODS -----------------------
+
+def delete_exercise_points(deleted_exercise, subject_pk):
+    # if you delete an exercise, the students who have answered it has to loose the points
+    connections = StudentConnectExercise.objects.filter(exercise=deleted_exercise)
+    for connection in connections:
+        user = connection.user
+        user_subject = StudentConnectSubject.objects.get(user=user, subject=Subject.objects.get(pk=subject_pk))
+        if connection.completed_easy == True:
+            user_subject.points -= deleted_exercise.easy_points
+            user_subject.save()
+        if connection.completed_medium == True:
+            user_subject.points -= deleted_exercise.medium_points
+            user_subject.save()
+        if connection.completed_hard == True:
+            user_subject.points -= deleted_exercise.hard_points
+            user_subject.save()
+
+    deleted_exercise.delete()

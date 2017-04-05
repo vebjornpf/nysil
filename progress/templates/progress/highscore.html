@@ -1,11 +1,30 @@
 {% extends 'main/header.html' %}
 
 {% block content %}
+    <div style="float:left; width:20%">
+        <a class="btn btn-md" href="{% url 'progress:my_progress' %}" style="color:white; background:#3793C3"><span class="glyphicon glyphicon-chevron-left"></span> Back to progress</a>
+    </div>
+    <div class="col-md-8 col-md-offset-2 text-center">
+        <h1>Highscore List for {{subject}}</h1>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Rank</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                     {% for connection in subject_connections %}
+                        <th scope="row" class="text-center">1</th>
+                        <td class="text-center">{{connection.user}}</td>
+                        <td class="text-center">{{connection.points}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
 
-    <h1>test</h1>
-    {% for connection in subject_connections %}
-        {{ connection.user }}
-        {{connection.points}}
-    {% endfor %}
-
+    </div>
 {% endblock %}
