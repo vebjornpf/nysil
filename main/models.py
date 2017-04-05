@@ -62,17 +62,17 @@ class Exercise_Page(models.Model):
     # attributes for the easy question
     easy_question = models.TextField(default='')
     easy_answer = models.CharField(max_length=30,default='')
-    easy_points = models.IntegerField(default=0)
+    easy_points = models.PositiveIntegerField(default=0)
 
     # attributes for the medium question
     medium_question = models.TextField(default='')
     medium_answer = models.CharField(max_length=30,default='')
-    medium_points = models.IntegerField(default=0)
+    medium_points = models.PositiveIntegerField(default=0)
 
     # attributes for the hard question
     hard_question = models.TextField(default='')
     hard_answer = models.CharField(max_length=30,default='')
-    hard_points = models.IntegerField(default=0)
+    hard_points = models.PositiveIntegerField(default=0)
 
 
 
