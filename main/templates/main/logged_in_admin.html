@@ -1,0 +1,13 @@
+{% extends 'main/header.html' %}
+
+{% block adminok %}
+<li><a href="{% url 'adminpage:admin_index' %}">Admin</a></li>
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user}}
+        <span class="glyphicon glyphicon-menu-down" style="width:2px;height:2px"></span>
+    <ul class="dropdown-menu">
+        <!-- adds all the subjects to "My Subjects"-dropown -->
+        <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
+    </ul>
+</li>
+{% endblock %}
