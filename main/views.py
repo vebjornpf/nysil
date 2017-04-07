@@ -15,6 +15,7 @@ from django.db.models import Q
 
 # view for the header, which gonna be the same everywhere in the web page
 def index(req):
+
     user = req.user
     exercise_connections = StudentConnectSubject.objects.filter(user=user)
     subjects = Subject.objects.all()

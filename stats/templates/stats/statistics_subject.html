@@ -11,9 +11,9 @@
                     <ul class="nav navbar-nav col-md-12">
                         <li class="col-md-2 col-md-offset-1"><a href="{% url 'stats:subject_overview' subject_pk=subject.pk %}">Overview</a></li>
                         <li class="col-md-2"><a href="{% url 'stats:subject_highscore' subject_pk=subject.pk %}">Highscore</a></li>
-                        <li class="col-md-2"><a href="#">Subject</a></li>
+                        <li class="col-md-2"><a href="{% url 'stats:subject_pie_graph' subject_pk=subject.pk %}">Subject</a></li>
                         <li class="col-md-2"><a href="{% url 'stats:subject_chapters' subject_pk=subject.pk %}">Chapters</a></li>
-                        <li class="col-md-2"><a href="#">Exercises</a></li>
+                        <li class="col-md-2"><a href="{% url 'stats:subject_exercise' subject_pk=subject.pk %}">Exercises</a></li>
 
 
 
