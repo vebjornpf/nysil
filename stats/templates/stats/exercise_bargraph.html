@@ -1,0 +1,45 @@
+{% extends 'stats/subject_exercise.html' %}
+{%load static %}
+
+{% block head_extend %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+
+            ["Element", "Students", { role: "style" } ],
+            ["Easy", {{means.0}}, "#b87333"],
+            ["Medium", {{means.1}}, "silver"],
+            ["Hard", {{means.2}}, "gold"],
+
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                        { calc: "stringify",
+                            sourceColumn: 1,
+                            type: "string",
+                            role: "annotation" },
+                        2]);
+
+        var options = {
+            title: "Students who have completed Easy, Medium and Hard task",
+            width: 600,
+            height: 400,
+            bar: {groupWidth: "70%"},
+            backgroundColor: 'white',
+
+            legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
+    </script>
+{% endblock%}
+{% block graph %}
+    <div class="col-md-8">
+        <div id="columnchart_values"></div>
+    </div>
+{% endblock %}

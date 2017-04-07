@@ -1,0 +1,46 @@
+{% extends 'stats/subject_chapters.html' %}
+{% load static %}
+
+
+{% block head_extend %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Exercise Number');
+      data.addColumn('number', 'Chapter-exercises');
+
+      data.addRows(
+        {{info}}
+      );
+
+      var options = {
+        chart: {
+          title: 'Students completed all tasks in an exercise',
+        },
+         width: 645,
+         height: 400
+      };
+
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+      chart.draw(data, options);
+    }
+    </script>
+{% endblock %}
+
+{% block graph %}
+    <div class="col-md-9">
+
+
+       <div id="linechart_material" style="width:100%; height:70vh"></div>
+
+    </div>
+{% endblock %}
+
+
+
