@@ -31,9 +31,33 @@
                     <td>{{ connection.exercise.explanation }}</td>
 
                     <!-- A way to check wich tasks the user has done in the exercises -->
-                    <td><div>{{ connection.completed_easy }}</div></td>
-                    <td><div>{{ connection.completed_medium }}</div></td>
-                    <td><div>{{ connection.completed_hard }}</div></td>
+                    <td>
+                        <div>
+                            {% if connection.completed_easy %}
+                                Done
+                            {% else %}
+                                -
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            {% if connection.completed_medium %}
+                                Done
+                            {% else %}
+                                -
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            {% if connection.completed_hard %}
+                                Done
+                            {% else %}
+                                -
+                            {% endif %}
+                        </div>
+                    </td>
 
                 </tr>
             {% endfor%}
