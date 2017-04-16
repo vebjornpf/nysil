@@ -9,7 +9,8 @@ from django.shortcuts import render
 from main.models import Subject, StudentConnectSubject, Exercise_Page, StudentConnectExercise, Chapter
 
 def statistics_index(request):
-    user_authenticated(request, request.user)
+    if not user_authenticated(request.user):
+        return render(request, 'main/login.html')
 
     context = {'subjects': Subject.objects.all()}
     return render(request, 'stats/statistics_index.html',context)
@@ -57,9 +58,7 @@ def chapter_plot(request, subject_pk, chapter_pk):
     subject = Subject.objects.get(pk=subject_pk)
     chapter = Chapter.objects.get(pk=chapter_pk)
     info = create_chapter_graph(chapter)
-    print(info)
     length = len(info)
-    print(length)
     context = {'chapter': chapter, 'subjects': Subject.objects.all(), 'subject': subject, 'info': info, 'length': length}
 
     return render(request, 'stats/chapter_plot.html', context)
@@ -110,10 +109,10 @@ def get_max_points(subject):
 
 
 # see if a user is logged-in
-def user_authenticated(request,user):
-    if user == AnonymousUser:
-        return HttpResponseRedirect(reverse('main:login_user'))
-
+def user_authenticated(user):
+    if not user.is_authenticated():
+        return False
+    return True
 
 def create_means(exercise):
     conns = StudentConnectExercise.objects.filter(exercise=exercise)

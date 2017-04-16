@@ -123,7 +123,6 @@ class UserProfile(models.Model):
                 if not find_connection:
                     connection.save()
         already_follows = self.subjects.filter(pk=subject_pk).exists()
-        print(already_follows)
         if not already_follows:
 
             self.subjects.add(Subject.objects.get(pk=subject_pk))
