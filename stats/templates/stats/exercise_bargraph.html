@@ -29,7 +29,6 @@
             width: 600,
             height: 400,
             bar: {groupWidth: "70%"},
-            backgroundColor: 'white',
 
             legend: { position: "none" },
         };
@@ -40,6 +39,7 @@
 {% endblock%}
 {% block graph %}
     <div class="col-md-8">
+        <h4 class="text-center">{{exercise.chapter}} -> {{ exercise.headline }}</h4>
         <div id="columnchart_values"></div>
     </div>
 {% endblock %}

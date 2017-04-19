@@ -2,19 +2,21 @@
 
 {% block extension %}
     <div class="col-md-10">
+
         <form method='POST'> {% csrf_token %}
-                <div style="width:900">
-                    <div style="float: left; width: 700px">
+                <div style="width:100%">
+                    <div style="float: left; width: 80%">
                         {% block headline %}
                         <h4>{{ subject }} <span class="glyphicon glyphicon-arrow-right"></span> {{ chapter }} <span class="glyphicon glyphicon-arrow-right"></span> Ny Oppgave </h4>
                         {% endblock %}
                     </div>
-                    <div style="float: right; width:150px">
+                    <div style="float: right; 0%">
                         {% block button %}
                         <input class="btn btn-large btn-success" type="submit" value="Legg til kapittel"/>
                         {% endblock %}
                     </div>
                 </div>
+
 
                 <div class="col-md-4">
                     <br>

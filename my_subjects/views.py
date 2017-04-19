@@ -9,7 +9,7 @@ from .forms import EasyAnswer, MediumAnswer, HardAnswer, CommentForm
 # this view is the "header" for the subject-pages
 # its the same as main/header.html but has a sidebare too
 
-@login_required
+
 def subject_view(req, subject_pk):
     user = req.user
     subject = get_object_or_404(Subject, pk=subject_pk) # the subject that was chosen
@@ -29,7 +29,7 @@ def all_exercises_view(req,chapter_pk, subject_pk):
     connections = []
     for exercise in exercises:
         connections.append(StudentConnectExercise.objects.get(user=user,exercise=exercise))
-        print(StudentConnectExercise.objects.get(user=user,exercise=exercise).exercise.headline)
+
     return render(req, 'my_subjects/chapter_page.html', {'subject_list': subjects,'chapter':chapter,
                                                          'subject':subject, 'connections': connections})
 

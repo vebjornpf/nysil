@@ -17,8 +17,8 @@ def my_progress(request):
 def highscore(request, subject_pk):
     user = request.user
     subject = Subject.objects.get(pk=subject_pk)
-    subject_connections = StudentConnectSubject.objects.filter(subject=subject).order_by('-points')
-    context = {'subject_connections': subject_connections, 'subject': subject}
+    info = set_highscore_info(subject)
+    context = {'info': info, 'subject': subject}
     return render(request, 'progress/highscore.html', context)
 
 
@@ -28,6 +28,19 @@ def highscore(request, subject_pk):
 
 
 # ------------------- Help-Methods ---------------------------
+
+def set_highscore_info(subject):
+    subject_connections = StudentConnectSubject.objects.filter(subject=subject).order_by('-points')
+    info = []
+    counter = 1
+
+    for conn in subject_connections:
+        info.append([counter,conn])
+        counter += 1
+
+    return info
+
+
 def set_view_context(subjects, user):
     first_subjects, second_subjects, third_subjects = split_subjects(subjects)
     first_column = []
@@ -58,7 +71,7 @@ def merge_info(subject_conn, user):
     info.append(find_rank(subject_conn.subject, user))
 
     # adds how many percent of the tasks the user has completed in the subject
-    divider = find_max_points(subject_conn,user)
+    divider = get_max_points(subject_conn.subject)
     info.append(str((user_subject_conn.points*100)/divider) + "%" if divider>0 else "0 %")
     return info
 
@@ -94,12 +107,11 @@ def find_rank(subject,user):
 
 
 # this is a help-method for finding the maxium possible points a user can get in a subject
-def find_max_points(subject_conn, user):
-    student_exercises = StudentConnectExercise.objects.filter(user=user)
-    max_points = 0
-
-    for conn in student_exercises:
-        if conn.exercise.chapter.subject == subject_conn.subject:
-            max_points += conn.exercise.easy_points + conn.exercise.medium_points + conn.exercise.hard_points
-
-    return max_points
+def get_max_points(subject):
+    chapters = subject.chapter_set.all()
+    points = 0
+    for chapter in chapters:
+        exercises = chapter.exercise_page_set.all()
+        for exercise in exercises:
+            points += exercise.easy_points + exercise.medium_points + exercise.hard_points
+    return points
