@@ -85,6 +85,8 @@ def professorregister(request):
     return render(request, 'main/professorregister.html', context)
 
 def search(request):
+    user = request.user
+
     query = request.GET.get('q')
     if query is not None and query != '' and request.is_ajax():
         subjects = Subject.objects.filter(
@@ -93,7 +95,8 @@ def search(request):
 
         # you also can limit the maximum of `posts` here.
         # eg: posts[:50]
-        return render(request, 'main/search.html',{'subjects': subjects})
+        context = {'user': user, 'subjects':subjects}
+        return render(request, 'main/search.html',context)
     return render(request, 'main/search.html')
 
     return render(request, 'main/userregister.html', context)
