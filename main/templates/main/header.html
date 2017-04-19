@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'main/css/customize.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'my_subjects/css/customize.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'progress/css/customize.css' %}" type="text/css">
+    <link rel="shortcut icon" href="{% static 'adminpage/img/n_favicon.png' %}" type="image/x-icon" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,7 +39,7 @@
 
 </head>
 <!-- Layout til bakgrunnen til nettsiden -->
-<body class="body" style="background-color: #E5E4E2;">
+    <body class="body" style="background-color: #E5E4E2;">
 
 <div id="wrapper">
 
@@ -77,7 +78,7 @@
                             </ul>
                         </li>
                         <li style="margin-top: 8px">
-                          <input id="search-input"  type="text" class="form-control" placeholder="Search for subject..."/>
+                          <input id="search-input"  type="text" class="form-control" placeholder="Add subject ..."/>
                           <div id="main-results-search"></div>
                         </li>
 
@@ -88,17 +89,26 @@
                         <!-- logout filed -->
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
                         <li><a href="{% url 'progress:my_progress' %}"><span class="glyphicon glyphicon-list-alt"></span> Progress</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-cog"></span></a>
-                            <ul class="dropdown-menu">
-                                <!-- adds all the subjects to "My Subjects"-dropown -->
-
-                                {% block adminok %}{% endblock %}
-                                <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{% url 'main:login_user' %}">{{user}}</a></li>
+                        {% if not user.is_authenticated %}
+                            <li><a href="{% url 'main:login_user' %}">Login</a></li>
+                        {% elif user.is_staff is True %}
+                            <li><a href="{% url 'adminpage:admin_index' %}">Adminpage</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, Prof. {{user}}
+                                    <span class="glyphicon glyphicon-option-vertical" style="width:2px;height:2px"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
+                                </ul>
+                            </li>
+                        {% elif user.is_staff is False %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, {{user}}
+                                    <span class="glyphicon glyphicon-option-vertical" style="width:2px;height:2px"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
                     </ul>
 
 
@@ -108,12 +118,107 @@
 
             </div>
         </nav>
-            {% block content %}
-            {% for connection in exercise_connections %}
-                <h1> {{connection.subject}}     {{connection.points}}</h1>
-            {% endfor %}
-            {% endblock%}
-        <!-- Block extend-files will use: -->
+        {% block content %}
+            <div class="row" style="padding-top: 40px">
+              <div class="col-md-2"></div>
+              <div class="col-md-2"></div>
+              <div class="col-md-2"></div>
+              <div class="col-md-2"></div>
+              <div class="col-md-2"></div>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row" style="padding-top: 10px">
+              <div class="col-md-3"></div>
+              <div class="col-sm-6">
+                        <div class="embed-responsive embed-responsive-16by9" style="height: 360px">
+
+                             <!-- Plays youtube on the webpage and uses the youtube-id. allowsfuulscreen allows youtube to play in fullscreen -->
+                            <iframe style="border:10px solid #000; border-radius: 20px !important;" class="embed-responsive-item" src="http://www.youtube.com/embed/p60rN9JEapg?" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                        </div>
+                    </div>
+              <div class="col-md-1" style="margin-left: 40px">
+              </div>
+              <div class="col-md-2">
+              </div>
+            </div>
+
+            <div class="row" style="padding-top: 40px">
+              <div class="col-md-12" style="text-align: center; font-size: 40px;">
+              Some of our subjects:</div>
+            </div>
+            <div class="row" style="padding-top: 40px">
+              <div class="col-md-3"></div>
+              <div class="col-md-3">
+                <div class="panel panel-default" style="border-radius: 46px; height: 92px; background-color: #0094D0">
+                    <img src="{% static 'main/img/calculator.png'%}" style="width: 90px; height: 90px">
+                    Maths
+                    <div class="panel-body"></div>
+                </div>
+                <br>
+                <div class="panel panel-default" style="border-radius: 46px; height: 92px; background-color: #0094D0";>
+                    <img src="{% static 'main/img/graphs.png'%}" style="width: 90px; height: 90px">
+                    Statistics
+                    <div class="panel-body"></div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="panel panel-default" style="border-radius: 46px; height: 92px; background-color: #0094D0">
+                    <img src="{% static 'main/img/vessel.png'%}" style="width: 90px; height: 90px">
+                    Chemistry
+                    <div class="panel-body"></div>
+                </div>
+                <br>
+                <div class="panel panel-default" style="border-radius: 46px; height: 92px; background-color: #0094D0">
+                    <img src="{% static 'main/img/programming.png'%}" style="width: 90px; height: 90px">
+                    Programming
+                    <div class="panel-body"></div>
+                </div>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+            <div class="row" style="padding-top: 50px">
+                <div class="col-md-12" style="text-align: center; font-size: 40px" >
+                How to use NYSIL:
+                </div>
+            </div>
+            <div class="row" style="padding-top: 50px">
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <img src="{% static 'main/img/learn.png'%}" style="width:400px;height:150px;">
+              </div>
+              <div class="col-md-4">
+                Learn by Doing
+                <br>
+                Learn from watching short, and to the point, videos with upcoming relevant questions of different diffuculty in the subjects you follow. With support from expert educators and an enthusiastic community of learners, we garantuee you the most efficient learning.
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row" style="padding-top: 100px">
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                Build Your Portfolio
+              <br>
+              By adding the subjects to your list, you can easily access them. Bla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla
+              </div>
+              <div class="col-md-4">
+                <img src="{% static 'main/img/learn.png'%}" style="width:400px;height:150px;">
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row" style="padding-top: 100px">
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <img src="{% static 'main/img/learn.png'%}" style="width:400px;height:150px;">
+              </div>
+              <div class="col-md-4">
+                Achieve Your Goals
+                <br>
+                Answer as many of the questions to fill up your progress bar. Bla bla bla bla bla Bla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBla bla bla bla blaBl
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+        {% endblock%}
+                    <!-- Block extend-files will use: -->
 
 
         <div class="col-md-10 col-md-pull-1" id="sidebar_subjects">
