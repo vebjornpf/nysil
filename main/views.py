@@ -22,7 +22,7 @@ def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)
     context = {"form": form}
-    return render(request, 'main/header.html', context)
+    return HttpResponseRedirect(reverse('main:index'))
 
 
 def login_user(request):
