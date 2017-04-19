@@ -1,7 +1,7 @@
 <ul id="results-search">
   {% for subject in subjects %}
   <li>
-      <a href="{% url 'main:add_subject' subject_pk=subject.pk%}" style="margin-right:10px"><span class="glyphicon glyphicon-plus-sign">{{ subject.subject_code }}</span></a>
+      <a href="{% url 'main:add_subject' subject_pk=subject.pk%}" style="margin-right:10px"><span class="glyphicon glyphicon-plus-sign"></span>{{ subject.subject_code }}</a>
   </li>
   {% endfor %}
 </ul>
