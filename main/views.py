@@ -35,10 +35,10 @@ def login_user(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('main:index'))
             else:
-                return render(request, 'main/login.html', {'error_message': 'Your account has been disabled'})
+                return render(request, 'main/header.html', {'error_message': 'Your account has been disabled'})
         else:
-            return render(request, 'main/login.html', {'error_message': 'Invalid login'})
-    return render(request, 'main/login.html')
+            return render(request, 'main/header.html', {'error_message': 'Invalid login'})
+    return render(request, 'main/header.html')
 
 
 def userregister(request):
