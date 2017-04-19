@@ -1,5 +1,5 @@
 {% extends 'adminpage/subject_overview.html' %}
-
+{% load static %}
 {% block subjects %}
     {% for subject in subjects %}
         <div class="collapse navbar-collapse" id="id_subject_overview_menu">
@@ -28,7 +28,26 @@
 
 {% block extension%}
 
-    MÅ LEGGE TIL TING HER
+    <div class="col-md-10">
+        <div class="text-center">
+            <h2>Welcome to the Statistics Page</h2>
+            <br>
+            <h4>Here you can see different statistics for the various subjects</h4>
+            <br>
+            <h4>Check it out by clicking on one of the subjects in the sidebar</h4>
+            <br>
+        </div>
+
+        <div class="modal-body row">
+            <div class="col-md-6 text-center">
+                <img src="{% static 'stats/img/pic1.png'%}" style="width:80%; height:30vh">
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{% static 'stats/img/pic2.png'%}" style="width:80%; height:30vh">
+            </div>
+        </div>
+
+    </div>
 
 {% endblock %}
 

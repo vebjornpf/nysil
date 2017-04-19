@@ -1,9 +1,8 @@
 from django.test import TestCase, Client
 from stats import views
 from main.models import Subject, Chapter, Exercise_Page, StudentConnectSubject, StudentConnectExercise
-from django.contrib.auth.models import User, AnonymousUser
-from django.urls import reverse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+
 
 
 

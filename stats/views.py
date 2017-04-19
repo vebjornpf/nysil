@@ -71,7 +71,7 @@ def exercise_bargraph(request, subject_pk, exercise_pk):
 
     means = create_means(exercise)
 
-    context = {'subjects': Subject.objects.all(), 'means': means, 'subject': Subject.objects.get(pk=subject_pk)}
+    context = {'exercise':exercise, 'subjects': Subject.objects.all(), 'means': means, 'subject': Subject.objects.get(pk=subject_pk)}
     return render(request, 'stats/exercise_bargraph.html', context)
 
 def subject_pie_graph(request,subject_pk):

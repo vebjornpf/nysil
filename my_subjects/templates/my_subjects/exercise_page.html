@@ -1,5 +1,4 @@
 {% extends 'my_subjects/subject_header.html' %}
-
 {% block extension %}
     <!-- Page content -->
           <!-- Videoen på midten av siden, legg til siste del av youtube url der # er -->
@@ -11,10 +10,10 @@
             </div>
             <div style="width:100%">
                 <form method="POST" action=""> {% csrf_token %}
-                    <div style="float: left; width:200px">
+                    <div style="float: left; width:30%">
                         <br> <h6>Kommentar til oppgave: </h6>
                     </div>
-                    <div style="float: right; width:100px%">
+                    <div style="float: right; width:18%">
                         <br>
                         <input class="btn btn-xs btn-primary" type="submit" value="Send kommentar"/>
                     </div>
