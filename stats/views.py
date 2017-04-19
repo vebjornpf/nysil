@@ -160,7 +160,10 @@ def create_subject_graph_values(subject):
     super_counter = [0 for x in range(10)]
 
     for connection in connections:
-        percent = (connection.points / subject_max_points) * 100
+        if subject_max_points == 0:
+            percent = 0
+        else:
+            percent = (connection.points / subject_max_points) * 100
         if percent <= 10:
             super_counter[0] +=1
         elif 10 < percent <= 20:
