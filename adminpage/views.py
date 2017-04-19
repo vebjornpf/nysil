@@ -17,6 +17,7 @@ def admin_index(req):
         return HttpResponseRedirect(reverse('main:index'))
 
 def tilbakemeldinger(req):
+    user = req.user
     subjects = Subject.objects.all()
     context = {'subjects':subjects}
     if user.is_staff==True:
