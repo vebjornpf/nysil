@@ -4,7 +4,6 @@
     <list default="true" id="21ad64c3-8d75-4d40-99c1-e917cd7a34ac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/static/main/css/customize.css" afterPath="$PROJECT_DIR$/main/static/main/css/customize.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/templates/main/login.html" afterPath="$PROJECT_DIR$/main/templates/main/login.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/main/templates/main/login.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="8" column="205" lean-forward="false" selection-start-line="8" selection-start-column="205" selection-end-line="8" selection-end-column="205" />
+              <caret line="8" column="202" lean-forward="false" selection-start-line="8" selection-start-column="202" selection-end-line="8" selection-end-column="202" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -679,7 +678,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492593744249</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="bakgrunn">
+      <created>1492596213381</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1492596213381</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -735,7 +741,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="endring" />
     <MESSAGE value="nais" />
-    <option name="LAST_COMMIT_MESSAGE" value="nais" />
+    <MESSAGE value="bakgrunn" />
+    <option name="LAST_COMMIT_MESSAGE" value="bakgrunn" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1104,7 +1111,7 @@
     <entry file="file://$PROJECT_DIR$/main/templates/main/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="8" column="205" lean-forward="false" selection-start-line="8" selection-start-column="205" selection-end-line="8" selection-end-column="205" />
+          <caret line="8" column="202" lean-forward="false" selection-start-line="8" selection-start-column="202" selection-end-line="8" selection-end-column="202" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
