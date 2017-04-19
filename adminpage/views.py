@@ -8,12 +8,21 @@ from django.shortcuts import get_object_or_404
 
 
 def admin_index(req):
-    return render(req,'adminpage/admin_header.html')
+    user = req.user
+    context = {'user':user}
+    if user.is_staff==True:
+        return render(req, 'adminpage/admin_header.html', context)
+    else:
+        return HttpResponseRedirect(reverse('main:index'))
 
 def tilbakemeldinger(req):
+    user = req.user
     subjects = Subject.objects.all()
     context = {'subjects':subjects}
-    return render(req,'adminpage/tilbakemeldinger.html',context)
+    if user.is_staff==True:
+        return render(req, 'adminpage/tilbakemeldinger.html', context)
+    else:
+        return HttpResponseRedirect(reverse('main:index'))
 
 def subject_overview(req):
     subjects = Subject.objects.all()
