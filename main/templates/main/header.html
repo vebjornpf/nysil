@@ -77,18 +77,28 @@
                                 {% endfor %}
                             </ul>
                         </li>
+                        {% if not user.is_authenticated %}
+                            <li><a href="{% url 'main:login_user' %}">Please log in</a></li>
+                        {% else %}
                         <li style="margin-top: 8px">
-                          <input id="search-input"  type="text" class="form-control" placeholder="Add subject ..."/>
-                          <div id="main-results-search"></div>
+
+                            <input id="search-input"  type="text" class="form-control" placeholder="Add subject ..."/>
+                            <div id="main-results-search"></div>
+
                         </li>
+                        {% endif %}
 
                     </ul>
 
                     <!-- Knapp for innloggin, tar deg til innloggings app url -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- logout filed -->
+
+                        {% if not user.is_authenticated %}
+                        {% else %}
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
                         <li><a href="{% url 'progress:my_progress' %}"><span class="glyphicon glyphicon-list-alt"></span> Progress</a></li>
+                        {% endif %}
                         {% if not user.is_authenticated %}
                             <li><a href="{% url 'main:login_user' %}">Login</a></li>
                         {% elif user.is_staff is True %}
