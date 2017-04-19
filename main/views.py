@@ -16,14 +16,7 @@ from django.db.models import Q
 # view for the header, which gonna be the same everywhere in the web page
 def index(req):
     user = req.user
-    if not user.is_authenticated():
-        return render(req, 'main/header.html')
-    exercise_connections = StudentConnectSubject.objects.filter(user=user)
-    subjects = Subject.objects.all()
-    if user.is_staff == True:
-        return render(req, 'main/logged_in_admin.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
-    elif user.is_staff == False:
-        return render(req, 'main/logged_in_user.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
+    return render(req,'main/header.html')
 
 def logout_user(request):
     logout(request)

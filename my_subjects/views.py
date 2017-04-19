@@ -15,7 +15,7 @@ def subject_view(req, subject_pk):
     subject = get_object_or_404(Subject, pk=subject_pk) # the subject that was chosen
     # need a reference to subjects so they show up in the "Mine Fag"-dropdown menu
     subjects = Subject.objects.all()
-    if user.is_staff == True:
+    if user.is_authenticated() == True:
         return render(req, 'my_subjects/subject_header.html',{'subject_list': subjects,'subject':subject, 'user': user})
 
 

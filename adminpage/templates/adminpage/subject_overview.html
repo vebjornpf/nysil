@@ -12,7 +12,7 @@
               {% block subjects %}
                 {% for subject in subjects %}
                 <div class="collapse navbar-collapse" id="id_subject_overview_menu">
-                    <ul class="nav navbar-nav navbar-left" style="width:120px">
+                    <ul class="nav navbar-nav navbar-left" style="width:86%">
                       <li style="float:left">
                           <a href="{% url 'adminpage:chapter_overview' subject_pk=subject.pk %}" style="color:#337AB7;width:150px">
                               {{ subject }}
@@ -20,7 +20,7 @@
 
                       </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right" id="id_nav_drop" style="width:-10px">
+                    <ul class="nav navbar-nav navbar-right" id="id_nav_drop" style="width:23%">
                         <li class="dropdown">
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="id_menu_field" >
                                 <span id="id_menu_dots" class="glyphicon glyphicon-option-vertical" style="color:#337AB7"></span>

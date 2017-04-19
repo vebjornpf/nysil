@@ -8,6 +8,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'adminpage/css/customize.css' %}" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'adminpage/img/n_favicon.png' %}" type="image/x-icon" />
 
 
 	<!-- Latest compiled and minified CSS --><!-- Latest compiled and minified CSS -->
@@ -66,7 +67,7 @@
                         <!--Ender slik at det ikke er dropdown og tar oss in på side med oversikt over fag-->
                         <!-- Dropdown meny for mine fag i navbaren -->
                         <li><a href="{% url 'adminpage:subject_overview' %}">Subjects</a></li>
-                        <li><a href="{% url 'adminpage:tilbakemeldinger' %}">Tilbakemeldinger</a></li>
+                        <li><a href="{% url 'adminpage:tilbakemeldinger' %}">Feedback</a></li>
                         <li><a href="{% url 'stats:statistics_index'%}">Statistics</a></li>
 
                     </ul>
@@ -79,8 +80,8 @@
                         <li class="dropdown">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-right: 15px">
-                                    {{user}}
-                                    <span class="glyphicon glyphicon-menu-down" style="width:2px;height:2px"></span></a>
+                                    Welcome, Prof. {{user}}
+                                    <span class="glyphicon glyphicon-option-vertical" style="width:2px;height:2px"></span></a>
                                 <ul class="dropdown-menu">
                                     <!-- adds all the subjects to "My Subjects"-dropown -->
                                     <li><a href="{% url 'main:logout_user' %}">Logout</a></li>

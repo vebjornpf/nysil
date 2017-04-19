@@ -1,7 +1,7 @@
 {% extends 'adminpage/subject_overview.html' %}
 
 {% block extension %}
-    <div class="col-md-10">
+    <div class="col-md-10 container-fluid">
         <form method='POST'> {% csrf_token %}
                 <div style="">
                     <div style="float: left; width:70%">
@@ -23,20 +23,20 @@
                         {{ form.youtube_id }}
                     </div>
                     <br><br><br>
-                    <h5>Lett Oppgave: </h5>
+                    <h5>Easy task: </h5>
 
 
-                    <label for="{{ form.easy_question.id_for_label }}">Spørsmål:</label>
+                    <label for="{{ form.easy_question.id_for_label }}">Question:</label>
                     <div class="fieldWrapper">
                         {{ form.easy_question }}
                     </div>
 
-                    <label for="{{ form.easy_answer.id_for_label }}">Svar:</label>
+                    <label for="{{ form.easy_answer.id_for_label }}">Answer: </label>
                     <div class="fieldWrapper">
                         {{ form.easy_answer }}
                     </div>
 
-                    <label for="{{ form.easy_points.id_for_label }}">Poeng:</label>
+                    <label for="{{ form.easy_points.id_for_label }}">Points:</label>
                     <div class="fieldWrapper">
                         {{ form.easy_points }}
                     </div>
@@ -45,25 +45,25 @@
 
                 <div class="col-md-4">
                     <br>
-                    <label for="{{ form.headline.id_for_label }}">Overskrift:</label>
+                    <label for="{{ form.headline.id_for_label }}">Title:</label>
                     <div class="fieldWrapper">
                         {{ form.headline }}
                     </div>
                     <br><br><br>
-                    <h5>Middels Oppgave: </h5>
+                    <h5>Medium task: </h5>
 
 
-                    <label for="{{ form.medium_question.id_for_label }}">Spørsmål:</label>
+                    <label for="{{ form.medium_question.id_for_label }}">Question:</label>
                     <div class="fieldWrapper">
                         {{ form.medium_question }}
                     </div>
 
-                    <label for="{{ form.medium_answer.id_for_label }}">Svar:</label>
+                    <label for="{{ form.medium_answer.id_for_label }}">Answer:</label>
                     <div class="fieldWrapper">
                         {{ form.medium_answer }}
                     </div>
 
-                    <label for="{{ form.medium_points.id_for_label }}">Poeng:</label>
+                    <label for="{{ form.medium_points.id_for_label }}">Points:</label>
                     <div class="fieldWrapper">
                         {{ form.medium_points }}
                     </div>
@@ -72,23 +72,23 @@
 
                 <div class="col-md-4">
                     <br>
-                    <label  for="{{ form.explanation.id_for_label }}">Forklaring:</label>
+                    <label  for="{{ form.explanation.id_for_label }}">Explanation:</label>
                     <div class="fieldWrapper">
                         {{ form.explanation }}
                     </div>
-                    <h5>Vanskelig Oppgave: </h5>
+                    <h5>Difficult task: </h5>
 
-                    <label for="{{ form.hard_question.id_for_label }}">Spørsmål:</label>
+                    <label for="{{ form.hard_question.id_for_label }}">Question:</label>
                     <div class="fieldWrapper">
                         {{ form.hard_question }}
                     </div>
 
-                    <label for="{{ form.hard_answer.id_for_label }}">Svar:</label>
+                    <label for="{{ form.hard_answer.id_for_label }}">Answer:</label>
                     <div class="fieldWrapper">
                         {{ form.hard_answer }}
                     </div>
 
-                    <label for="{{ form.hard_points.id_for_label }}">Poeng:</label>
+                    <label for="{{ form.hard_points.id_for_label }}">Points:</label>
                     <div class="fieldWrapper">
                         {{ form.hard_points }}
                     </div>
