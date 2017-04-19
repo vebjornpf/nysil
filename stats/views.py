@@ -1,6 +1,4 @@
 
-
-
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -10,12 +8,15 @@ from main.models import Subject, StudentConnectSubject, Exercise_Page, StudentCo
 
 def statistics_index(request):
     if not user_authenticated(request.user):
-        return render(request, 'main/login.html')
+        return HttpResponseRedirect(reverse('main:index'))
 
     context = {'subjects': Subject.objects.all()}
     return render(request, 'stats/statistics_index.html',context)
 
 def statistics_subject(request, subject_pk):
+    if not user_authenticated(request.user):
+        return HttpResponseRedirect(reverse('main:index'))
+
     context = {'subjects': Subject.objects.all(), 'subject': Subject.objects.get(pk=subject_pk)}
 
     return render(request, 'stats/statistics_subject.html', context)
@@ -28,6 +29,9 @@ def subject_overview(request, subject_pk):
 
 
 def subject_highscore(request, subject_pk):
+    if not user_authenticated(request.user):
+        return HttpResponseRedirect(reverse('main:index'))
+
     subject = Subject.objects.get(pk=subject_pk)
 
     # highscore_info on the form [[rank,connection].....[rank,connection]]
@@ -38,6 +42,9 @@ def subject_highscore(request, subject_pk):
     return render(request, "stats/subject_highscore.html", context)
 
 def subject_chapters(request, subject_pk):
+    if not user_authenticated(request.user):
+        return HttpResponseRedirect(reverse('main:index'))
+
     subject = Subject.objects.get(pk=subject_pk)
 
     context = {'subjects': Subject.objects.all(), 'subject': subject}
@@ -46,6 +53,9 @@ def subject_chapters(request, subject_pk):
 
 
 def subject_exercise(request, subject_pk):
+    if not user_authenticated(request.user):
+        return HttpResponseRedirect(reverse('main:index'))
+
     subject = Subject.objects.get(pk=subject_pk)
 
     context = {'subjects': Subject.objects.all(), 'subject': subject}
@@ -55,6 +65,9 @@ def subject_exercise(request, subject_pk):
     return render(request, 'stats/subject_exercise.html', context)
 
 def chapter_plot(request, subject_pk, chapter_pk):
+    if not user_authenticated(request.user):
+        return HttpResponseRedirect(reverse('main:index'))
+
     subject = Subject.objects.get(pk=subject_pk)
     chapter = Chapter.objects.get(pk=chapter_pk)
     info = create_chapter_graph(chapter)
@@ -65,6 +78,8 @@ def chapter_plot(request, subject_pk, chapter_pk):
 
 
 def exercise_bargraph(request, subject_pk, exercise_pk):
+    if not user_authenticated(request.user):
+        return HttpResponseRedirect(reverse('main:index'))
 
     exercise = Exercise_Page.objects.get(pk=exercise_pk)
 
@@ -75,6 +90,9 @@ def exercise_bargraph(request, subject_pk, exercise_pk):
     return render(request, 'stats/exercise_bargraph.html', context)
 
 def subject_pie_graph(request,subject_pk):
+    if not user_authenticated(request.user):
+        return HttpResponseRedirect(reverse('main:index'))
+
     subject = Subject.objects.get(pk=subject_pk)
     graph_values = create_subject_graph_values(subject)
 
