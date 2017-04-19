@@ -31,6 +31,7 @@ class TestMySubjectsView(TestCase):
 
     # test that the subject-view gives the correct status_code
     def test_subject_view(self):
+        self.client.login(username='Hans', password='123zxc')
         url = '/my_subjects/TDT4100/'
         response = self.client.get(url)
 

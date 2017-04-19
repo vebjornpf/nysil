@@ -86,7 +86,9 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 answer = form.cleaned_data['ditt_svar']
                 context['answer'] = answer
                 answerlist = answer.split(' ')
-                if (exercise.easy_answer in answerlist):
+                easy_answer_list = exercise.easy_answer.split(' ')
+
+                if set(easy_answer_list).issubset(set(answerlist)):
                     if connection.completed_easy == False:
                         info += "You answered correct, and " + str(exercise.easy_points) + " were added to your score"
                         info += " in the subject " + str(subject)
@@ -110,7 +112,9 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 answer = form.cleaned_data['ditt_svar']
                 context['answer'] = answer
                 answerlist = answer.split(' ')
-                if (exercise.medium_answer in answerlist):
+                medium_answer_list = exercise.easy_answer.split(' ')
+
+                if set(medium_answer_list).issubset(set(answerlist)):
                     if connection.completed_medium == False:
                         info += "You answered correct, and " + str(exercise.medium_points) + " were added to your score"
                         info += " in the subject " + str(subject)
@@ -134,7 +138,9 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 answer = form.cleaned_data['ditt_svar']
                 context['answer'] = answer
                 answerlist = answer.split(' ')
-                if (exercise.hard_answer in answerlist):
+                hard_answer_list = exercise.easy_answer.split(' ')
+
+                if set(hard_answer_list).issubset(set(answerlist)):
                     if connection.completed_hard == False:
                         info += "You answered correct, and " + str(exercise.hard_points) + " were added to your score"
                         info += " in the subject " + str(subject)
