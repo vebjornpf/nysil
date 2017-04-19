@@ -8,6 +8,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'adminpage/css/customize.css' %}" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'adminpage/img/n_favicon.png' %}" type="image/x-icon" />
 
 
 	<!-- Latest compiled and minified CSS --><!-- Latest compiled and minified CSS -->
@@ -35,34 +36,19 @@
 
 
     <link rel="stylesheet" href="{% static 'main/css/header.css'%}" type = "text/css"/>
-   {% block head_extend %}
-   {% endblock %}
-
-
-
+    {% block head_extend %}
+    {% endblock %}
 </head>
 <!-- Layout til bakgrunnen til nettsiden -->
 <body class="body" style="background-color: #E5E4E2;">
 
 <div id="wrapper">
-    <div class="container-fluid" style="min-height:95%">
-        <div class="row">
-            <div class="col-sm-1">
-            <!-- Interaktiv Logo, tar deg til hjemmesiden -->
-            <div class="col-sm-3">
-                <br>
-                <center>
-                    <a href="{%url 'main:index' %}">
-                         <img src="{% static 'main/img/Logo.jpg'%}"  class="responsive-img" style='max-height: 60px;' alt="Responsive image">
-                    </a>
-                </center>
-            </div>
-        </div>
-    </div>
 
         <!-- Navbar på toppen -->
         <br>
-        <nav class="navbar navbar-inverse">
+        <br>
+        <br>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
 
                 <!-- Mobilvennelig, gjør om navbar til dropdown knapp når skjermen blir for liten
@@ -73,7 +59,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
 				    </button>
-                    <a href="{%url 'main:index' %}" class="navbar-brand" ><span class="glyphicon glyphicon-home"></span> </a>
+                    <a href="{% url 'main:index' %}" class="navbar-brand"><img src="{% static 'main/img/ny_logo.png'%}" style="width:100px;height:27px;margin-top:-4px;margin-left:-3px"></a>
                 </div>
 
                 <!-- Navbar items, samarbeider med collapse over gjennom id (data-target) -->
@@ -82,7 +68,7 @@
                         <!--Ender slik at det ikke er dropdown og tar oss in på side med oversikt over fag-->
                         <!-- Dropdown meny for mine fag i navbaren -->
                         <li><a href="{% url 'adminpage:subject_overview' %}">Subjects</a></li>
-                        <li><a href="{% url 'adminpage:tilbakemeldinger' %}">Tilbakemeldinger</a></li>
+                        <li><a href="{% url 'adminpage:tilbakemeldinger' %}">Feedback</a></li>
                         <li><a href="{% url 'stats:statistics_index'%}">Statistics</a></li>
 
                     </ul>
@@ -93,15 +79,18 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Kontakt & Hjelp</a></li>
                         <li class="dropdown">
-                            <li><a href="#">
-                                <span class="glyphicon glyphicon-cog">  </span>
-                            </a></li>
-                            <li><a href="#">vebs</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-right: 15px">
+                                    Welcome, Prof. {{user}}
+                                    <span class="glyphicon glyphicon-option-vertical" style="width:2px;height:2px"></span></a>
+                                <ul class="dropdown-menu">
+                                    <!-- adds all the subjects to "My Subjects"-dropown -->
+                                    <li><a href="{% url 'main:logout_user' %}">Logout</a></li>
+                                </ul>
+                            </li>
 				        </li>
                     </ul>
-                    <form method='GET' action='' class="navbar-form navbar-right">
-                        <input type="text" name="/my_subjects/q" class="form-control" placeholder="Search for subjects..." value="{{request.GET.q}}">
-                    </form>
+
 
                 </div>
             </div>
@@ -117,15 +106,7 @@
 
 <!-- Footer med linker til ulike sider, og også en kontakt & hjelp side -->
 <footer id="footer">
-    <div class="navbar navbar-fixed-bottom" style='margin-left:600px'>
-        <p>
-            <a href="https://www.facebook.com">Facebook</a> |
-            <a href="https://www.twitter.com">Twitter</a> |
-            <a href="https://www.instabart.no">Instabart</a> |
-            <a href="#">Kontakt oss</a> |
-            <a href="#">Hjelp</a>
-        </p>
-    </div>
+
 </footer>
 
 </body>

@@ -9,13 +9,14 @@ from .forms import EasyAnswer, MediumAnswer, HardAnswer, CommentForm
 # this view is the "header" for the subject-pages
 # its the same as main/header.html but has a sidebare too
 
-
+@login_required
 def subject_view(req, subject_pk):
     user = req.user
     subject = get_object_or_404(Subject, pk=subject_pk) # the subject that was chosen
     # need a reference to subjects so they show up in the "Mine Fag"-dropdown menu
     subjects = Subject.objects.all()
-    return render(req, 'my_subjects/subject_header.html',{'subject_list': subjects,'subject':subject, 'user': user})
+    if user.is_authenticated() == True:
+        return render(req, 'my_subjects/subject_header.html',{'subject_list': subjects,'subject':subject, 'user': user})
 
 
 # this view shows alle det exercise_pages that have been added to a specific chapter
@@ -29,7 +30,7 @@ def all_exercises_view(req,chapter_pk, subject_pk):
     connections = []
     for exercise in exercises:
         connections.append(StudentConnectExercise.objects.get(user=user,exercise=exercise))
-
+        print(StudentConnectExercise.objects.get(user=user,exercise=exercise).exercise.headline)
     return render(req, 'my_subjects/chapter_page.html', {'subject_list': subjects,'chapter':chapter,
                                                          'subject':subject, 'connections': connections})
 
@@ -84,10 +85,11 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 context['form'] = form
                 answer = form.cleaned_data['ditt_svar']
                 context['answer'] = answer
-                if (answer == exercise.easy_answer):
+                answerlist = answer.split(' ')
+                if (exercise.easy_answer in answerlist):
                     if connection.completed_easy == False:
                         info += "You answered correct, and " + str(exercise.easy_points) + " were added to your score"
-                        info += " in the subject" + str(subject)
+                        info += " in the subject " + str(subject)
                         # do some logic for checking the easy answer
                         subject_connection.points += exercise.easy_points
                         subject_connection.save()
@@ -102,15 +104,16 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
         elif 'medium' in request.POST:
             form = MediumAnswer(request.POST or None)
             if form.is_valid():
-                question = exercise.easy_question
+                question = exercise.medium_question
                 context['question'] = question
                 context['form'] = form
                 answer = form.cleaned_data['ditt_svar']
                 context['answer'] = answer
-                if (answer == exercise.medium_answer):
+                answerlist = answer.split(' ')
+                if (exercise.medium_answer in answerlist):
                     if connection.completed_medium == False:
                         info += "You answered correct, and " + str(exercise.medium_points) + " were added to your score"
-                        info += " in the subject" + str(subject)
+                        info += " in the subject " + str(subject)
                         # do some more logic
                         subject_connection.points += exercise.medium_points
                         subject_connection.save()
@@ -125,15 +128,16 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
         elif 'hard' in request.POST:
             form = HardAnswer(request.POST or None)
             if form.is_valid():
-                question = exercise.easy_question
+                question = exercise.hard_question
                 context['question'] = question
                 context['form'] = form
                 answer = form.cleaned_data['ditt_svar']
                 context['answer'] = answer
-                if (answer == exercise.hard_answer):
+                answerlist = answer.split(' ')
+                if (exercise.hard_answer in answerlist):
                     if connection.completed_hard == False:
                         info += "You answered correct, and " + str(exercise.hard_points) + " were added to your score"
-                        info += " in the subject" + str(subject)
+                        info += " in the subject " + str(subject)
                         # do some more logic
                         subject_connection.points += exercise.hard_points
                         subject_connection.save()
