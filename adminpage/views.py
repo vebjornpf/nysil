@@ -11,12 +11,18 @@ from django.contrib.auth.models import User
 def admin_index(req):
     user = req.user
     context = {'user':user}
-    return render(req,'adminpage/admin_header.html',context)
+    if user.is_staff==True:
+        return render(req, 'adminpage/admin_header.html', context)
+    else:
+        return HttpResponseRedirect(reverse('main:index'))
 
 def tilbakemeldinger(req):
     subjects = Subject.objects.all()
     context = {'subjects':subjects}
-    return render(req,'adminpage/tilbakemeldinger.html',context)
+    if user.is_staff==True:
+        return render(req, 'adminpage/tilbakemeldinger.html', context)
+    else:
+        return HttpResponseRedirect(reverse('main:index'))
 
 def subject_overview(req):
     subjects = Subject.objects.all()
