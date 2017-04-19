@@ -4,11 +4,14 @@ from .forms import SubjectForm, ChapterForm, ExerciseForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 
 
 
 def admin_index(req):
-    return render(req,'adminpage/admin_header.html')
+    user = req.user
+    context = {'user':user}
+    return render(req,'adminpage/admin_header.html',context)
 
 def tilbakemeldinger(req):
     subjects = Subject.objects.all()

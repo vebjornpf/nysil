@@ -16,18 +16,13 @@ from django.db.models import Q
 # view for the header, which gonna be the same everywhere in the web page
 def index(req):
     user = req.user
-    exercise_connections = StudentConnectSubject.objects.filter(user=user)
-    subjects = Subject.objects.all()
-    if user.is_staff == True:
-        return render(req, 'main/frontpage.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
-    else:
-        return render(req, 'main/frontpage.html',{'subject_list': subjects, 'exercise_connections': exercise_connections})
+    return render(req,'main/header.html')
 
 def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)
     context = {"form": form}
-    return render(request, 'main/login.html', context)
+    return HttpResponseRedirect(reverse('main:index'))
 
 
 def login_user(request):
@@ -106,4 +101,4 @@ def search(request):
 def add_subject(request, subject_pk):
     user = request.user
     user.userprofile.add_subject(subject_pk)
-    return HttpResponseRedirect(reverse('main:index'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
