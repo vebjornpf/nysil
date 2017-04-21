@@ -99,6 +99,31 @@
 
     <!-- Block extend-files will use: -->
     {% block content %}
+        <div class="container-fluid" style="text-align: center;">
+            <div class="row">
+
+                <h2>Welcome to the Adminpage</h2>
+                <br>
+                <div>As a NYSIL-professor, you have the possibility to create subjects. When you have created <br>
+                the subject, you can add the subject's chapters. Under each chapter, there can be several videos <br>
+                with following tasks. <br><br>
+                When students finishes the videos and the tasks, you can reed their feedback and look at the <br>
+                statistics to possibly improve your content. <br>
+            </div>
+        </div>
+
+
+
+            </div>
+
+                <div class="row" style="text-align: center; margin-top: 30px">
+                    <button onclick="window.location.href='subjects';" style="padding: 50px 84px 50px 84px; background: #0080FF; border-radius: 4px; font-size: 18px; color: white" type="submit" class="btn btn">Subjects</button>
+
+                    <button onclick="window.location.href='tilbakemeldinger';" style="padding: 50px 84px 50px 84px; background: #0080FF; border-radius: 4px; font-size: 18px; color: white" type="submit" class="btn btn">Feedback</button>
+
+                    <button onclick="window.location.href='statistics';" style="padding: 50px 84px 50px 84px; background: #0080FF; border-radius: 4px; font-size: 18px; color: white" type="submit" class="btn btn">Statistics</button>
+                </div>
+            </div>
     {% endblock%}
 
 
