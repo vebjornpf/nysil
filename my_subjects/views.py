@@ -90,7 +90,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
 
                 if set(easy_answer_list).issubset(set(answerlist)):
                     if connection.completed_easy == False:
-                        info += "You answered correct, and " + str(exercise.easy_points) + " were added to your score"
+                        info += "You answered correct, and " + str(exercise.easy_points) + " points were added to your score"
                         info += " in the subject " + str(subject)
                         # do some logic for checking the easy answer
                         subject_connection.points += exercise.easy_points
@@ -112,11 +112,11 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 answer = form.cleaned_data['ditt_svar']
                 context['answer'] = answer
                 answerlist = answer.split(' ')
-                medium_answer_list = exercise.easy_answer.split(' ')
+                medium_answer_list = exercise.medium_answer.split(' ')
 
                 if set(medium_answer_list).issubset(set(answerlist)):
                     if connection.completed_medium == False:
-                        info += "You answered correct, and " + str(exercise.medium_points) + " were added to your score"
+                        info += "You answered correct, and " + str(exercise.medium_points) + " points were added to your score"
                         info += " in the subject " + str(subject)
                         # do some more logic
                         subject_connection.points += exercise.medium_points
@@ -138,11 +138,11 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 answer = form.cleaned_data['ditt_svar']
                 context['answer'] = answer
                 answerlist = answer.split(' ')
-                hard_answer_list = exercise.easy_answer.split(' ')
+                hard_answer_list = exercise.hard_answer.split(' ')
 
                 if set(hard_answer_list).issubset(set(answerlist)):
                     if connection.completed_hard == False:
-                        info += "You answered correct, and " + str(exercise.hard_points) + " were added to your score"
+                        info += "You answered correct, and " + str(exercise.hard_points) + " points were added to your score"
                         info += " in the subject " + str(subject)
                         # do some more logic
                         subject_connection.points += exercise.hard_points

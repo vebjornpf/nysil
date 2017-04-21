@@ -11,11 +11,11 @@
             <div style="width:100%">
                 <form method="POST" action=""> {% csrf_token %}
                     <div style="float: left; width:30%">
-                        <br> <h6>Kommentar til oppgave: </h6>
+                        <br> <h6>Comments: </h6>
                     </div>
                     <div style="float: right; width:18%">
                         <br>
-                        <input class="btn btn-xs btn-primary" type="submit" value="Send kommentar"/>
+                        <input class="btn btn-xs btn-primary" type="submit" value="Submit comment"/>
                     </div>
                     {{ comment_form.text }}
                 </form>
@@ -26,7 +26,7 @@
         <!-- Oppgave buttons, med popup for hver enkelt -->
         <div class="col-md-4">
 
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LettOppgave" id="easyTask">Se lett oppgave</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LettOppgave" id="easyTask">Easy exercise</button>
             <!-- shows if you have answered correct to easy_question before -->
             {{ info_easy }}
             <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
@@ -36,7 +36,7 @@
 
                             <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times</button>
-                            <h4 class="modal-title">Lett Oppgave</h4>
+                            <h4 class="modal-title">Easy exercise</h4>
                         </div>
                             <div class="modal-body">
                                 <div class="form group">
@@ -45,7 +45,7 @@
                                 {{ form.as_p }}
                                 </div>
                             <div class="modal-footer">
-                            <button class="btn btn-primary btn-block" name="easy" type="submit">Sjekk Svar</button>
+                            <button class="btn btn-primary btn-block" name="easy" type="submit">Check answer</button>
                             </div>
 
                         </div>
@@ -58,7 +58,7 @@
         <div class="col-md-4">
             <br>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MiddelsOppgave">Se middels oppgave</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MiddelsOppgave">Medium exercise</button>
             <!-- shows if you have answered correct to medium_question before -->
             {{ info_medium }}
             <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
@@ -68,7 +68,7 @@
 
                             <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times</button>
-                            <h4 class="modal-title">Middels Oppgave</h4>
+                            <h4 class="modal-title">Medium exercise</h4>
                         </div>
 
                             <div class="modal-body">
@@ -79,7 +79,7 @@
                             </div>
 
                             <div class="modal-footer">
-                            <button class="btn btn-primary btn-block" name="medium">Sjekk Svar</button>
+                            <button class="btn btn-primary btn-block" name="medium">Check answer</button>
                         </div>
 
                         </div>
@@ -95,7 +95,7 @@
         <div class="col-md-4">
             <br>
 
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#VanskeligOppgave">Se vanskelig oppgave</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#VanskeligOppgave">Hard exercise</button>
             <!-- shows if you have answered correct to hard_question before -->
             {{ info_hard }}
             <form role="form" method="POST"> {% csrf_token %} <!-- says that the page is safe-->
@@ -105,7 +105,7 @@
 
                             <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times</button>
-                            <h4 class="modal-title">Vanskelig Oppgave</h4>
+                            <h4 class="modal-title">Hard exercise</h4>
                         </div>
 
                             <div class="modal-body">
@@ -115,7 +115,7 @@
                                 {{ form.as_p }}
                             </div>
                             <div class="modal-footer">
-                            <button class="btn btn-primary btn-block" name="hard">Sjekk Svar</button>
+                            <button class="btn btn-primary btn-block" name="hard">Check answer</button>
                         </div>
 
                         </div>

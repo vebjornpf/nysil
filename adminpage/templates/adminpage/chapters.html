@@ -5,7 +5,7 @@
 <div class="col-md-10">
     <div style ="width:90%">
         <div style="float: left; width: 50%">
-            <h3> Kapitteloversikt for {{ subject }} </h3>
+            <h3> Chapter overview for {{ subject }} </h3>
         </div>
 
         <div style="float: right; width: 0%">
@@ -14,7 +14,7 @@
             {% block chapter %}
                 <!-- Button that will send you to add_chapter-template -->
                 <div id="add_chapter">
-                    <a class="btn btn-large btn-success" href="{% url 'adminpage:new_chapter' subject_pk=subject.pk %}">Nytt kapittel</a>
+                    <a class="btn btn-large btn-success" href="{% url 'adminpage:new_chapter' subject_pk=subject.pk %}">New chapter</a>
                 </div>
             {% endblock %}
         </div>
@@ -24,9 +24,9 @@
         <!-- headlines to the columns in the table -->
         <thead>
             <tr>
-                <th>Kapittel</th>
-                <th>Navn</th>
-                <th> Feedback </th>
+                <th>Chapter</th>
+                <th>Name</th>
+                <th>Feedback</th>
             </tr>
         </thead>
 

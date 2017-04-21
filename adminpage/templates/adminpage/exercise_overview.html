@@ -5,7 +5,7 @@
     <div class="col-md-12">
     <div style ="width:90%">
         <div style="float: left; width: 60%">
-            <h4>{{ subject }} <span class="glyphicon glyphicon-arrow-right"></span> {{ chapter }} <span class="glyphicon glyphicon-arrow-right"></span> Oppgaver </h4>
+            <h4>{{ subject }} <span class="glyphicon glyphicon-arrow-right"></span> {{ chapter }} <span class="glyphicon glyphicon-arrow-right"></span> Exercises </h4>
             <br>
         </div>
 
@@ -15,7 +15,7 @@
             {% block add_button %}
                 <!-- Button that will send you to new_exercise-template -->
                 <div id="add_exercise">
-                    <a class="btn btn-large btn-success" href=" {% url 'adminpage:new_exercise' subject_pk=subject.pk chapter_pk=chapter.pk %}">Ny Oppgave</a>
+                    <a class="btn btn-large btn-success" href=" {% url 'adminpage:new_exercise' subject_pk=subject.pk chapter_pk=chapter.pk %}">New exercise</a>
                 </div>
             {% endblock %}
         </div>
@@ -29,10 +29,10 @@
     <table class="table table-striped">
         <thead>
             <tr style="background-color:#303030; color:white">
-                <th>Overskrift</th>
-                <th>Forklaring</th>
-                <th>ENDRE</th>
-                <th>SLETT</th>
+                <th>Title</th>
+                <th>Explanation</th>
+                <th>CHANGE</th>
+                <th>DELETE</th>
             </tr>
         </thead>
 
@@ -41,8 +41,8 @@
             <tr>
                 <th> {{ exercise.headline }}</th>
                 <td> {{ exercise.explanation }}</td>
-                <td><div><a class="btn btn-xs btn-info" href="{% url 'adminpage:change_exercise' subject_pk=subject.pk chapter_pk=chapter.pk exercise_pk=exercise.pk %}">ENDRE</a></div></td> <!-- TODO: add chapter-change functionality -->
-                <td><div><a class="btn btn-xs btn-danger" href=" {% url 'adminpage:delete_exercise' subject_pk=subject.pk chapter_pk=chapter.pk exercise_pk=exercise.pk %} ">SLETT</a></div></td> <!-- TODO: add chapter-delete functionality -->
+                <td><div><a class="btn btn-xs btn-info" href="{% url 'adminpage:change_exercise' subject_pk=subject.pk chapter_pk=chapter.pk exercise_pk=exercise.pk %}">CHANGE</a></div></td> <!-- TODO: add chapter-change functionality -->
+                <td><div><a class="btn btn-xs btn-danger" href=" {% url 'adminpage:delete_exercise' subject_pk=subject.pk chapter_pk=chapter.pk exercise_pk=exercise.pk %} ">DELETE</a></div></td> <!-- TODO: add chapter-delete functionality -->
 
 
 
