@@ -93,13 +93,9 @@ class TestAdminpageIndex(TestCase):
     def test_user_not_authenticated(self):
         url = '/adminpage/statistics/'
         response = self.client.get(url)
-        body = response.content.decode('UTF-8')
-
-        # check that we get the correct template when a user is not logged in
-        self.assertIn("Please sign in", body)
-
-        # check that the status-code is correct
-        self.assertEqual(response.status_code, 200)
+        
+        # check that the status-code is correct (redirect_code, which is 302)
+        self.assertEqual(response.status_code, 302)
 
     def test_user_authenticated(self):
         user = User.objects.create_user('Hans', 'hans@test.no', '123zxc')
