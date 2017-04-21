@@ -47,7 +47,9 @@ def userregister(request):
         user = form.save(commit=False)
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
-        
+        confirm = request.POST['confirm']
+        if confirm != password:
+            return render(request, 'main/register.html',{'form': form, 'error_message': 'Password not equal'}, )
         user.set_password(password)
         user.save()
         user = authenticate(username=username, password=password)
@@ -55,6 +57,7 @@ def userregister(request):
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse('main:index'))
+
     context = {
         "form": form,
     }
@@ -68,6 +71,9 @@ def professorregister(request):
         user = form.save(commit=False)
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
+        confirm = request.POST['confirm']
+        if confirm != password:
+            return render(request, 'main/professorregister.html', {'form': form, 'error_message': 'Password not equal'}, )
         key = request.POST['key']
         if key != 'abc12345':
             return render(request, 'main/professorregister.html', {'form':form, 'error_message': 'Invalid activation key'},)
