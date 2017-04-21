@@ -96,7 +96,8 @@ def search(request):
     query = request.GET.get('q')
     if query is not None and query != '' and request.is_ajax():
         subjects = Subject.objects.filter(
-            Q(subject_code__icontains=query)
+            Q(subject_name__icontains=query)|Q(subject_code__icontains=query    )
+
         )
 
         # you also can limit the maximum of `posts` here.
