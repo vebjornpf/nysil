@@ -1,4 +1,5 @@
 {% extends 'adminpage/admin_header.html' %}
+{% load staticfiles %}
 
 {% block content %}
     <div class="container-fluid">
@@ -7,7 +8,7 @@
           <ul class="nav nav-sidebar navbar-inverse">
               <!-- This li takes us back to the subject_overvieq -->
               <li ><a href="{% url 'adminpage:subject_overview' %}"><h3>Fagoversikt</h3><span class="sr-only">(current)</span></a></li>
-              <li><a href="{% url 'adminpage:new_subject' %}"><span class="glyphicon glyphicon-plus"></span>  Nytt fag</a></li>
+              <li><a href="{% url 'adminpage:new_subject' %}"><span class="glyphicon glyphicon-plus"></span>  Nytt fag</a></li> <!-- TODO: make the buttion more visible and special-->
               <!-- a way to get all the chapter in the chosen subject -->
                 {% for subject in subjects %}
                 <div class="collapse navbar-collapse" id="id_subject_overview_menu">
@@ -35,9 +36,28 @@
         </div>
 
     {% block extension %}
+    <div class="container-fluid" style="text-align: center;">
+      <div style="font-size: 30px">
+        Welcome to the Feedback Page
+      </div>
+      <br>
+      <div>
+        Here you can see your students' feedback related to a video or it's given tasks
+        <br>
+        <br>
+        Check it out by clicking on one of the subjects in the sidebar
+      </div>
+      <br>
+    <div class="col-md-4" style="margin-left: 50px">
+      <img src="{% static 'adminpage/img/feedback.png'%}" style="width: 380px; height: 200px">
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <img src="{% static 'adminpage/img/graph.png'%}" style="width: 380px; height: 200px">
+    </div>
+    </div>
     {% endblock %}
     </div>
-
 
 
 
