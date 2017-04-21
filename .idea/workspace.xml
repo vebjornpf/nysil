@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ad64c3-8d75-4d40-99c1-e917cd7a34ac" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/change_chapter.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/change_chapter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/change_exercise.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/change_exercise.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/chapter_overview.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/chapter_overview.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/chapters.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/chapters.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/exercise_overview.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/exercise_overview.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/new_chapter.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/new_chapter.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/new_exercise.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/new_exercise.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminpage/templates/adminpage/tilbakemeldinger.html" afterPath="$PROJECT_DIR$/adminpage/templates/adminpage/tilbakemeldinger.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_subjects/templates/my_subjects/exercise_page.html" afterPath="$PROJECT_DIR$/my_subjects/templates/my_subjects/exercise_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_subjects/views.py" afterPath="$PROJECT_DIR$/my_subjects/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,33 +56,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exercise_overview.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/exercise_overview.html">
+      <file leaf-file-name="new_exercise.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/new_exercise.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-231">
-              <caret line="44" column="179" lean-forward="false" selection-start-line="44" selection-start-column="179" selection-end-line="44" selection-end-column="179" />
+            <state relative-caret-position="210">
+              <caret line="22" column="114" lean-forward="false" selection-start-line="22" selection-start-column="114" selection-end-line="22" selection-end-column="114" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_chapter.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/new_chapter.html">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/adminpage/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="8" column="81" lean-forward="false" selection-start-line="8" selection-start-column="81" selection-end-line="8" selection-end-column="81" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="323">
+              <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_exercise.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/new_exercise.html">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="79" column="77" lean-forward="false" selection-start-line="79" selection-start-column="77" selection-end-line="79" selection-end-column="77" />
+            <state relative-caret-position="231">
+              <caret line="55" column="47" lean-forward="false" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="customize.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/static/main/css/customize.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -109,24 +106,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="subject_overview.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/subject_overview.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="8" column="170" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="170" />
-              <folding>
-                <element signature="n#style#0;n#h3#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ul#0;n#li#0;n#ul#1;n#div#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin_header.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin_header.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="1245">
               <caret line="79" column="49" lean-forward="false" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="49" />
               <folding />
             </state>
@@ -162,7 +145,6 @@
       <list>
         <option value="$PROJECT_DIR$/nysil/settings.py" />
         <option value="$PROJECT_DIR$/nysil/urls.py" />
-        <option value="$PROJECT_DIR$/main/models.py" />
         <option value="$PROJECT_DIR$/adminpage/forms.py" />
         <option value="$PROJECT_DIR$/adminpage/templates/adminpage/new_subject.html" />
         <option value="$PROJECT_DIR$/adminpage/urls.py" />
@@ -174,7 +156,6 @@
         <option value="$PROJECT_DIR$/my_subjects/templates/my_subjects/subject_header.html" />
         <option value="$PROJECT_DIR$/my_subjects/templates/my_subjects/chapter_page.html" />
         <option value="$PROJECT_DIR$/main/templates/main/search.html" />
-        <option value="$PROJECT_DIR$/main/static/main/css/customize.css" />
         <option value="$PROJECT_DIR$/main/templates/main/login.html" />
         <option value="$PROJECT_DIR$/progress/templates/progress/progress_overview.html" />
         <option value="$PROJECT_DIR$/main/templates/main/header.html" />
@@ -191,10 +172,12 @@
         <option value="$PROJECT_DIR$/adminpage/templates/adminpage/exercise_overview.html" />
         <option value="$PROJECT_DIR$/adminpage/templates/adminpage/new_chapter.html" />
         <option value="$PROJECT_DIR$/adminpage/templates/adminpage/tilbakemeldinger.html" />
-        <option value="$PROJECT_DIR$/adminpage/templates/adminpage/new_exercise.html" />
         <option value="$PROJECT_DIR$/my_subjects/views.py" />
         <option value="$PROJECT_DIR$/my_subjects/templates/my_subjects/exercise_page.html" />
         <option value="$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html" />
+        <option value="$PROJECT_DIR$/main/models.py" />
+        <option value="$PROJECT_DIR$/main/static/main/css/customize.css" />
+        <option value="$PROJECT_DIR$/adminpage/templates/adminpage/new_exercise.html" />
       </list>
     </option>
   </component>
@@ -405,6 +388,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nysil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nysil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -752,7 +761,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492773822957</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="bakgrunn">
+      <created>1492776328201</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1492776328201</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -852,13 +868,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/header.html" />
-    <entry file="file://$PROJECT_DIR$/my_subjects/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -884,13 +893,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminpage/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -979,14 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/static/main/css/customize.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/progress/templates/progress/progress_overview.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1016,14 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-339">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1196,18 +1182,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/new_exercise.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="79" column="77" lean-forward="false" selection-start-line="79" selection-start-column="77" selection-end-line="79" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my_subjects/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="851">
           <caret line="140" column="48" lean-forward="false" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="79" column="49" lean-forward="false" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_subjects/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="55" column="47" lean-forward="false" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1220,10 +1222,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/admin_header.html">
+    <entry file="file://$PROJECT_DIR$/adminpage/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="79" column="49" lean-forward="false" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="49" />
+        <state relative-caret-position="323">
+          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/static/main/css/customize.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminpage/templates/adminpage/new_exercise.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="114" lean-forward="false" selection-start-line="22" selection-start-column="114" selection-end-line="22" selection-end-column="114" />
           <folding />
         </state>
       </provider>
