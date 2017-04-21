@@ -54,7 +54,7 @@ def userregister(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'main/header.html', {})
+                return HttpResponseRedirect(reverse('main:index'))
     context = {
         "form": form,
     }
@@ -78,7 +78,7 @@ def professorregister(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'main/adminok.html', {})
+                return HttpResponseRedirect(reverse('main:index'))
     context = {
         "form": form,
     }
