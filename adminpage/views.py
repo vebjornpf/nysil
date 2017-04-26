@@ -61,6 +61,7 @@ def new_chapter(request, subject_pk):
     subjects = Subject.objects.all()
     form = ChapterForm(request.POST or None)
     context = {'form': form, 'subjects': subjects, 'subject': subject}
+    subject_chapters = []
     # if the from is valid the created modelform will be saved in the database and the amdin
     # will be redirected to the chapter_overview
     if form.is_valid():
@@ -68,9 +69,13 @@ def new_chapter(request, subject_pk):
         instance = form.save(commit=False)
         # forces the instace to set the subject (foreign) to the subject we have cliked on
         instance.subject = subject
-        instance.save()
-        return HttpResponseRedirect(reverse('adminpage:chapter_overview',args=(subject_pk,)))
 
+        for chapter in subject.chapter_set.all():
+            subject_chapters.append(chapter.chapter_number)
+        if not instance.chapter_number in subject_chapters:
+            instance.save()
+            return HttpResponseRedirect(reverse('adminpage:chapter_overview',args=(subject_pk,)))
+        context['error'] = 'Chapter number already exists'
     return render(request, 'adminpage/new_chapter.html', context)
 
 def delete_chapter(request, subject_pk, chapter_pk):
