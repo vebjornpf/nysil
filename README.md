@@ -7,6 +7,7 @@ WHAT IS NYSIL?
 - NYSIL makes learning more fun and more efficient by merging video lectures with quick and easy accessible exercises
 
 HOW TO USE NYSIL
-1. Download the Django Framework (pip install django)
-2. Clone the nysil-repository
-3. Run the command "python manage.py runserver" in the terminal
+1. Download python (remember to check "Add to path" during download)
+2. Download the Django Framework (pip install django)
+3. Clone the nysil-repository
+4. Run the command "python manage.py runserver" in the terminal
