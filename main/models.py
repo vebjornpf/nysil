@@ -36,7 +36,7 @@ class Chapter(models.Model):
         ordering = ['chapter_number']
 
     chapter_number = models.PositiveIntegerField(default = 0)
-    chapter_name = models.CharField(max_length=30)
+    chapter_name = models.CharField(max_length=50)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE) # to controll which subject the theme belongs to
 
 
