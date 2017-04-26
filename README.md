@@ -11,3 +11,7 @@ HOW TO USE NYSIL
 2. Download the Django Framework (pip install django)
 3. Clone the nysil-repository
 4. Run the command "python manage.py runserver" in the terminal
+5. Open assigned localhost
+
+INFO
+- for professor register, use activation key: abc12345
