@@ -1,10 +1,11 @@
-
-from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
 from django.shortcuts import render
 from main.models import Subject, StudentConnectSubject, Exercise_Page, StudentConnectExercise, Chapter
+
+# THE FIRST LINES IN EVERY VIEW IS A CHECK TO SEE THAT A USER HAS LOGGED IN, THIS IS DONE TO PROVIDE THAT USERS THAT
+# ARE NOT AUTHENTICATED CAN ACCESS IT.
+
 
 def statistics_index(request):
     if not user_authenticated(request.user):
@@ -18,7 +19,6 @@ def statistics_subject(request, subject_pk):
         return HttpResponseRedirect(reverse('main:index'))
 
     context = {'subjects': Subject.objects.all(), 'subject': Subject.objects.get(pk=subject_pk)}
-
     return render(request, 'stats/statistics_subject.html', context)
 
 def subject_overview(request, subject_pk):
@@ -33,22 +33,18 @@ def subject_highscore(request, subject_pk):
         return HttpResponseRedirect(reverse('main:index'))
 
     subject = Subject.objects.get(pk=subject_pk)
-
     # highscore_info on the form [[rank,connection].....[rank,connection]]
     highscore_info = fix_highscore_info(subject)
-
     context = {'subjects': Subject.objects.all(), 'subject': subject, 'highscore_info': highscore_info}
-
     return render(request, "stats/subject_highscore.html", context)
+
 
 def subject_chapters(request, subject_pk):
     if not user_authenticated(request.user):
         return HttpResponseRedirect(reverse('main:index'))
 
     subject = Subject.objects.get(pk=subject_pk)
-
     context = {'subjects': Subject.objects.all(), 'subject': subject}
-
     return render(request,'stats/subject_chapters.html', context)
 
 
@@ -57,13 +53,10 @@ def subject_exercise(request, subject_pk):
         return HttpResponseRedirect(reverse('main:index'))
 
     subject = Subject.objects.get(pk=subject_pk)
-
     context = {'subjects': Subject.objects.all(), 'subject': subject}
-
-
-
     return render(request, 'stats/subject_exercise.html', context)
 
+# view that creates info around a chapter and render this info
 def chapter_plot(request, subject_pk, chapter_pk):
     if not user_authenticated(request.user):
         return HttpResponseRedirect(reverse('main:index'))
@@ -82,8 +75,6 @@ def exercise_bargraph(request, subject_pk, exercise_pk):
         return HttpResponseRedirect(reverse('main:index'))
 
     exercise = Exercise_Page.objects.get(pk=exercise_pk)
-
-
     means = create_means(exercise)
 
     context = {'exercise':exercise, 'subjects': Subject.objects.all(), 'means': means, 'subject': Subject.objects.get(pk=subject_pk)}
@@ -97,7 +88,6 @@ def subject_pie_graph(request,subject_pk):
     graph_values = create_subject_graph_values(subject)
 
     context = {'subjects': Subject.objects.all(), 'values': graph_values , 'subject': subject}
-
     return render(request, 'stats/subject_graph.html', context)
 
 # --------------------- HELP - METHODS ---------------------------
@@ -105,17 +95,19 @@ def subject_pie_graph(request,subject_pk):
 def get_number_of_students(subject):
     return StudentConnectSubject.objects.filter(subject=subject).count()
 
+# set the highscore_info on a special format
 def fix_highscore_info(subject):
     info = []
     students_in_subject_conn = StudentConnectSubject.objects.filter(subject=subject).order_by('-points')
     rank=1
     max_points = get_max_points(subject)
     for student_conn in students_in_subject_conn:
-        percent = (str(student_conn.points*100/max_points) if max_points > 0 else "0") + " %"
+        percent = (str(round(student_conn.points*100/max_points,1)) if max_points > 0 else "0") + " %"
         info.append([rank, student_conn, percent])
         rank += 1
     return info
 
+# max_points to a subject
 def get_max_points(subject):
     chapters = subject.chapter_set.all()
     points = 0
@@ -126,15 +118,9 @@ def get_max_points(subject):
     return points
 
 
-# see if a user is logged-in
-def user_authenticated(user):
-    if not user.is_authenticated():
-        return False
-    return True
 
 def create_means(exercise):
     conns = StudentConnectExercise.objects.filter(exercise=exercise)
-    num_of_students = conns.count()
     easy_completed = 0
     medium_completed = 0
     hard_completed = 0
@@ -151,7 +137,7 @@ def create_means(exercise):
 
 
 
-
+# sets the chapter-graph information
 def create_chapter_graph(chapter):
     exercises = chapter.exercise_page_set.all()
     info = []
@@ -204,3 +190,9 @@ def create_subject_graph_values(subject):
             super_counter[9] += 1
 
     return super_counter
+
+# see if a user is logged-in
+def user_authenticated(user):
+    if not user.is_authenticated():
+        return False
+    return True

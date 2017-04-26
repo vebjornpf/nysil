@@ -38,11 +38,11 @@
                 <tr>
                     <th scope="row">{{ chapter.chapter_number }}</th>
                     <th scope="row">{{ chapter.chapter_name }}</th>
-                    <td><div><a class="btn btn-xs btn-warning" href="{% url 'adminpage:exercise_overview' chapter_pk=chapter.pk subject_pk=subject.pk %}">Contents</a></div></td> <!-- TODO: add chapter-delete functionality -->
+                    <td><div><a class="btn btn-xs btn-warning" href="{% url 'adminpage:exercise_overview' chapter_pk=chapter.pk subject_pk=subject.pk %}">Content</a></div></td>
 
-                    <td><div><a class="btn btn-xs btn-info" href="{% url 'adminpage:change_chapter' subject_pk=subject.pk chapter_pk=chapter.pk %}">CHANGE</a></div></td> <!-- TODO: add chapter-change functionality -->
+                    <td><div><a class="btn btn-xs btn-info" href="{% url 'adminpage:change_chapter' subject_pk=subject.pk chapter_pk=chapter.pk %}">CHANGE</a></div></td>
                     <!-- this button shall delete the chapter and take us back to the same url -->
-                    <td><div><a class="btn btn-xs btn-danger" href="{% url 'adminpage:delete_chapter' subject_pk=subject.pk chapter_pk=chapter.pk %}">DELETE</a></div></td> <!-- TODO: add chapter-delete functionality -->
+                    <td><div><a class="btn btn-xs btn-danger" href="{% url 'adminpage:delete_chapter' subject_pk=subject.pk chapter_pk=chapter.pk %}">DELETE</a></div></td>
                 </tr>
             {% endfor%}
 

@@ -1,6 +1,6 @@
 from django.test import TestCase
 from progress import views
-from main.models import Subject, Chapter, Exercise_Page, StudentConnectSubject, StudentConnectExercise
+from main.models import Subject, Chapter, Exercise_Page, StudentConnectSubject
 from django.contrib.auth.models import User
 
 

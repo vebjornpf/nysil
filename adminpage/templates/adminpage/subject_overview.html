@@ -7,7 +7,7 @@
           <ul class="nav nav-sidebar navbar-inverse">
               <!-- This li takes us back to the subject_overvieq -->
               <li ><p id="id_fagoversikt"><h3 id="id_fagoversikt_text" style="color:#337AB7;margin-left:10px">Overview</h3><span class="sr-only">(current)</span></p></li>
-              <p class="center-large" style="margin-left:20px"><a href="{% url 'adminpage:new_subject' %}"><span class="glyphicon glyphicon-plus"></span>  Add subject</a></p> <!-- TODO: make the buttion more visible and special-->
+              <p class="center-large" style="margin-left:20px"><a href="{% url 'adminpage:new_subject' %}"><span class="glyphicon glyphicon-plus"></span>  Add subject</a></p>
               <!-- a way to get all the chapter in the chosen subject -->
               {% block subjects %}
                 {% for subject in subjects %}

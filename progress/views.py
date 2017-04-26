@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from main.models import StudentConnectSubject, StudentConnectExercise, Subject
+from main.models import StudentConnectSubject, Subject
 
 
 def my_progress(request):
@@ -22,13 +22,9 @@ def highscore(request, subject_pk):
     return render(request, 'progress/highscore.html', context)
 
 
-
-
-
-
-
 # ------------------- Help-Methods ---------------------------
 
+# sets the info in the subject highscore
 def set_highscore_info(subject):
     subject_connections = StudentConnectSubject.objects.filter(subject=subject).order_by('-points')
     info = []
@@ -40,7 +36,7 @@ def set_highscore_info(subject):
 
     return info
 
-
+# sets the view_context that my_progress shall render
 def set_view_context(subjects, user):
     first_subjects, second_subjects, third_subjects = split_subjects(subjects)
     first_column = []
@@ -72,7 +68,7 @@ def merge_info(subject_conn, user):
 
     # adds how many percent of the tasks the user has completed in the subject
     divider = get_max_points(subject_conn.subject)
-    info.append(str((user_subject_conn.points*100)/divider) + "%" if divider>0 else "0 %")
+    info.append(str(round((user_subject_conn.points*100)/divider,1)) + "%" if divider>0 else "0 %")
     return info
 
 

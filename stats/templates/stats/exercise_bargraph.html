@@ -3,6 +3,8 @@
 
 {% block head_extend %}
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- This script creates a plot with the use of data rendered for the view -->
+
     <script type="text/javascript">
         google.charts.load("current", {packages:['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -37,6 +39,7 @@
     }
     </script>
 {% endblock%}
+
 {% block graph %}
     <div class="col-md-8">
         <h4 class="text-center">{{exercise.chapter}} -> {{ exercise.headline }}</h4>

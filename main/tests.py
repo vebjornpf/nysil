@@ -1,7 +1,6 @@
 from django.test import TestCase
-from .models import Subject, Chapter, Exercise_Page, StudentConnectExercise, StudentConnectSubject, User, UserProfile, Comment
-from .views import search, add_subject, login_user, logout_user, logout, login, professorregister, userregister
-# Create your tests here.
+from .models import Subject, Chapter, User
+
 
 class LoginLogoutTest(TestCase):
     def setUp(self):
@@ -23,7 +22,6 @@ class LoginLogoutTest(TestCase):
         user = User.objects.create_user(username='Hans', password='123zxc')
         user.is_staff = True
         user.save()
-        logged_in = self.client.login(username='Hans', password='123zxc')
         url = '/main/'
         resp = self.client.get(url)
         context = resp.content.decode('UTF-8')

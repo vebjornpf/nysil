@@ -1,7 +1,6 @@
 from django.test import TestCase
-from django.test.client import RequestFactory
-from stats import views
-from main.models import Subject, Chapter, Exercise_Page, StudentConnectSubject, StudentConnectExercise
+
+from main.models import Subject, Chapter, Exercise_Page, StudentConnectExercise
 from django.contrib.auth.models import User
 
 

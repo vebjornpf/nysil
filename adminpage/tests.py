@@ -1,21 +1,8 @@
-from django.test import TestCase, Client
-from django.core.urlresolvers import reverse
+from django.test import TestCase
 from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404, render_to_response
-from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.views import generic
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import logout
-from django.shortcuts import redirect
-from django.http import HttpResponse
-from django.conf.urls import url
 from main.models import Subject, Chapter, Exercise_Page
-from .views import admin_index, new_chapter, new_exercise, new_subject, delete_chapter, delete_exercise, delete_exercise_points, delete_subject, change_chapter, change_exercise, chapter_feedback, chapter_overview, chapters, tilbakemeldinger, admin_index, subject_overview, exercise_overview
 from .forms import SubjectForm, ChapterForm, ExerciseForm
-from main.views import index, UserForm, professorregister, userregister, login, login_user, logout, logout_user
-# Create your tests here.
+
 
 class TestAdminpageIndex(TestCase):
     def create_subject(self, code, name, pfname, plname, pemail):

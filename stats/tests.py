@@ -4,9 +4,6 @@ from main.models import Subject, Chapter, Exercise_Page, StudentConnectSubject, 
 from django.contrib.auth.models import User
 
 
-
-
-
 # Testing statistics_index
 class TestStatisticsIndex(TestCase):
     def setUp(self):
@@ -20,9 +17,6 @@ class TestStatisticsIndex(TestCase):
         url = '/adminpage/statistics/'
         response = self.client.get(url)
         body = response.content.decode('UTF-8')
-
-        # check that we get the correct template when a user is not logged in
-
         # check that the status-code is correct
         self.assertEqual(302, 302)
 

@@ -44,15 +44,15 @@
 <div id="wrapper">
 
 
-        <!-- Navbar på toppen -->
+        <!-- Navbar -->
         <br>
 	<br>
 	<br>
         <nav class="navbar navbar-inverse navbar-fixed-top" >
             <div class="container-fluid">
 
-                <!-- Mobilvennelig, gjør om navbar til dropdown knapp når skjermen blir for liten
-                 + knapp lengst til venstre som tar deg til forsiden -->
+                <!-- makes navbar to dropdown when the page gets to small
+                 + button which takes you to the frontpage -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
                         <span class="icon-bar"></span>
@@ -62,21 +62,22 @@
                     <a href="{% url 'main:index' %}" class="navbar-brand"><img src="{% static 'main/img/ny_logo.png'%}" style="width:100px;height:27px;margin-top:-4px;margin-left:-3px"></a>
                 </div>
 
-                <!-- Navbar items, samarbeider med collapse over gjennom id (data-target) -->
+                <!-- Navbar items -->
                 <div class="collapse navbar-collapse" id="mainNavBar">
                     <ul class="nav navbar-nav">
 
-                        <!-- Dropdown meny for mine fag i navbaren -->
+                        <!-- Dropdown for "my subjects " -->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Subjects
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <!-- adds all the subjects to "My Subjects"-dropown -->
+                                <!-- adds all the student subjects to "My Subjects"-dropown -->
                                 {% for subject in user.userprofile.subjects.all %}
                                     <li><a href="{% url 'my_subjects:subject_view' subject.pk %}"> {{ subject.subject_code }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>
+                        <!-- makes the search-field a login-button if the user is not logged in -->
                         {% if not user.is_authenticated %}
                             <li><a href="{% url 'main:login_user' %}">Please log in</a></li>
                         {% else %}
@@ -90,10 +91,9 @@
 
                     </ul>
 
-                    <!-- Knapp for innloggin, tar deg til innloggings app url -->
+                    <!-- button for login -->
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- logout filed -->
-
+                        <!-- Makes the progress-button only visible if the user is logged in -->
                         {% if not user.is_authenticated %}
                         {% else %}
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
@@ -101,6 +101,7 @@
                         {% endif %}
                         {% if not user.is_authenticated %}
                             <li><a href="{% url 'main:login_user' %}">Login</a></li>
+                        <!-- Only staff can access the Adminpage, checks this-->
                         {% elif user.is_staff is True %}
                             <li><a href="{% url 'adminpage:admin_index' %}">Adminpage</a></li>
                             <li class="dropdown">
@@ -128,6 +129,7 @@
 
             </div>
         </nav>
+    <!-- Code for our Home-page with information about NYSIL -->
         {% block content %}
             <div class="row" style="padding-top: 40px">
               <div class="col-md-2"></div>
@@ -142,7 +144,7 @@
               <div class="col-sm-6">
                         <div class="embed-responsive embed-responsive-16by9" style="height: 360px">
 
-                             <!-- Plays youtube on the webpage and uses the youtube-id. allowsfuulscreen allows youtube to play in fullscreen -->
+                             <!-- Plays youtube on the webpage and uses the youtube-id. "allowsfuulscreen" allows youtube to play in fullscreen -->
                             <iframe style="border:10px solid #000; border-radius: 20px !important;" class="embed-responsive-item" src="http://www.youtube.com/embed/p60rN9JEapg?" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
                         </div>
                     </div>
@@ -194,7 +196,7 @@
             <div class="row" style="padding-top: 50px">
               <div class="col-md-2"></div>
               <div class="col-md-4">
-                <img src="{% static 'main/img/learn.png'%}" style="width:400px;height:150px;">
+                <img src="{% static 'main/img/login.png'%}" style="width:400px;height:150px;">
               </div>
               <div class="col-md-4">
                 Start By Logging In:
@@ -214,14 +216,14 @@
                   Now you will easily be able to locate your subject, and dig into this world of knowlage.
               </div>
               <div class="col-md-4">
-                <img src="{% static 'main/img/learn.png'%}" style="width:400px;height:150px;">
+                <img src="{% static 'main/img/choose_subject.png'%}" style="width:400px;height:150px;">
               </div>
               <div class="col-md-2"></div>
             </div>
             <div class="row" style="padding-top: 100px">
               <div class="col-md-2"></div>
               <div class="col-md-4">
-                <img src="{% static 'main/img/learn.png'%}" style="width:400px;height:150px;">
+                <img src="{% static 'main/img/navigate.png'%}" style="width:400px;height:150px;">
               </div>
               <div class="col-md-4">
                 Navigate to Your Desired Subtopic:
@@ -235,21 +237,15 @@
               <div class="col-md-2"></div>
             </div>
         {% endblock%}
-                    <!-- Block extend-files will use: -->
-
-
-        <div class="col-md-10 col-md-pull-1" id="sidebar_subjects">
-
-        </div>
-
 </div>
 
 
 
 
 
-<!-- Footer med linker til ulike sider, og også en kontakt & hjelp side -->
+
 <footer id="footer">
+    <!-- script that makes it able to search for subjects in the database -->
     <script>
         // Implement realtime search with `keyup` function.
         $('#search-input').keyup(function (event) {

@@ -41,8 +41,8 @@
             <tr>
                 <th> {{ exercise.headline }}</th>
                 <td> {{ exercise.explanation }}</td>
-                <td><div><a class="btn btn-xs btn-info" href="{% url 'adminpage:change_exercise' subject_pk=subject.pk chapter_pk=chapter.pk exercise_pk=exercise.pk %}">CHANGE</a></div></td> <!-- TODO: add chapter-change functionality -->
-                <td><div><a class="btn btn-xs btn-danger" href=" {% url 'adminpage:delete_exercise' subject_pk=subject.pk chapter_pk=chapter.pk exercise_pk=exercise.pk %} ">DELETE</a></div></td> <!-- TODO: add chapter-delete functionality -->
+                <td><div><a class="btn btn-xs btn-info" href="{% url 'adminpage:change_exercise' subject_pk=subject.pk chapter_pk=chapter.pk exercise_pk=exercise.pk %}">CHANGE</a></div></td>
+                <td><div><a class="btn btn-xs btn-danger" href=" {% url 'adminpage:delete_exercise' subject_pk=subject.pk chapter_pk=chapter.pk exercise_pk=exercise.pk %} ">DELETE</a></div></td>
 
 
 

@@ -8,16 +8,7 @@
             <h3> Chapter overview for {{ subject }} </h3>
         </div>
 
-        <div style="float: right; width: 0%">
-            <!-- wrapped the "add_chapter"-button inside a block because we want to give the button some new
-             functionality after it has been clicked -->
-            {% block chapter %}
-                <!-- Button that will send you to add_chapter-template -->
-                <div id="add_chapter">
-                    <a class="btn btn-large btn-success" href="{% url 'adminpage:new_chapter' subject_pk=subject.pk %}">New chapter</a>
-                </div>
-            {% endblock %}
-        </div>
+
 
     </div>
     <table class="table table-striped">

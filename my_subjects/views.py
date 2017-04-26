@@ -1,15 +1,13 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-# Create your views here.
 from main.models import Subject, Chapter, Exercise_Page, StudentConnectExercise, StudentConnectSubject
 from .forms import EasyAnswer, MediumAnswer, HardAnswer, CommentForm
 
 # this view is the "header" for the subject-pages
 # its the same as main/header.html but has a sidebare too
 
-@login_required
+
 def subject_view(req, subject_pk):
     user = req.user
     subject = get_object_or_404(Subject, pk=subject_pk) # the subject that was chosen
@@ -48,6 +46,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
     subjects = Subject.objects.all()
     connection = StudentConnectExercise.objects.get(user=user,exercise=exercise)
 
+    # attributes that renders so users easily can se which tasks are completed/not completed
     info_easy = "(Completed)" if connection.completed_easy==True else "(Not completed)"
     info_medium = "(Completed)" if connection.completed_medium == True else "(Not completed)"
     info_hard = "(Completed)" if connection.completed_hard == True else "(Not completed)"
@@ -57,7 +56,6 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
     comment_form = CommentForm(request.POST or None)
 
     info = ""
-    question = ""
 
     context = {'connection': connection, 'comment_form': comment_form, 'form': form, 'subject_list': subjects, 'exercise': exercise,
                'chapter': chapter,
@@ -77,6 +75,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
 
     if request.method == 'POST':
 
+        # LOGIC FOR CHECKING THE EASY ANSWER
         if 'easy' in request.POST:
             form = EasyAnswer(request.POST or None)
             if form.is_valid():
@@ -92,7 +91,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                     if connection.completed_easy == False:
                         info += "You answered correct, and " + str(exercise.easy_points) + " points were added to your score"
                         info += " in the subject " + str(subject)
-                        # do some logic for checking the easy answer
+
                         subject_connection.points += exercise.easy_points
                         subject_connection.save()
                         connection.completed_easy = True
@@ -103,6 +102,8 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                     info+= "Wrong answer... try again"
                 context['info'] = info
                 return test(request, context)
+
+        # LOGIC FOR CHECKING THE MEDIUM ANSWER
         elif 'medium' in request.POST:
             form = MediumAnswer(request.POST or None)
             if form.is_valid():
@@ -118,7 +119,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                     if connection.completed_medium == False:
                         info += "You answered correct, and " + str(exercise.medium_points) + " points were added to your score"
                         info += " in the subject " + str(subject)
-                        # do some more logic
+
                         subject_connection.points += exercise.medium_points
                         subject_connection.save()
                         connection.completed_medium = True
@@ -129,6 +130,8 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                     info+= "Wrong answer... try again"
                 context['info'] = info
                 return test(request, context)
+
+        # LOGIC FOR CHECKING THE HARD ANSWER
         elif 'hard' in request.POST:
             form = HardAnswer(request.POST or None)
             if form.is_valid():
@@ -144,7 +147,6 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                     if connection.completed_hard == False:
                         info += "You answered correct, and " + str(exercise.hard_points) + " points were added to your score"
                         info += " in the subject " + str(subject)
-                        # do some more logic
                         subject_connection.points += exercise.hard_points
                         subject_connection.save()
                         connection.completed_hard = True

@@ -163,6 +163,7 @@ def chapters(req,subject_pk):
     context = {'subject':subject,'subjects':subjects}
     return render(req,'adminpage/chapters.html',context)
 
+# view for a chapters feedbak
 def chapter_feedback(req, subject_pk, chapter_pk):
     subjects = Subject.objects.all()
     chapter = Chapter.objects.get(pk=chapter_pk)

@@ -1,32 +1,27 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.views import generic
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.shortcuts import redirect
-from django.http import HttpResponse
 from .forms import UserForm
-from .models import Subject, StudentConnectSubject
+from .models import Subject
 
 from django.db.models import Q
 
 
-# view for the header, which gonna be the same everywhere in the web page
+# view for the frontpage
 def index(req):
     return render(req,'main/header.html')
 
-
+# method uses to logout a user, an redirects to the frontpage
 def logout_user(request):
     logout(request)
-    form = UserForm(request.POST or None)
-    context = {"form": form}
     return HttpResponseRedirect(reverse('main:index'))
 
-
+# method uses to login a user
 def login_user(request):
     if request.method == "POST":
+        # logic to get the typed in username and password
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
@@ -40,16 +35,16 @@ def login_user(request):
             return render(request, 'main/login.html', {'error_message': 'Invalid login'})
     return render(request, 'main/login.html')
 
-
+# method for register a student
 def userregister(request):
     form = UserForm(request.POST or None)
-    if form.is_valid():
+    if form.is_valid(): # form.is_valid() checks that tha form is on the correct format
         user = form.save(commit=False)
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
         confirm = request.POST['confirm']
         if confirm != password:
-            return render(request, 'main/register.html',{'form': form, 'error_message': 'Password not equal'}, )
+            return render(request, 'main/userregister.html',{'form': form, 'error_message': 'Password not equal'}, )
         user.set_password(password)
         user.save()
         user = authenticate(username=username, password=password)
@@ -62,9 +57,10 @@ def userregister(request):
         "form": form,
     }
 
-    return render(request, 'main/register.html', context)
+    return render(request, 'main/userregister.html', context)
 
-
+# method for register a professor, almost the same as userregister but the activation_key-input has to be corrext
+# so all professors needs the activation_key to be an admin
 def professorregister(request):
     form = UserForm(request.POST or None)
     if form.is_valid():
@@ -90,6 +86,7 @@ def professorregister(request):
     }
     return render(request, 'main/professorregister.html', context)
 
+# method for the search-functionality. Used to search for a subject to follow
 def search(request):
     user = request.user
 
@@ -106,9 +103,9 @@ def search(request):
         return render(request, 'main/search.html',context)
     return render(request, 'main/search.html')
 
-    return render(request, 'main/userregister.html', context)
-
+# functionallity for adding a sujbject
 def add_subject(request, subject_pk):
     user = request.user
     user.userprofile.add_subject(subject_pk)
+    # this response makes sure that user gets redirected to the last visited page after adding a subject
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
