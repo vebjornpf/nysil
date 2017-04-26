@@ -82,7 +82,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 question = exercise.easy_question
                 context['question'] = question
                 context['form'] = form
-                answer = form.cleaned_data['ditt_svar']
+                answer = form.cleaned_data['your_answer']
                 context['answer'] = answer
                 answerlist = answer.split(' ')
                 easy_answer_list = exercise.easy_answer.split(' ')
@@ -110,7 +110,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 question = exercise.medium_question
                 context['question'] = question
                 context['form'] = form
-                answer = form.cleaned_data['ditt_svar']
+                answer = form.cleaned_data['your_answer']
                 context['answer'] = answer
                 answerlist = answer.split(' ')
                 medium_answer_list = exercise.medium_answer.split(' ')
@@ -138,7 +138,7 @@ def exercise_view(request,chapter_pk, subject_pk, exercise_pk):
                 question = exercise.hard_question
                 context['question'] = question
                 context['form'] = form
-                answer = form.cleaned_data['ditt_svar']
+                answer = form.cleaned_data['your_answer']
                 context['answer'] = answer
                 answerlist = answer.split(' ')
                 hard_answer_list = exercise.hard_answer.split(' ')

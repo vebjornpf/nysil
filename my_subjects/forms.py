@@ -7,15 +7,15 @@ from main.models import Comment
 # all the classes looks the same, but doing it this way so we can separate which question the user has answered
 
 class EasyAnswer(forms.Form):
-    ditt_svar = forms.CharField()
+    your_answer = forms.CharField()
 
 
 class MediumAnswer(forms.Form):
-    ditt_svar = forms.CharField()
+    your_answer = forms.CharField()
 
 
 class HardAnswer(forms.Form):
-    ditt_svar = forms.CharField()
+    your_answer = forms.CharField()
 
 
 class CommentForm(forms.ModelForm):
