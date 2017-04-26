@@ -22,10 +22,11 @@ class LoginLogoutTest(TestCase):
         user = User.objects.create_user(username='Hans', password='123zxc')
         user.is_staff = True
         user.save()
+        self.client.login(username = 'Hans', password = '123zxc')
         url = '/main/'
         resp = self.client.get(url)
         context = resp.content.decode('UTF-8')
-
+        
         self.assertEqual(resp.status_code, 200)
         self.assertIn(user.username, context)
 
