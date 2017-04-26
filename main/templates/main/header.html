@@ -96,7 +96,7 @@
                         <!-- Makes the progress-button only visible if the user is logged in -->
                         {% if not user.is_authenticated %}
                         {% else %}
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
+
                         <li><a href="{% url 'progress:my_progress' %}"><span class="glyphicon glyphicon-list-alt"></span> Progress</a></li>
                         {% endif %}
                         {% if not user.is_authenticated %}
